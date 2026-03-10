@@ -1167,5 +1167,152 @@ function loadDrivePortfolio(){
 window.addEventListener("load",loadDrivePortfolio);
 
 </script>
-  
+
+  <script>
+
+/* ===== SISTEMA DE ACESSO SECRETO ===== */
+
+const SECRET_WORD = "serpaedit";
+const EDIT_PASSWORD = "jhulia2025";
+
+let typed = "";
+let editMode = false;
+
+document.addEventListener("keydown", function(e){
+
+  typed += e.key.toLowerCase();
+
+  if(typed.length > SECRET_WORD.length){
+    typed = typed.slice(-SECRET_WORD.length);
+  }
+
+  if(typed === SECRET_WORD){
+
+    const pass = prompt("Senha de edição:");
+
+    if(pass === EDIT_PASSWORD){
+
+      editMode = true;
+
+      alert("Modo de edição ativado");
+
+    }else{
+
+      alert("Senha incorreta");
+
+    }
+
+    typed = "";
+
+  }
+
+});
+
+/* ===== FUNÇÃO PARA ADICIONAR IMAGEM DO DRIVE ===== */
+
+function driveToDirect(url){
+
+  if(url.includes("drive.google.com")){
+
+    const match = url.match(/\/d\/(.*?)\//);
+
+    if(match){
+
+      return "https://drive.google.com/uc?export=view&id=" + match[1];
+
+    }
+
+  }
+
+  return url;
+
+}
+
+function addDriveImage(){
+
+  if(!editMode){
+
+    alert("Modo edição não ativado");
+
+    return;
+
+  }
+
+  const link = prompt("Cole o link da imagem do Google Drive:");
+
+  if(!link) return;
+
+  const imgUrl = driveToDirect(link);
+
+  const grid =
+  document.querySelector(".grid-foto") ||
+  document.querySelector("#grid-foto") ||
+  document.body;
+
+  const card = document.createElement("div");
+
+  card.className = "proj-card";
+
+  const img = document.createElement("img");
+
+  img.src = imgUrl;
+
+  img.style.width = "100%";
+
+  card.appendChild(img);
+
+  grid.appendChild(card);
+
+  savePortfolio();
+
+}
+
+/* ===== SALVAR AUTOMATICAMENTE ===== */
+
+function savePortfolio(){
+
+  const imgs = [...document.querySelectorAll(".proj-card img")].map(i => i.src);
+
+  localStorage.setItem("portfolioImages", JSON.stringify(imgs));
+
+}
+
+/* ===== CARREGAR IMAGENS SALVAS ===== */
+
+function loadPortfolio(){
+
+  const data = localStorage.getItem("portfolioImages");
+
+  if(!data) return;
+
+  const imgs = JSON.parse(data);
+
+  const grid =
+  document.querySelector(".grid-foto") ||
+  document.querySelector("#grid-foto") ||
+  document.body;
+
+  imgs.forEach(src => {
+
+    const card = document.createElement("div");
+
+    card.className = "proj-card";
+
+    const img = document.createElement("img");
+
+    img.src = src;
+
+    img.style.width = "100%";
+
+    card.appendChild(img);
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+window.addEventListener("load", loadPortfolio);
+
+</script>
 </body></html>
