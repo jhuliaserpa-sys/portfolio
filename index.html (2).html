@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="pt-BR" style="--dark: #000000; --cream: #e6e6d4; --rose: #ffffff;"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jhulia Serpa — Filmmaker &amp; Visual Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#f5ede0; --rose:#e8d5c4; --dark:#120b08; --wine:#1c0f0a;
+  --gold:#c9924a; --gold2:#e8b87a; --blush:#d4a08a; --muted:#8a6a58;
+  --surface:#1e1109; --border:rgba(201,146,74,.15);
+  --fd:'Fraunces',serif; --fb:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--fb);background:var(--cream);color:var(--wine);overflow-x:hidden;cursor:none;}
+
+/* CURSOR */
+#c1{position:fixed;width:7px;height:7px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:19999;transform:translate(-50%,-50%);}
+#c2{position:fixed;width:30px;height:30px;border:1px solid rgba(201,146,74,.45);border-radius:50%;pointer-events:none;z-index:19998;transform:translate(-50%,-50%);transition:all .08s ease;}
+
+/* PAGES */
+.page{display:none;}.page.active{display:block;}
+
+/* PASSWORD */
+#pwd-modal{position:fixed;inset:0;background:rgba(18,11,8,.96);z-index:20000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(12px);}
+#pwd-modal.open{display:flex;}
+.pwd-box{text-align:center;padding:3rem 2.5rem;max-width:340px;width:100%;}
+.pwd-logo{font-family:var(--fd);font-style:italic;font-size:2.8rem;color:var(--gold2);margin-bottom:.2rem;}
+.pwd-hint{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(232,184,122,.35);margin-bottom:2rem;}
+.pwd-in{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(201,146,74,.22);border-radius:.5rem;padding:.75rem 1rem;font-size:.85rem;color:var(--cream);font-family:var(--fb);outline:none;text-align:center;letter-spacing:.3em;}
+.pwd-in:focus{border-color:var(--gold);}
+.pwd-btn{margin-top:.9rem;width:100%;background:transparent;border:1px solid rgba(201,146,74,.35);border-radius:.5rem;padding:.68rem;font-size:.54rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);cursor:pointer;font-family:var(--fb);transition:all .25s;}
+.pwd-btn:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.pwd-err{font-size:.58rem;color:var(--blush);margin-top:.5rem;display:none;letter-spacing:.1em;}
+
+/* EDITOR TOGGLE */
+#ed-tog{position:fixed;top:50%;right:0;transform:translateY(-50%);z-index:10000;background:var(--wine);color:var(--gold2);border:none;border-radius:.55rem 0 0 .55rem;padding:.85rem .52rem;font-size:.48rem;font-weight:700;letter-spacing:.1em;writing-mode:vertical-rl;text-transform:uppercase;cursor:pointer;font-family:var(--fb);display:none;align-items:center;flex-direction:column;gap:.4rem;}
+#ed-tog.show{display:flex;}
+#ed-tog:hover{background:var(--gold);color:var(--dark);}
+
+/* EDITOR PANEL */
+#ep{position:fixed;top:0;right:-320px;width:305px;height:100vh;z-index:9999;background:#0d0806;color:var(--cream);display:flex;flex-direction:column;transition:right .35s cubic-bezier(.77,0,.18,1);box-shadow:-10px 0 50px rgba(0,0,0,.6);}
+#ep.open{right:0;}
+.eph{padding:1.1rem 1.3rem;border-bottom:1px solid rgba(201,146,74,.1);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
+.ep-title{font-family:var(--fd);font-style:italic;font-size:1.15rem;color:var(--gold2);}
+.ep-x{background:none;border:none;color:var(--cream);font-size:1rem;cursor:pointer;opacity:.45;}
+.ept{display:flex;border-bottom:1px solid rgba(201,146,74,.08);flex-shrink:0;overflow-x:auto;}
+.ept button{flex-shrink:0;padding:.62rem .65rem;font-size:.47rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;color:rgba(232,184,122,.3);cursor:pointer;font-family:var(--fb);border-bottom:2px solid transparent;white-space:nowrap;}
+.ept button.on{color:var(--gold2);border-bottom-color:var(--gold);}
+.epb{flex:1;overflow-y:auto;padding:1.1rem 1.3rem;}
+.epb::-webkit-scrollbar{width:3px;}
+.epb::-webkit-scrollbar-thumb{background:rgba(201,146,74,.18);}
+.eps{display:none;}.eps.on{display:block;}
+.epg{margin-bottom:1rem;}
+.epl{font-size:.49rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(232,184,122,.3);margin-bottom:.4rem;display:block;}
+.epi{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(201,146,74,.13);border-radius:.42rem;padding:.44rem .65rem;font-size:.68rem;color:var(--cream);font-family:var(--fb);outline:none;}
+.epi:focus{border-color:var(--gold);}
+.epta{resize:vertical;min-height:58px;line-height:1.55;}
+.epd{height:1px;background:rgba(201,146,74,.09);margin:.7rem 0;}
+.epsub{font-size:.5rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(232,184,122,.22);margin-bottom:.6rem;}
+.epsel{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(201,146,74,.13);border-radius:.42rem;padding:.44rem .65rem;font-size:.68rem;color:var(--cream);font-family:var(--fb);outline:none;}
+.epsel option{background:#0d0806;}
+.cr-g{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.cr-g label{font-size:.46rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(232,184,122,.25);display:block;margin-bottom:.2rem;}
+.cr-g input[type=color]{width:28px;height:26px;border:none;border-radius:.35rem;cursor:pointer;padding:0;background:none;}
+.sl-list{display:flex;flex-direction:column;gap:.36rem;}
+.sl-item{background:rgba(255,255,255,.04);border:1px solid rgba(201,146,74,.09);border-radius:.42rem;padding:.52rem .7rem;display:flex;align-items:center;gap:.5rem;}
+.sl-drag{cursor:grab;color:rgba(232,184,122,.22);font-size:.78rem;user-select:none;}
+.sl-name{flex:1;font-size:.6rem;font-weight:500;}
+.sl-tog{width:24px;height:13px;background:rgba(255,255,255,.08);border-radius:100px;position:relative;cursor:pointer;border:none;flex-shrink:0;}
+.sl-tog.on{background:var(--gold);}
+.sl-tog::after{content:'';position:absolute;top:2px;left:2px;width:9px;height:9px;background:var(--cream);border-radius:50%;transition:left .16s;}
+.sl-tog.on::after{left:13px;}
+.ep-save{margin:.75rem 1.3rem 1.3rem;flex-shrink:0;background:transparent;border:1px solid rgba(201,146,74,.3);color:var(--gold2);border-radius:.5rem;padding:.62rem;font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:var(--fb);width:calc(100% - 2.6rem);transition:all .2s;}
+.ep-save:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+
+body.editing [data-e]{outline:1px dashed rgba(201,146,74,.38);outline-offset:3px;cursor:text;border-radius:3px;}
+body.editing [data-e]:hover{outline-color:var(--gold);}
+body.editing .upz{outline:1px dashed rgba(201,146,74,.38);cursor:pointer;}
+.upz{position:relative;}
+.upz::after{content:'📷';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(201,146,74,.1);font-size:1.1rem;opacity:0;transition:opacity .2s;border-radius:inherit;pointer-events:none;z-index:3;}
+body.editing .upz:hover::after{opacity:1;}
+
+/* ══════════ NAV ══════════ */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 6vw;display:flex;justify-content:space-between;align-items:center;transition:background .4s,box-shadow .4s,padding .4s;}
+nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1);backdrop-filter:blur(14px);padding:1.1rem 6vw;}
+.nav-logo{font-family:var(--fd);font-style:italic;font-size:1.55rem;color:var(--cream);text-decoration:none;letter-spacing:.02em;}
+.nav-logo em{color:var(--gold2);}
+.nav-links{list-style:none;display:flex;gap:2.5rem;}
+.nav-links a,.nav-links button{text-decoration:none;color:rgba(245,237,224,.45);font-size:.52rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;transition:color .25s;background:none;border:none;cursor:pointer;font-family:var(--fb);}
+.nav-links a:hover,.nav-links button:hover{color:var(--gold2);}
+.nav-cta{font-size:.52rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:.52rem 1.5rem;border:1px solid rgba(201,146,74,.38);border-radius:100px;color:var(--gold2);background:transparent;cursor:pointer;font-family:var(--fb);text-decoration:none;transition:all .3s;}
+.nav-cta:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+
+/* ══════════ HERO ══════════ */
+.hero{min-height:100vh;background:var(--dark);display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden;}
+/* grain */
+.hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.6;}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:14vh 4vw 12vh 8vw;position:relative;z-index:2;}
+.hero-tag{font-size:.52rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:flex;align-items:center;gap:.8rem;animation:fadeUp .8s .2s both;}
+.hero-tag::before{content:'';width:24px;height:1px;background:var(--gold);}
+.hero-h1{font-family:var(--fd);font-weight:300;line-height:.88;letter-spacing:-.01em;color:var(--cream);animation:fadeUp 1s .3s both;}
+.hero-h1 .line1{font-size:clamp(3rem,7vw,6.5rem);display:block;}
+.hero-h1 .line2{font-size:clamp(3.5rem,8.5vw,8rem);font-style:italic;color:var(--gold2);display:block;margin-left:clamp(1rem,3vw,4rem);}
+.hero-h1 .line3{font-size:clamp(2.5rem,5.5vw,5.5rem);font-weight:600;font-style:normal;display:block;color:rgba(245,237,224,.7);}
+.hero-desc{font-size:.7rem;font-weight:300;color:rgba(245,237,224,.45);margin-top:2rem;max-width:340px;line-height:1.9;animation:fadeUp 1s .5s both;}
+.hero-cta-row{display:flex;align-items:center;gap:1.5rem;margin-top:2.5rem;animation:fadeUp 1s .65s both;}
+.btn-gold{font-size:.54rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 2rem;border-radius:100px;background:var(--gold);color:var(--dark);border:none;cursor:pointer;font-family:var(--fb);transition:background .3s;text-decoration:none;display:inline-block;}
+.btn-gold:hover{background:var(--gold2);}
+.btn-ghost{font-size:.54rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:.7rem 2rem;border-radius:100px;background:transparent;color:rgba(245,237,224,.55);border:1px solid rgba(245,237,224,.2);cursor:pointer;font-family:var(--fb);transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-ghost:hover{border-color:var(--gold2);color:var(--gold2);}
+.hero-right{position:relative;z-index:2;overflow:hidden;}
+.hero-img-wrap{position:absolute;inset:0;}
+.hero-img-wrap img,.hero-img-wrap video{width:100%;height:100%;object-fit:cover;opacity:.55;}
+.hero-right-overlay{position:absolute;inset:0;background:linear-gradient(to right,var(--dark) 0%,transparent 35%);}
+.hero-scroll{position:absolute;bottom:3.5vh;left:8vw;display:flex;align-items:center;gap:.8rem;z-index:3;animation:fadeIn 1s 1s both;}
+.scroll-line{width:40px;height:1px;background:rgba(201,146,74,.4);}
+.scroll-txt{font-size:.48rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(201,146,74,.5);}
+.hero-year{position:absolute;bottom:3.5vh;right:6vw;font-family:var(--fd);font-style:italic;font-size:.85rem;color:rgba(245,237,224,.18);z-index:3;}
+.hero-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;color:rgba(245,237,224,.2);}
+.hero-ph svg{width:36px;opacity:.25;}
+.hero-ph span{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;}
+
+/* ══════════ TICKER ══════════ */
+.ticker{background:var(--wine);padding:.7rem 0;overflow:hidden;border-top:1px solid rgba(201,146,74,.1);border-bottom:1px solid rgba(201,146,74,.1);}
+.ticker-track{display:flex;animation:tick 28s linear infinite;white-space:nowrap;}
+.ti{display:flex;align-items:center;gap:2rem;padding-right:2rem;}
+.ti-txt{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,237,224,.35);}
+.ti-sep{color:var(--gold);opacity:.6;font-size:.7rem;}
+
+/* ══════════ ABOUT ══════════ */
+.about-sec{background:var(--cream);padding:12vh 8vw;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;overflow:hidden;position:relative;}
+/* Cutout photo — PNG transparente flutua sobre o fundo */
+.about-photo-wrap{position:relative;display:flex;justify-content:center;align-items:flex-end;}
+.about-photo-bg-circle{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:clamp(200px,26vw,360px);height:clamp(200px,26vw,360px);border-radius:50%;background:var(--rose);opacity:.55;z-index:0;}
+.about-photo-cutout{position:relative;z-index:2;width:clamp(220px,28vw,400px);/* PNG com fundo transparente — vai "flutuar" sem moldura */filter:drop-shadow(0 20px 40px rgba(18,11,8,.18));transition:transform .6s ease;}
+.about-photo-cutout:hover{transform:scale(1.02) translateY(-6px);}
+.about-photo-placeholder{width:clamp(220px,28vw,400px);aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1rem;position:relative;z-index:2;}
+.about-photo-placeholder .ph-silhouette{width:70%;opacity:.15;}
+.about-photo-placeholder .ph-hint{font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.5;margin-top:.5rem;}
+.about-text-col{}
+/* botão trocar lado */
+.about-side-btn{position:absolute;top:1rem;left:50%;transform:translateX(-50%);z-index:10;background:var(--dark);color:var(--gold2);border:1px solid rgba(201,146,74,.35);border-radius:100px;padding:.45rem 1.1rem;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:var(--fb);white-space:nowrap;display:none;align-items:center;gap:.5rem;transition:background .2s;}
+body.editing .about-side-btn{display:flex;}
+.about-side-btn:hover{background:var(--gold);color:var(--dark);}
+.about-sec.photo-right{direction:rtl;}
+.about-sec.photo-right > *{direction:ltr;}
+.about-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
+.about-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
+.about-h2{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1;letter-spacing:-.01em;margin-bottom:1.6rem;}
+.about-h2 em{font-style:italic;color:var(--gold);}
+.about-h2 strong{font-weight:600;}
+.about-p{font-size:.72rem;font-weight:300;color:var(--muted);line-height:1.95;margin-bottom:1rem;}
+.cert-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.55rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);background:none;border:none;border-bottom:1px solid rgba(201,146,74,.3);padding-bottom:.2rem;cursor:pointer;font-family:var(--fb);transition:border-color .2s;margin-top:.2rem;}
+.cert-btn:hover{border-bottom-color:var(--gold);}
+.cert-btn svg{width:11px;stroke:currentColor;fill:none;stroke-width:2.5;}
+.about-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.8rem;}
+.atag{font-size:.5rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .85rem;border:1px solid rgba(201,146,74,.25);color:var(--muted);border-radius:100px;transition:all .25s;}
+.atag:hover{border-color:var(--gold);color:var(--wine);background:rgba(201,146,74,.08);}
+
+/* ══════════ SHOWREEL ══════════ */
+.reel-sec{background:var(--dark);padding:12vh 8vw;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;}
+.reel-text-col .eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
+.reel-text-col .eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
+.reel-h2{font-family:var(--fd);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1;color:var(--cream);margin-bottom:1rem;}
+.reel-h2 em{font-style:italic;color:var(--gold2);}
+.reel-desc{font-size:.7rem;font-weight:300;color:rgba(245,237,224,.45);line-height:1.9;margin-bottom:2rem;}
+.reel-visual{position:relative;}
+.reel-frame{width:100%;aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:var(--wine);position:relative;}
+.reel-frame img,.reel-frame video,.reel-frame iframe{width:100%;height:100%;object-fit:cover;border:none;display:block;}
+.reel-play-over{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,11,8,.4);border-radius:1rem;cursor:pointer;transition:background .3s;}
+.reel-play-over:hover{background:rgba(18,11,8,.15);}
+.reel-play-circle{width:72px;height:72px;border-radius:50%;border:1.5px solid rgba(232,184,122,.6);display:flex;align-items:center;justify-content:center;transition:border-color .3s,transform .3s;}
+.reel-play-over:hover .reel-play-circle{border-color:var(--gold2);transform:scale(1.08);}
+.reel-play-circle svg{fill:var(--gold2);width:22px;margin-left:3px;}
+.reel-ph{width:100%;aspect-ratio:16/9;border-radius:1rem;border:1px dashed rgba(201,146,74,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;color:rgba(201,146,74,.35);}
+.reel-ph span{font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;}
+.reel-url-note{font-size:.56rem;color:rgba(245,237,224,.25);letter-spacing:.08em;margin-top:.8rem;text-align:center;}
+
+/* ══════════ PHOTO STRIP ══════════ */
+.strip-sec{padding:0;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3px;background:var(--wine);}
+.strip-item{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface);}
+.strip-item:first-child{aspect-ratio:16/10;}
+.strip-item img,.strip-item video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+.strip-item:hover img,.strip-item:hover video{transform:scale(1.05);}
+.strip-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;color:rgba(245,237,224,.18);}
+.strip-ph svg{width:20px;opacity:.3;}
+.strip-ph span{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;opacity:.4;}
+
+/* ══════════ SERVIÇOS ══════════ */
+.services-sec{background:var(--cream);padding:12vh 8vw;}
+.sec-header{margin-bottom:3.5rem;}
+.sec-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
+.sec-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
+.sec-h2{font-family:var(--fd);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;line-height:1;letter-spacing:-.01em;}
+.sec-h2 em{font-style:italic;color:var(--gold);}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2px;background:rgba(201,146,74,.12);}
+.srv-card{background:var(--cream);padding:2.2rem 1.8rem;transition:background .3s;position:relative;overflow:hidden;}
+.srv-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .4s cubic-bezier(.77,0,.18,1);}
+.srv-card:hover{background:var(--rose);}
+.srv-card:hover::before{transform:scaleY(1);}
+.srv-icon{font-size:1.6rem;margin-bottom:1.2rem;}
+.srv-name{font-family:var(--fd);font-size:1.4rem;font-weight:500;margin-bottom:.6rem;letter-spacing:.01em;}
+.srv-desc{font-size:.64rem;font-weight:300;color:var(--muted);line-height:1.75;}
+.srv-del{position:absolute;top:.7rem;right:.7rem;width:22px;height:22px;border-radius:50%;background:rgba(18,11,8,.07);border:none;color:var(--muted);font-size:.6rem;display:none;align-items:center;justify-content:center;cursor:pointer;}
+body.editing .srv-del{display:flex;}
+.srv-del:hover{background:rgba(180,40,40,.15);color:#c0392b;}
+.add-srv-btn{border:none;background:rgba(201,146,74,.06);padding:2.2rem 1.8rem;display:none;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;font-family:var(--fb);font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-top:1.2px dashed rgba(201,146,74,.2);}
+body.editing .add-srv-btn{display:flex;}
+.add-srv-btn:hover{color:var(--wine);}
+
+/* ══════════ EQUIPAMENTOS ══════════ */
+.equip-sec{background:var(--wine);padding:12vh 8vw;}
+.equip-sec .sec-h2{color:var(--cream);}
+.equip-sec .sec-h2 em{color:var(--gold2);}
+.equip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem;margin-top:3rem;}
+.eq-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,146,74,.12);border-radius:.8rem;overflow:hidden;transition:border-color .3s,transform .3s;position:relative;}
+.eq-card:hover{border-color:rgba(201,146,74,.4);transform:translateY(-4px);}
+/* foto do equipamento */
+.eq-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.04);position:relative;overflow:hidden;cursor:default;}
+.eq-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+.eq-card:hover .eq-photo img{transform:scale(1.05);}
+.eq-photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:rgba(201,146,74,.3);}
+.eq-photo-ph svg{width:24px;opacity:.5;}
+.eq-photo-ph span{font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;}
+/* edit overlay on photo */
+body.editing .eq-photo{cursor:pointer;}
+.eq-photo::after{content:'📷 Trocar foto';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(201,146,74,.15);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);opacity:0;transition:opacity .2s;pointer-events:none;}
+body.editing .eq-photo:hover::after{opacity:1;}
+.eq-body{padding:1.2rem 1.3rem;}
+.eq-name{font-family:var(--fd);font-size:1.15rem;font-weight:500;color:var(--cream);margin-bottom:.3rem;}
+.eq-desc{font-size:.6rem;font-weight:300;color:rgba(245,237,224,.4);line-height:1.7;}
+.eq-del{position:absolute;top:.6rem;right:.6rem;width:22px;height:22px;border-radius:50%;background:rgba(18,11,8,.6);border:1px solid rgba(245,237,224,.12);color:rgba(245,237,224,.5);font-size:.58rem;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:5;}
+body.editing .eq-del{display:flex;}
+.eq-del:hover{background:rgba(180,40,40,.8);color:#fff;}
+.add-eq-btn{border:1px dashed rgba(201,146,74,.18);border-radius:.8rem;display:none;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;font-family:var(--fb);font-size:.57rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:rgba(201,146,74,.5);background:transparent;min-height:200px;}
+body.editing .add-eq-btn{display:flex;}
+.add-eq-btn:hover{border-color:var(--gold);color:var(--gold2);}
+
+/* ══════════ MARQUEE ══════════ */
+.mq-sec{overflow:hidden;padding:2.5rem 0;border-top:1px solid rgba(201,146,74,.1);border-bottom:1px solid rgba(201,146,74,.1);background:var(--cream);}
+.mq-track{display:flex;animation:tick 24s linear infinite;white-space:nowrap;}
+.mq-item{display:inline-flex;align-items:center;gap:2.5rem;padding-right:2.5rem;}
+.mq-w{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);font-style:italic;font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(18,11,8,.1);}
+.mq-w.fill{-webkit-text-stroke:0;color:rgba(18,11,8,.07);}
+.mq-w.acc{-webkit-text-stroke:0;color:var(--gold);opacity:.35;font-style:normal;font-weight:600;}
+.mq-sep{color:var(--gold);opacity:.35;font-size:1rem;}
+
+/* ══════════ PORTFOLIO CTA ══════════ */
+.pcta-sec{background:var(--dark);padding:14vh 8vw;text-align:center;position:relative;overflow:hidden;}
+.pcta-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(8rem,22vw,20rem);font-weight:600;color:transparent;-webkit-text-stroke:1px rgba(201,146,74,.05);pointer-events:none;user-select:none;white-space:nowrap;letter-spacing:.05em;}
+.pcta-inner{position:relative;z-index:1;}
+.pcta-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;}
+.pcta-h2{font-family:var(--fd);font-size:clamp(2.8rem,7vw,6rem);font-weight:300;line-height:.95;color:var(--cream);margin-bottom:1rem;}
+.pcta-h2 em{font-style:italic;color:var(--gold2);}
+.pcta-p{font-size:.7rem;font-weight:300;color:rgba(245,237,224,.4);margin-bottom:3rem;max-width:360px;margin-left:auto;margin-right:auto;line-height:1.85;}
+.pcta-btns{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;}
+.pcta-btn{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 2rem;border-radius:100px;cursor:pointer;font-family:var(--fb);position:relative;overflow:hidden;border:none;display:inline-flex;align-items:center;gap:.5rem;}
+.pcta-btn-fill{background:var(--gold);color:var(--dark);}
+.pcta-btn-fill:hover{background:var(--gold2);}
+.pcta-btn-out{background:transparent;color:rgba(245,237,224,.5);border:1px solid rgba(245,237,224,.15);}
+.pcta-btn-out:hover{border-color:var(--gold);color:var(--gold2);}
+
+/* ══════════ CONTACT ══════════ */
+.contact-sec{background:var(--cream);padding:14vh 8vw;display:grid;grid-template-columns:1.2fr 1fr;gap:8vw;align-items:end;}
+.contact-h2{font-family:var(--fd);font-size:clamp(2.8rem,6.5vw,6rem);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem;}
+.contact-h2 em{font-style:italic;color:var(--gold);}
+.contact-h2 strong{font-weight:600;display:block;}
+.contact-right{}
+.contact-desc{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.8rem;}
+.contact-email{display:block;font-family:var(--fd);font-style:italic;font-size:clamp(1rem,2.2vw,1.6rem);color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(18,11,8,.12);padding-bottom:.9rem;margin-bottom:1.6rem;transition:color .3s,border-color .3s;}
+.contact-email:hover{color:var(--gold);border-bottom-color:var(--gold);}
+.socials{display:flex;gap:.5rem;flex-wrap:wrap;}
+.social-btn{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;padding:.5rem 1.1rem;border:1px solid rgba(18,11,8,.12);border-radius:100px;font-size:.54rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:border-color .25s,color .25s;}
+.social-btn:hover{border-color:var(--gold);color:var(--wine);}
+
+/* ══════════ FOOTER ══════════ */
+footer{background:var(--wine);padding:2rem 8vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,146,74,.1);}
+.footer-logo{font-family:var(--fd);font-style:italic;font-size:1.25rem;color:rgba(245,237,224,.5);}
+.footer-logo em{color:var(--gold);}
+.footer-copy{font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,224,.2);}
+
+/* ══════════ PORTFOLIO PAGE ══════════ */
+.port-header{background:var(--dark);padding:16vh 8vw 6vh;border-bottom:1px solid rgba(201,146,74,.1);}
+.back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.54rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,224,.35);background:none;border:none;cursor:pointer;font-family:var(--fb);margin-bottom:2rem;transition:color .2s;padding:0;}
+.back-btn:hover{color:var(--gold2);}
+.back-btn svg{width:13px;stroke:currentColor;fill:none;stroke-width:2;}
+.port-header h1{font-family:var(--fd);font-size:clamp(2.5rem,7vw,5.5rem);font-weight:300;color:var(--cream);letter-spacing:-.01em;line-height:.95;}
+.port-header h1 em{font-style:italic;color:var(--gold2);}
+.cat-tabs{display:flex;gap:.5rem;padding:1.8rem 8vw;border-bottom:1px solid rgba(201,146,74,.1);background:var(--dark);flex-wrap:wrap;}
+.cat-tab{font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.3rem;border-radius:100px;border:1px solid rgba(201,146,74,.2);background:transparent;color:rgba(245,237,224,.35);cursor:pointer;font-family:var(--fb);transition:all .25s;position:relative;overflow:hidden;}
+.cat-tab.active,.cat-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.cat-tab span{position:relative;z-index:1;}
+.proj-area{padding:3rem 8vw 8rem;background:var(--cream);}
+.cat-sec{display:none;}.cat-sec.active{display:block;}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
+.proj-card{border-radius:.8rem;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--rose);cursor:pointer;}
+.proj-thumb{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+.proj-card:hover .proj-thumb{transform:scale(1.05);}
+.proj-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,8,.92) 0%,transparent 50%);}
+.proj-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.5rem;}
+.proj-type{font-size:.48rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2);margin-bottom:.3rem;}
+.proj-title{font-family:var(--fd);font-size:1.2rem;font-weight:400;font-style:italic;color:var(--cream);line-height:1.15;}
+.proj-del{position:absolute;top:.75rem;right:.75rem;width:26px;height:26px;border-radius:50%;background:rgba(18,11,8,.7);border:1px solid rgba(232,184,122,.2);color:var(--cream);font-size:.62rem;display:none;align-items:center;justify-content:center;cursor:pointer;z-index:5;}
+body.editing .proj-del{display:flex;}
+.proj-del:hover{background:rgba(180,40,40,.8);}
+.add-card{border:1px dashed rgba(18,11,8,.15);border-radius:.8rem;aspect-ratio:4/3;display:none;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;cursor:pointer;transition:border-color .25s,background .25s;background:rgba(201,146,74,.03);}
+body.editing .add-card{display:flex;}
+.add-card:hover{border-color:var(--gold);background:rgba(201,146,74,.06);}
+.add-card-icon{font-size:1.6rem;opacity:.25;}
+.add-card-label{font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+/* folders */
+.folder-grid-view{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+.folder-card{background:var(--rose);border:1px solid rgba(201,146,74,.2);border-radius:.8rem;padding:1.4rem 1.5rem;cursor:pointer;transition:border-color .3s,transform .25s;position:relative;}
+.folder-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+.folder-icon-el{font-size:1.5rem;margin-bottom:.6rem;}
+.folder-name-el{font-family:var(--fd);font-size:1.15rem;font-weight:500;margin-bottom:.25rem;}
+.folder-count-el{font-size:.52rem;color:var(--muted);letter-spacing:.1em;}
+.folder-del{position:absolute;top:.6rem;right:.6rem;width:22px;height:22px;border-radius:50%;background:rgba(18,11,8,.07);border:none;color:var(--muted);font-size:.58rem;display:none;align-items:center;justify-content:center;cursor:pointer;}
+body.editing .folder-del{display:flex;}
+.add-folder-btn{border:1px dashed rgba(201,146,74,.25);border-radius:.8rem;padding:1.4rem;display:none;align-items:center;justify-content:center;gap:.5rem;cursor:pointer;font-family:var(--fb);font-size:.56rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);background:transparent;}
+body.editing .add-folder-btn{display:flex;}
+.add-folder-btn:hover{border-color:var(--gold);background:rgba(201,146,74,.05);}
+.folder-inner-view{display:none;}.folder-inner-view.active{display:block;}
+.breadcrumb{display:flex;align-items:center;gap:.6rem;margin-bottom:1.8rem;font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+.crumb-back{cursor:pointer;color:var(--muted);display:flex;align-items:center;gap:.4rem;transition:color .2s;background:none;border:none;font-family:var(--fb);font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;}
+.crumb-back:hover{color:var(--wine);}
+.crumb-back svg{width:12px;stroke:currentColor;fill:none;stroke-width:2;}
+.crumb-sep{color:var(--muted);opacity:.4;}
+.crumb-cur{color:var(--gold);}
+
+/* POPUP */
+.popup-ov{position:fixed;inset:0;background:rgba(18,11,8,.92);z-index:5000;display:none;align-items:center;justify-content:center;padding:2rem;backdrop-filter:blur(10px);}
+.popup-ov.open{display:flex;}
+.popup-box{background:var(--cream);border-radius:1rem;width:100%;max-width:860px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,.4);}
+.popup-media{background:var(--dark);border-radius:1rem 1rem 0 0;overflow:hidden;max-height:56vh;display:flex;align-items:center;justify-content:center;}
+.popup-media img,.popup-media video{width:100%;max-height:56vh;object-fit:contain;}
+.popup-body{padding:1.6rem 2rem 2rem;display:flex;gap:1.5rem;align-items:flex-start;}
+.popup-body-l{flex:1;}
+.popup-title-el{font-family:var(--fd);font-style:italic;font-size:1.6rem;font-weight:400;margin-bottom:.2rem;}
+.popup-type-el{font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.popup-desc-el{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.8;}
+.popup-nav{display:flex;gap:.4rem;margin-top:1rem;}
+.popup-nb{width:30px;height:30px;border-radius:50%;background:var(--rose);border:1px solid rgba(201,146,74,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;color:var(--wine);transition:background .2s;}
+.popup-nb:hover{background:var(--gold);color:var(--dark);}
+.popup-x{width:32px;height:32px;border-radius:50%;background:var(--rose);border:1px solid rgba(18,11,8,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:var(--wine);flex-shrink:0;align-self:flex-start;transition:background .2s;}
+.popup-x:hover{background:var(--wine);color:var(--cream);}
+
+/* CERT POPUP */
+#cert-popup .popup-media{background:var(--rose);}
+#cert-popup .popup-media img{object-fit:contain;}
+
+.ss-hidden{display:none!important;}
+.sl-item.dragging{opacity:.35;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .85s ease,transform .85s ease;}
+.reveal.vis{opacity:1;transform:translateY(0);}
+.rd1{transition-delay:.14s;}.rd2{transition-delay:.26s;}
+
+@media(max-width:900px){
+  nav{padding:1.2rem 5vw;}nav.scrolled{padding:.9rem 5vw;}
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;min-height:100svh;}
+  .hero-right{display:none;}
+  .hero-left{padding:14vh 6vw 10vh;}
+  .about-sec,.reel-sec,.contact-sec{grid-template-columns:1fr;gap:4rem;}
+  .about-photo-wrap{margin-bottom:2rem;}
+  .strip-sec{grid-template-columns:1fr 1fr;}
+  .strip-item:first-child{grid-column:1/-1;aspect-ratio:16/7;}
+  footer{flex-direction:column;gap:.8rem;text-align:center;}
+  #ed-tog{display:none!important;}#ep{width:100%;right:-100%;}
+}
+</style>
+</head>
+<body class="">
+
+<div id="c1" style="left: 1206px; top: 860px;"></div>
+<div id="c2" style="left: 1202.99px; top: 856.404px;"></div>
+<input type="file" id="fi" accept="image/*,video/*" style="display:none">
+<input type="file" id="fi-cert" accept="image/*,.pdf" multiple="" style="display:none">
+
+<!-- PASSWORD -->
+<div id="pwd-modal" class="" style="display: none;">
+  <div class="pwd-box">
+    <div class="pwd-logo">Jhulia.</div>
+    <div class="pwd-hint">Área restrita — edição do site</div>
+    <input class="pwd-in" type="password" id="pwd-in" placeholder="••••••" maxlength="30">
+    <div class="pwd-err" id="pwd-err">Senha incorreta.</div>
+    <button class="pwd-btn" onclick="checkPwd()">Entrar</button>
+  </div>
+</div>
+
+<!-- CERT POPUP -->
+<div class="popup-ov" id="cert-popup">
+  <div class="popup-box" style="max-width:680px;">
+    <div class="popup-media" id="cert-media" style="min-height:200px;"></div>
+    <div class="popup-body">
+      <div class="popup-body-l">
+        <div class="popup-title-el" id="cert-title">Certificado</div>
+        <div class="popup-type-el">Formação &amp; Certificados</div>
+        <div class="popup-nav">
+          <button class="popup-nb" id="cert-prev">‹</button>
+          <button class="popup-nb" id="cert-next">›</button>
+        </div>
+      </div>
+      <button class="popup-x" onclick="document.getElementById('cert-popup').classList.remove('open')">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN POPUP -->
+<div class="popup-ov" id="main-popup">
+  <div class="popup-box">
+    <div class="popup-media" id="popup-media" style="min-height:200px;"><video src="blob:null/f85f12a1-7963-447b-9979-07f70d89b279" controls="" autoplay="" style="width: 100%; max-height: 56vh;"></video></div>
+    <div class="popup-body">
+      <div class="popup-body-l">
+        <div class="popup-title-el" id="popup-title">BYD</div>
+        <div class="popup-type-el" id="popup-type">Vídeo</div>
+        <div class="popup-desc-el" id="popup-desc"></div>
+        <div class="popup-nav">
+          <button class="popup-nb" id="popup-prev">‹</button>
+          <button class="popup-nb" id="popup-next">›</button>
+        </div>
+      </div>
+      <button class="popup-x" onclick="document.getElementById('main-popup').classList.remove('open')">✕</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDITOR TOGGLE -->
+<button id="ed-tog" onclick="toggleEd()" class="show" style="display: none;"><span style="font-size:.9rem;writing-mode:horizontal-tb">✏️</span>Editar</button>
+
+<!-- EDITOR PANEL -->
+<div id="ep" class="open" style="display: none;">
+  <div class="eph">
+    <span class="ep-title">Edição</span>
+    <button class="ep-x" onclick="toggleEd()">✕</button>
+  </div>
+  <div class="ept">
+    <button class="" onclick="etab(this,'t')">Textos</button>
+    <button onclick="etab(this,'v')" class="">Visual</button>
+    <button onclick="etab(this,'l')" class="">Links</button>
+    <button onclick="etab(this,'s')" class="on">Seções</button>
+  </div>
+  <div class="epb">
+
+    <div class="eps" id="ep-t">
+      <div class="epsub">Hero</div>
+      <div class="epg"><label class="epl">Nome</label><input class="epi" value="Jhulia Serpa" oninput="se('hn',this.value)"></div>
+      <div class="epg"><label class="epl">Subtítulo (itálico)</label><input class="epi" value="Filmmaker" oninput="se('hs',this.value)"></div>
+      <div class="epg"><label class="epl">Palavra destaque</label><input class="epi" value="Visual Creator." oninput="se('hd',this.value)"></div>
+      <div class="epg"><label class="epl">Descrição curta</label><textarea class="epi epta" oninput="se('hdesc',this.value)">Crio histórias em vídeo, foto e design que ficam na memória. Audiovisual com alma e intenção.</textarea></div>
+      <div class="epg"><label class="epl">Tag (cidade)</label><input class="epi" value="SC · Tijucas e região · Disponível" oninput="se('htag',this.value)"></div>
+      <div class="epg"><label class="epl">Botão principal</label><input class="epi" value="Ver portfólio" oninput="se('btn1',this.value)"></div>
+      <div class="epd"></div>
+      <div class="epsub">Showreel</div>
+      <div class="epg"><label class="epl">Título</label><input class="epi" value="Meu Showreel" oninput="se('rt',this.value)"></div>
+      <div class="epg"><label class="epl">Ano</label><input class="epi" value="2024 — 2025" oninput="se('ry',this.value)"></div>
+      <div class="epg"><label class="epl">Descrição</label><textarea class="epi epta" oninput="se('rd',this.value)">Uma seleção dos meus melhores trabalhos em vídeo.</textarea></div>
+      <div class="epg"><label class="epl">Link YouTube / Vimeo</label><input class="epi" id="reel-url-in" placeholder="https://youtu.be/..." oninput="setReelUrl(this.value)"></div>
+      <div class="epd"></div>
+      <div class="epsub">Sobre mim</div>
+      <div class="epg"><label class="epl">Título linha 1</label><input class="epi" value="Criativa" oninput="se('ah1',this.value)"></div>
+      <div class="epg"><label class="epl">Título linha 2 (itálico dourado)</label><input class="epi" value="por natureza." oninput="se('ah2',this.value)"></div>
+      <div class="epg"><label class="epl">Parágrafo 1</label><textarea class="epi epta" oninput="se('ap1',this.value)">Sou Jhulia Serpa, apaixonada por contar histórias através da imagem. Atuo em audiovisual, design e marketing com foco em criar conteúdo que comunica de verdade.</textarea></div>
+      <div class="epg"><label class="epl">Parágrafo 2 (cursos)</label><textarea class="epi epta" oninput="se('ap2',this.value)">Cursando Produção Audiovisual na Univali, com formação em Marketing e Design Gráfico pelo Senai.</textarea></div>
+      <div class="epd"></div>
+      <div class="epsub">Contato</div>
+      <div class="epg"><label class="epl">Linha 1</label><input class="epi" value="Bora criar" oninput="se('ch1',this.value)"></div>
+      <div class="epg"><label class="epl">Linha 2 (itálico)</label><input class="epi" value="algo" oninput="se('ch2',this.value)"></div>
+      <div class="epg"><label class="epl">Linha 3 (destaque)</label><input class="epi" value="incrível?" oninput="se('ch3',this.value)"></div>
+      <div class="epg"><label class="epl">Descrição</label><textarea class="epi epta" oninput="se('cd',this.value)">Vamos fazer acontecer juntos? Me chama!</textarea></div>
+      <div class="epg"><label class="epl">E-mail</label><input class="epi" value="seuemail@email.com" oninput="updEmail(this.value)"></div>
+      <div class="epd"></div>
+      <div class="epg"><label class="epl">Rodapé</label><input class="epi" value="© 2025 — Feito com intenção" oninput="se('fc',this.value)"></div>
+    </div>
+
+    <div class="eps" id="ep-v">
+      <div class="epsub">Cores</div>
+      <div class="cr-g">
+        <div><label>Creme (fundo)</label><input type="color" value="#f5ede0" oninput="cv('--cream',this.value)"></div>
+        <div><label>Rosé</label><input type="color" value="#e8d5c4" oninput="cv('--rose',this.value)"></div>
+        <div><label>Dourado</label><input type="color" value="#c9924a" oninput="cv('--gold',this.value)"></div>
+        <div><label>Dourado claro</label><input type="color" value="#e8b87a" oninput="cv('--gold2',this.value)"></div>
+        <div><label>Escuro</label><input type="color" value="#120b08" oninput="cv('--dark',this.value)"></div>
+        <div><label>Vinho</label><input type="color" value="#1c0f0a" oninput="cv('--wine',this.value)"></div>
+      </div>
+      <div class="epd"></div>
+      <div class="epsub">Fonte do corpo</div>
+      <div class="epg"><select class="epsel" onchange="document.documentElement.style.setProperty('--fb',this.value)">
+        <option value="'Poppins',sans-serif">Poppins</option>
+        <option value="'Montserrat',sans-serif">Montserrat</option>
+        <option value="'DM Sans',sans-serif">DM Sans</option>
+      </select></div>
+    </div>
+
+    <div class="eps" id="ep-l">
+      <div class="epsub">Redes Sociais</div>
+      <div class="epg"><label class="epl">Instagram</label><input class="epi" value="https://www.instagram.com/jhu.lia_s" oninput="document.getElementById('ig-link').href=this.value"></div>
+      <div class="epg"><label class="epl">WhatsApp</label><input class="epi" value="https://wa.me/5548984221590" oninput="document.getElementById('wa-link').href=this.value"></div>
+      <div class="epd"></div>
+      <div class="epsub">Botões do portfólio</div>
+      <div class="epg"><label class="epl">Vídeo</label><input class="epi" value="🎬 Vídeo" oninput="se('cbv',this.value)"></div>
+      <div class="epg"><label class="epl">Foto</label><input class="epi" value="📷 Foto" oninput="se('cbf',this.value)"></div>
+      <div class="epg"><label class="epl">Design</label><input class="epi" value="✏️ Design" oninput="se('cbd',this.value)"></div>
+      <div class="epd"></div>
+      <div class="epsub">Navegação</div>
+      <div class="epg"><label class="epl">Link 1</label><input class="epi" value="Sobre" oninput="snl(0,this.value)"></div>
+      <div class="epg"><label class="epl">Link 2</label><input class="epi" value="Serviços" oninput="snl(1,this.value)"></div>
+      <div class="epg"><label class="epl">Link 3</label><input class="epi" value="Portfólio" oninput="snl(2,this.value)"></div>
+      <div class="epg"><label class="epl">Link 4</label><input class="epi" value="Contato" oninput="snl(3,this.value)"></div>
+    </div>
+
+    <div class="eps on" id="ep-s">
+      <div class="epsub">Mostrar / ocultar seções</div>
+      <p style="font-size:.54rem;color:rgba(232,184,122,.25);line-height:1.6;margin-bottom:.8rem;">Arraste para reordenar.</p>
+      <div class="sl-list" id="sl">
+        <div class="sl-item" draggable="true" data-t="sec-reel"><span class="sl-drag">⠿</span><span class="sl-name">Showreel</span><button class="sl-tog" onclick="tSec(this,'sec-reel')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-strip"><span class="sl-drag">⠿</span><span class="sl-name">Faixa de fotos</span><button class="sl-tog on" onclick="tSec(this,'sec-strip')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-about"><span class="sl-drag">⠿</span><span class="sl-name">Sobre mim</span><button class="sl-tog on" onclick="tSec(this,'sec-about')"></button></div>
+        
+        
+        
+        <div class="sl-item" draggable="true" data-t="sec-mq"><span class="sl-drag">⠿</span><span class="sl-name">Marquee</span><button class="sl-tog on" onclick="tSec(this,'sec-mq')"></button></div><div class="sl-item" draggable="true" data-t="sec-pcta"><span class="sl-drag">⠿</span><span class="sl-name">Chamada portfólio</span><button class="sl-tog on" onclick="tSec(this,'sec-pcta')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-srv"><span class="sl-drag">⠿</span><span class="sl-name">Serviços</span><button class="sl-tog on" onclick="tSec(this,'sec-srv')"></button></div><div class="sl-item" draggable="true" data-t="sec-equip"><span class="sl-drag">⠿</span><span class="sl-name">Equipamentos</span><button class="sl-tog on" onclick="tSec(this,'sec-equip')"></button></div><div class="sl-item" draggable="true" data-t="sec-contact"><span class="sl-drag">⠿</span><span class="sl-name">Contato</span><button class="sl-tog on" onclick="tSec(this,'sec-contact')"></button></div>
+      </div>
+    </div>
+
+  </div>
+  <button class="ep-save" onclick="saveSite()">⬇ Baixar site salvo</button>
+</div>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
+
+  <nav id="main-nav" class="">
+    <a class="nav-logo" href="#"><em>J.</em>Serpa</a>
+    <ul class="nav-links">
+      <li><a href="#sec-about" data-nl="0">Sobre</a></li>
+      <li><a href="#sec-srv" data-nl="1">Serviços</a></li>
+      <li><button onclick="goPort()" data-nl="2">Portfólio</button></li>
+      <li><a href="#sec-contact" data-nl="3">Contato</a></li>
+    </ul>
+    <button class="nav-cta" onclick="goPort()"><span data-e="btn1" contenteditable="false" spellcheck="false">Ver portfólio</span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag"><span data-e="htag" contenteditable="false" spellcheck="false">SC · Tijucas e região · Disponível</span></div>
+      <h1 class="hero-h1">
+        <span class="line1" data-e="hn" contenteditable="false" spellcheck="false">Jhulia Serpa</span>
+        <em class="line2" data-e="hs" contenteditable="false" spellcheck="false">Filmmaker</em>
+        <strong class="line3" data-e="hd" contenteditable="false" spellcheck="false">Visual Creator.</strong>
+      </h1>
+      <p class="hero-desc" data-e="hdesc" contenteditable="false" spellcheck="false">Crio histórias em vídeo, foto e design que ficam na memória. Audiovisual com alma e intenção.</p>
+      <div class="hero-cta-row">
+        <button class="btn-gold" onclick="goPort()"><span data-e="btn1" contenteditable="false" spellcheck="false">Ver portfólio</span></button>
+        <a class="btn-ghost" href="#sec-contact">Contato</a>
+      </div>
+    </div>
+    <div class="hero-right upz" onclick="upZ(this)"><img src="blob:null/5c0ffce8-aea8-4d5a-a586-6417c1c537eb" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+    <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-txt">Scroll</span></div>
+    <div class="hero-year">2025</div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-track">
+      <div class="ti"><span class="ti-txt">Audiovisual</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Filmmaker</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Design Gráfico</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Marketing</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Fotografia</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Edição</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Audiovisual</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Filmmaker</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Design Gráfico</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Marketing</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Fotografia</span><span class="ti-sep">✦</span></div>
+      <div class="ti"><span class="ti-txt">Edição</span><span class="ti-sep">✦</span></div>
+    </div>
+  </div>
+
+  <!-- SHOWREEL -->
+  
+
+  <!-- PHOTO STRIP -->
+  
+
+  <!-- ABOUT -->
+  
+
+  <!-- EQUIPAMENTOS -->
+  
+
+  <!-- SERVIÇOS -->
+  
+
+  <!-- MARQUEE -->
+  
+
+  <!-- PORTFOLIO CTA -->
+  
+
+  <!-- CONTACT -->
+  
+
+  <section class="reel-sec ss reveal vis ss-hidden" id="sec-reel">
+    <div class="reel-text-col">
+      <div class="eyebrow">Em destaque</div>
+      <h2 class="reel-h2"><span data-e="rt" contenteditable="false" spellcheck="false">Meu Showreel</span><br><em data-e="ry" contenteditable="false" spellcheck="false">2024 — 2025</em></h2>
+      <p class="reel-desc" data-e="rd" contenteditable="false" spellcheck="false">Uma seleção dos meus melhores trabalhos em vídeo.</p>
+      <button class="btn-gold" onclick="openReel()"><span data-e="btn1" contenteditable="false" spellcheck="false">Assistir agora</span></button>
+    </div>
+    <div class="reel-visual">
+      <div id="reel-frame" class="reel-ph">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,146,74,.4)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        <span>Cole o link do YouTube no painel</span>
+      </div>
+    </div>
+  </section><div class="strip-sec ss" id="sec-strip">
+    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/d55a5345-a018-40bd-862b-04aac3481899" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
+    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/a78400ab-1551-4aa5-8326-06a9adc0f422" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
+    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/d9fb4379-308e-4561-babc-a3a8ed377220" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
+  </div><section class="about-sec ss reveal vis" id="sec-about">
+    <button class="about-side-btn" onclick="toggleAboutSide()">⇄ Mover foto de lado</button>
+    <div class="about-photo-wrap rd1 reveal vis">
+      <div class="about-photo-bg-circle"></div>
+      <!-- Zona de upload — quando for PNG com fundo transparente, vai flutuar naturalmente -->
+      <div class="about-photo-placeholder upz" id="about-photo-zone" onclick="upZ(this)" style="background: transparent; border: none;"><img src="blob:null/cda27345-73a3-41cd-a64d-4212030a789c" class="about-photo-cutout" style="max-width: 100%;"></div>
+    </div>
+    <div class="about-text-col reveal rd2 vis">
+      <div class="about-eyebrow">Sobre mim</div>
+      <h2 class="about-h2">
+        <span data-e="ah1" contenteditable="false" spellcheck="false">Criativa</span><br>
+        <em data-e="ah2" contenteditable="false" spellcheck="false">por natureza.</em>
+      </h2>
+      <p class="about-p" data-e="ap1" contenteditable="false" spellcheck="false"><p data-start="952" data-end="1046">Sou filmmaker e criador visual focado em transformar ideias em narrativas visuais marcantes.</p>
+<p data-start="1053" data-end="1167">Trabalho com direção, captação e edição de vídeo, criando projetos que unem estética, storytelling e estratégia.</p>
+<p data-start="1174" data-end="1287">Meu objetivo é produzir conteúdos que não apenas mostrem algo, mas que transmitam emoção, identidade e propósito.</p></p>
+      <p class="about-p" data-e="ap2" contenteditable="false" spellcheck="false">Cursando Produção Audiovisual na Univali, com formação em Marketing e Design Gráfico pelo Senai.</p>
+      <button class="cert-btn" onclick="openCerts()">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+        Ver Certificados
+      </button>
+      <div class="about-tags">
+        <span class="atag">Audiovisual</span><span class="atag">Filmmaker</span>
+        <span class="atag">Design Gráfico</span><span class="atag">Marketing</span>
+        <span class="atag">Univali</span><span class="atag">Senai</span>
+      </div>
+    </div>
+  </section><div class="mq-sec ss" id="sec-mq">
+    <div class="mq-track">
+      <div class="mq-item"><span class="mq-w">Cinema</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Frame</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Luz</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Cena</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Corte</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Cinema</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Frame</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Luz</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Cena</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Corte</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
+    </div>
+  </div><section class="pcta-sec ss reveal vis" id="sec-pcta">
+    <div class="pcta-bg-text">WORKS</div>
+    <div class="pcta-inner">
+      <div class="pcta-eyebrow">Portfólio</div>
+      <h2 class="pcta-h2">Meus <em>Trabalhos</em></h2>
+      <p class="pcta-p">Vídeo, foto e design — escolha uma categoria e explore.</p>
+      <div class="pcta-btns">
+        <button class="pcta-btn pcta-btn-fill" onclick="goPort('video')"><span data-e="cbv" contenteditable="false" spellcheck="false">🎬 Vídeo</span></button>
+        <button class="pcta-btn pcta-btn-out" onclick="goPort('foto')"><span data-e="cbf" contenteditable="false" spellcheck="false">📷 Foto</span></button>
+        <button class="pcta-btn pcta-btn-out" onclick="goPort('design')"><span data-e="cbd" contenteditable="false" spellcheck="false">✏️ Design</span></button>
+      </div>
+    </div>
+  </section><section class="services-sec ss reveal vis" id="sec-srv">
+    <div class="sec-header">
+      <div class="sec-eyebrow">O que eu ofereço</div>
+      <h2 class="sec-h2">Serviços <em>para você</em></h2>
+    </div>
+    <div class="srv-grid" id="srv-grid">
+      <div class="srv-card"><div class="srv-icon">🎬</div><div class="srv-name" data-e="sv1n" contenteditable="false" spellcheck="false">Produção de Vídeo</div><div class="srv-desc" data-e="sv1d" contenteditable="false" spellcheck="false">Vídeos institucionais, reels, eventos e conteúdo para redes sociais. Do roteiro à entrega fina!.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
+      <div class="srv-card"><div class="srv-icon">📷</div><div class="srv-name" data-e="sv2n" contenteditable="false" spellcheck="false">Fotografia</div><div class="srv-desc" data-e="sv2d" contenteditable="false" spellcheck="false">Ensaios, eventos e produtos. Fotos com identidade para marcas e pessoas.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
+      <div class="srv-card"><div class="srv-icon">✏️</div><div class="srv-name" data-e="sv3n" contenteditable="false" spellcheck="false">Design Gráfico</div><div class="srv-desc" data-e="sv3d" contenteditable="false" spellcheck="false">Identidade visual, peças para redes sociais e materiais de comunicação.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
+      
+      <button class="add-srv-btn" onclick="addSrv()">＋ Adicionar serviço</button>
+    </div>
+  </section><section class="equip-sec ss reveal vis" id="sec-equip">
+    <div class="sec-header">
+      <div class="sec-eyebrow" style="color:var(--gold);">Ferramentas</div>
+      <h2 class="sec-h2" style="color:var(--cream);">Meus <em style="color:var(--gold2);">Equipamentos</em></h2>
+    </div>
+    <div class="equip-grid" id="equip-grid">
+      <div class="eq-card">
+        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/b933896c-f7fe-454c-8818-ef409f961c38" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div class="eq-body"><div class="eq-name" data-e="eq1n" contenteditable="false" spellcheck="false">Celular</div><div class="eq-desc" data-e="eq1d" contenteditable="false" spellcheck="false">Iphone 13 Pro</div></div>
+        <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
+      </div>
+      <div class="eq-card">
+        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/617fd528-b82e-414e-86e6-b9a40c0f07dc" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div class="eq-body"><div class="eq-name" data-e="eq2n" contenteditable="false" spellcheck="false">Microfone</div><div class="eq-desc" data-e="eq2d" contenteditable="false" spellcheck="false">Hollyland lark m2</div></div>
+        <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
+      </div>
+      <div class="eq-card">
+        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/54cf77e5-5ccf-4c67-8fa0-c2d034b4e9cf" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div class="eq-body"><div class="eq-name" data-e="eq3n" contenteditable="false" spellcheck="false">Iluminação</div><div class="eq-desc" data-e="eq3d" contenteditable="false" spellcheck="false">Bastão de led - Ulanzi</div></div>
+        <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
+      </div>
+      <div class="eq-card">
+        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/e1d70b7f-358f-4316-986c-3e468d9e99e9" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+        <div class="eq-body"><div class="eq-name" data-e="eq4n" contenteditable="false" spellcheck="false">Edição</div><div class="eq-desc" data-e="eq4d" contenteditable="false" spellcheck="false">Capcut Pro, DaVinci Resolve</div></div>
+        <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
+      </div>
+      <button class="add-eq-btn" onclick="addEq()">＋ Adicionar equipamento</button>
+    </div>
+  </section><section class="contact-sec ss reveal vis" id="sec-contact">
+    <div>
+      <h2 class="contact-h2">
+        <span data-e="ch1" contenteditable="false" spellcheck="false">Vamos fazer</span><br>
+        <em data-e="ch2" contenteditable="false" spellcheck="false">acontecer</em>
+        <strong data-e="ch3" contenteditable="false" spellcheck="false">juntos?</strong>
+      </h2>
+    </div>
+    <div class="contact-right">
+      <p class="contact-desc" data-e="cd" contenteditable="false" spellcheck="false">Me chama!</p>
+      <a class="contact-email" id="email-link" href="mailto:jhuliaserpatj@gmail.com" data-e="em" contenteditable="false" spellcheck="false">jhuliaserpatj@gmail.com</a>
+      <div class="socials">
+        <a class="social-btn" id="ig-link" href="https://www.instagram.com/jhu.lia_s" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg>Instagram
+        </a>
+        <a class="social-btn" id="wa-link" href="https://wa.me/5548984221590" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>WhatsApp
+        </a>
+      </div>
+    </div>
+  </section><footer>
+    <div class="footer-logo"><em>Jhulia.</em>Serpa</div>
+    <div class="footer-copy" data-e="fc" contenteditable="false" spellcheck="false">© 2026 — Feito com intenção</div>
+  </footer>
+</div>
+
+<!-- ══════════ PORTFOLIO ══════════ -->
+<div class="page" id="page-port">
+  <nav id="port-nav" class="scrolled">
+    <a class="nav-logo" href="#" onclick="goHome()"><em>J.</em>Serpa</a>
+    <ul class="nav-links"><li><button onclick="goHome()" style="background:none;border:none;color:rgba(245,237,224,.4);font-size:.52rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;font-family:var(--fb);">← Início</button></li></ul>
+    <button class="nav-cta" onclick="goHome()">← Voltar</button>
+  </nav>
+  <div class="port-header">
+    <button class="back-btn" onclick="goHome()"><svg viewBox="0 0 24 24"><path d="M19 12H5M5 12l7-7M5 12l7 7"></path></svg>Voltar</button>
+    <h1>Meu <em>Portfólio</em></h1>
+  </div>
+  <div class="cat-tabs">
+    <button class="cat-tab active" onclick="switchTab('video',this)"><span data-e="cbv" contenteditable="false" spellcheck="false">🎬 Vídeo</span></button>
+    <button class="cat-tab" onclick="switchTab('foto',this)"><span data-e="cbf" contenteditable="false" spellcheck="false">📷 Foto</span></button>
+    <button class="cat-tab" onclick="switchTab('design',this)"><span data-e="cbd" contenteditable="false" spellcheck="false">✏️ Design</span></button>
+  </div>
+  <div class="proj-area">
+    <div class="cat-sec active" id="cat-video">
+      <div class="proj-grid" id="grid-video">
+        <div class="proj-card" data-title="BYD" data-type="Vídeo" data-desc=""><video src="blob:null/f85f12a1-7963-447b-9979-07f70d89b279" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">BYD</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_1180" data-type="Vídeo" data-desc=""><video src="blob:null/c00d1f1b-7986-41f9-8ae8-49dcebc0e05b" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_1180</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_9033" data-type="Vídeo" data-desc=""><video src="blob:null/00e08e6b-4ec1-4c91-b741-3ee63de86a07" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">DNJ 2025</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_7761" data-type="Vídeo" data-desc=""><video src="blob:null/c23e7ab5-17c8-451f-8692-3f21f717b882" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_7761</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_4716" data-type="Vídeo" data-desc=""><video src="blob:null/61227a68-1ea7-4a83-9976-e0df546b2cc6" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_4716</div></div><button class="proj-del">✕</button></div><div class="add-card" onclick="addProj('video')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
+      </div>
+    </div>
+    <div class="cat-sec" id="cat-foto">
+      <div id="fv-folders">
+        <div class="folder-grid-view" id="folder-grid">
+          <button class="add-folder-btn" onclick="newFolder()">＋ Nova pasta</button>
+        </div>
+      </div>
+      <div class="folder-inner-view" id="fv-inner">
+        <div class="breadcrumb">
+          <button class="crumb-back" onclick="closeFolder()"><svg viewBox="0 0 24 24"><path d="M19 12H5M5 12l7-7M5 12l7 7"></path></svg>Fotos</button>
+          <span class="crumb-sep">›</span>
+          <span class="crumb-cur" id="folder-cur">Pasta</span>
+        </div>
+        <div class="proj-grid" id="grid-foto">
+          <div class="add-card" onclick="addToFolder()"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar foto</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="cat-sec" id="cat-design">
+      <div class="proj-grid" id="grid-design">
+        <div class="add-card" onclick="addProj('design')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// CURSOR
+const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px';});
+(function lp(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;c2.style.left=rx+'px';c2.style.top=ry+'px';requestAnimationFrame(lp);})();
+
+// SCROLL NAV
+window.addEventListener('scroll',()=>{
+  document.getElementById('main-nav')?.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// REVEAL
+const ro=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});},{threshold:.07});
+document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
+
+// PASSWORD
+const PASS='jhulia2025';
+let unlocked=false;
+document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='E'){if(!unlocked)document.getElementById('pwd-modal').classList.add('open');else toggleEd();}});
+document.getElementById('pwd-in').addEventListener('keydown',e=>{if(e.key==='Enter')checkPwd();});
+function checkPwd(){
+  if(document.getElementById('pwd-in').value===PASS){
+    unlocked=true;
+    document.getElementById('pwd-modal').classList.remove('open');
+    document.getElementById('ed-tog').classList.add('show');
+    document.getElementById('pwd-in').value='';
+  } else {
+    const err=document.getElementById('pwd-err');
+    err.style.display='block';document.getElementById('pwd-in').value='';
+    setTimeout(()=>err.style.display='none',2500);
+  }
+}
+
+// EDITOR
+let pOpen=false;
+function toggleEd(){
+  if(!unlocked)return;
+  pOpen=!pOpen;
+  document.getElementById('ep').classList.toggle('open',pOpen);
+  document.body.classList.toggle('editing',pOpen);
+  document.querySelectorAll('[data-e]').forEach(el=>{el.contentEditable=pOpen?'true':'false';if(pOpen)el.spellcheck=false;});
+}
+function etab(btn,id){
+  document.querySelectorAll('.ept button').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.eps').forEach(s=>s.classList.remove('on'));
+  btn.classList.add('on');
+  document.getElementById('ep-'+id).classList.add('on');
+}
+
+// SYNC
+function se(k,v){document.querySelectorAll(`[data-e="${k}"]`).forEach(el=>{if(document.activeElement!==el)el.textContent=v;});}
+function updEmail(v){se('em',v);const l=document.getElementById('email-link');if(l)l.href='mailto:'+v;}
+function cv(n,v){document.documentElement.style.setProperty(n,v);}
+function snl(i,v){document.querySelectorAll('[data-nl]')[i]?.childNodes[0] && (document.querySelectorAll('[data-nl]')[i].textContent=v);}
+function tSec(btn,id){const s=document.getElementById(id);if(!s)return;btn.classList.toggle('on');s.classList.toggle('ss-hidden');}
+
+// DRAG REORDER
+const sll=document.getElementById('sl');let drag=null;
+sll.addEventListener('dragstart',e=>{drag=e.target.closest('.sl-item');drag.classList.add('dragging');});
+sll.addEventListener('dragend',()=>{drag.classList.remove('dragging');drag=null;reorder();});
+sll.addEventListener('dragover',e=>{e.preventDefault();const af=[...sll.querySelectorAll('.sl-item:not(.dragging)')].reduce((c,el)=>{const b=el.getBoundingClientRect(),o=e.clientY-b.top-b.height/2;return o<0&&o>c.offset?{offset:o,el}:c;},{offset:-Infinity}).el;af?sll.insertBefore(drag,af):sll.appendChild(drag);});
+function reorder(){[...sll.querySelectorAll('.sl-item')].forEach(item=>{const s=document.getElementById(item.dataset.t);if(s)document.querySelector('#page-home footer').before(s);});}
+
+// PAGES
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function goHome(){showPage('page-home');}
+function goPort(cat){showPage('page-port');switchTab(cat||'video',null);}
+function switchTab(tab,btn){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.cat-sec').forEach(s=>s.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  else{const m={video:0,foto:1,design:2};document.querySelectorAll('.cat-tab')[m[tab]||0]?.classList.add('active');}
+  document.getElementById('cat-'+tab)?.classList.add('active');
+}
+
+// REEL
+let reelUrl='';
+function setReelUrl(url){
+  reelUrl=url;
+  const frame=document.getElementById('reel-frame');
+  if(!url){frame.className='reel-ph';frame.innerHTML='<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,146,74,.4)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Cole o link do YouTube no painel</span>';return;}
+  let src='';
+  if(url.includes('youtu')){const id=url.match(/(?:v=|youtu\.be\/)([^&\s]+)/)?.[1];if(id)src=`https://www.youtube.com/embed/${id}`;}
+  else if(url.includes('vimeo')){const id=url.match(/vimeo\.com\/(\d+)/)?.[1];if(id)src=`https://player.vimeo.com/video/${id}`;}
+  if(src){frame.className='reel-frame';frame.innerHTML=`<iframe src="${src}" allow="autoplay;fullscreen" allowfullscreen></iframe><div class="reel-play-over" onclick="this.style.display='none';this.previousElementSibling.src+='?autoplay=1';"><div class="reel-play-circle"><svg viewBox="0 0 24 24" class="reel-play-circle" style="width:22px;fill:var(--gold2);margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>`;}
+  else{frame.className='reel-frame';frame.innerHTML=`<div class="reel-ph"><span>Link inválido. Use YouTube ou Vimeo.</span></div>`;}
+}
+function openReel(){if(reelUrl)window.open(reelUrl,'_blank');}
+
+// UPLOAD
+const fi=document.getElementById('fi');let upCB=null;
+function trig(cb){upCB=cb;fi.value='';fi.click();}
+fi.addEventListener('change',()=>{if(!fi.files[0]||!upCB)return;const f=fi.files[0];upCB(URL.createObjectURL(f),f.type,f.name);upCB=null;});
+function upZ(zone){
+  if(!pOpen)return;
+  trig((url,type)=>{
+    const isAbout=zone.id==='about-photo-zone'||zone.classList.contains('about-photo-placeholder');
+    zone.innerHTML='';
+    const el=document.createElement(type.startsWith('video')?'video':'img');
+    if(type.startsWith('video')){el.autoplay=true;el.muted=true;el.loop=true;el.playsInline=true;}
+    el.src=url;
+    if(isAbout){
+      // cutout style: no crop, full image with drop-shadow, transparent bg respected
+      el.className='about-photo-cutout';
+      el.style.cssText='max-width:100%;';
+      zone.style.background='transparent';zone.style.border='none';
+      const wrap=zone.closest('.about-photo-wrap')||zone.parentElement;
+      zone.appendChild(el);
+    } else {
+      el.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+      zone.appendChild(el);
+    }
+  });
+}
+
+// PROJ CARD
+function makeCard(url,type,name,label,gridId){
+  const grid=document.getElementById(gridId);
+  const add=grid.querySelector('.add-card');
+  const card=document.createElement('div');
+  card.className='proj-card';
+  card.dataset.title=name.replace(/\.[^.]+$/,'')||'Projeto';
+  card.dataset.type=label;card.dataset.desc='';
+  card.onclick=()=>{
+    if(pOpen){
+      const t=card.querySelector('.proj-title');if(t)t.contentEditable='true';
+      const d=prompt('Descrição (aparece no popup):',card.dataset.desc||'');
+      if(d!==null)card.dataset.desc=d;return;
+    }
+    openPopup(card,[...grid.querySelectorAll('.proj-card')]);
+  };
+  if(type.startsWith('video')){const v=document.createElement('video');v.src=url;v.autoplay=true;v.muted=true;v.loop=true;v.playsInline=true;v.className='proj-thumb';card.appendChild(v);}
+  else{const img=document.createElement('img');img.src=url;img.className='proj-thumb';card.appendChild(img);}
+  const ov=document.createElement('div');ov.className='proj-ov';card.appendChild(ov);
+  const info=document.createElement('div');info.className='proj-info';
+  info.innerHTML=`<div class="proj-type">${label}</div><div class="proj-title">${card.dataset.title}</div>`;
+  card.appendChild(info);
+  const del=document.createElement('button');del.className='proj-del';del.textContent='✕';
+  del.onclick=e=>{e.stopPropagation();card.remove();};card.appendChild(del);
+  grid.insertBefore(card,add);return card;
+}
+function addProj(cat){const l={video:'Vídeo',foto:'Foto',design:'Design'}[cat]||cat;trig((url,type,name)=>makeCard(url,type,name,l,'grid-'+cat));}
+
+// FOLDERS
+let curF=null;const fData={};
+function newFolder(){
+  const name=prompt('Nome da pasta:','Ensaio 2024');if(!name)return;
+  const id='f'+Date.now();fData[id]={name,cards:[]};
+  const grid=document.getElementById('folder-grid');
+  const add=grid.querySelector('.add-folder-btn');
+  const card=document.createElement('div');card.className='folder-card';card.dataset.fid=id;
+  card.innerHTML=`<div class="folder-icon-el">📁</div><div class="folder-name-el">${name}</div><div class="folder-count-el">0 fotos</div><button class="folder-del" onclick="delFolder(event,'${id}')">✕</button>`;
+  card.addEventListener('click',e=>{if(e.target.classList.contains('folder-del'))return;if(pOpen){const fn=card.querySelector('.folder-name-el');fn.contentEditable='true';fn.focus();return;}openFolder(id,card);});
+  grid.insertBefore(card,add);
+}
+function delFolder(e,id){e.stopPropagation();if(!pOpen)return;document.querySelector(`[data-fid="${id}"]`)?.remove();delete fData[id];}
+function openFolder(id,cardEl){
+  curF={id,cardEl};
+  document.getElementById('folder-cur').textContent=cardEl.querySelector('.folder-name-el').textContent;
+  const inner=document.getElementById('grid-foto');
+  const add=inner.querySelector('.add-card');
+  (fData[id]?.cards||[]).forEach(c=>inner.insertBefore(c,add));
+  document.getElementById('fv-folders').style.display='none';
+  document.getElementById('fv-inner').classList.add('active');
+}
+function closeFolder(){
+  if(curF){
+    const inner=document.getElementById('grid-foto');
+    const cards=[...inner.querySelectorAll('.proj-card')];
+    fData[curF.id]=fData[curF.id]||{};fData[curF.id].cards=cards;cards.forEach(c=>c.remove());
+    const cnt=curF.cardEl.querySelector('.folder-count-el');
+    if(cnt)cnt.textContent=cards.length+' foto'+(cards.length!==1?'s':'');
+  }
+  document.getElementById('fv-folders').style.display='';
+  document.getElementById('fv-inner').classList.remove('active');curF=null;
+}
+function addToFolder(){trig((url,type,name)=>makeCard(url,type,name,'Foto','grid-foto'));}
+
+// EQUIP PHOTO UPLOAD
+function upEqPhoto(photoZone){
+  if(!pOpen) return;
+  trig((url,type)=>{
+    photoZone.innerHTML='';
+    const el=document.createElement(type.startsWith('video')?'video':'img');
+    if(type.startsWith('video')){el.autoplay=true;el.muted=true;el.loop=true;el.playsInline=true;}
+    el.src=url;el.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+    photoZone.appendChild(el);
+  });
+}
+
+// EQUIP ADD
+function addEq(){
+  const name=prompt('Nome do equipamento:','');if(name===null)return;
+  const desc=prompt('Descrição (modelo, specs):','');
+  const grid=document.getElementById('equip-grid');
+  const add=grid.querySelector('.add-eq-btn');
+  const card=document.createElement('div');card.className='eq-card';
+  card.innerHTML=`
+    <div class="eq-photo" onclick="upEqPhoto(this)">
+      <div class="eq-photo-ph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Adicionar foto</span>
+      </div>
+    </div>
+    <div class="eq-body"><div class="eq-name">${name}</div><div class="eq-desc">${desc||''}</div></div>
+    <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>`;
+  grid.insertBefore(card,add);
+}
+
+// SERVICES
+function addSrv(){
+  const name=prompt('Nome do serviço:','');if(name===null)return;
+  const desc=prompt('Descrição:','');const icon=prompt('Emoji:','✨');
+  const grid=document.getElementById('srv-grid');
+  const add=grid.querySelector('.add-srv-btn');
+  const card=document.createElement('div');card.className='srv-card';
+  card.innerHTML=`<div class="srv-icon">${icon||'✨'}</div><div class="srv-name">${name}</div><div class="srv-desc">${desc||''}</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>`;
+  grid.insertBefore(card,add);
+}
+
+// CERTS
+let certs=[],cIdx=0;
+const fcert=document.getElementById('fi-cert');
+fcert.addEventListener('change',()=>{if(!fcert.files.length)return;[...fcert.files].forEach(f=>{certs.push({url:URL.createObjectURL(f),name:f.name.replace(/\.[^.]+$/,''),type:f.type});});cIdx=certs.length-1;showCert(cIdx);document.getElementById('cert-popup').classList.add('open');});
+function openCerts(){if(pOpen){fcert.value='';fcert.click();return;}if(!certs.length){alert('Nenhum certificado adicionado. Ative a edição e clique em "Ver Certificados".');return;}cIdx=0;showCert(0);document.getElementById('cert-popup').classList.add('open');}
+function showCert(i){const c=certs[i];document.getElementById('cert-title').textContent=c.name;const m=document.getElementById('cert-media');m.innerHTML='';if(c.type==='application/pdf'){m.innerHTML=`<iframe src="${c.url}" style="width:100%;height:55vh;border:none;"></iframe>`;}else{const img=document.createElement('img');img.src=c.url;img.style.cssText='max-width:100%;max-height:55vh;object-fit:contain;';m.appendChild(img);}}
+document.getElementById('cert-prev').onclick=()=>{if(!certs.length)return;cIdx=(cIdx-1+certs.length)%certs.length;showCert(cIdx);};
+document.getElementById('cert-next').onclick=()=>{if(!certs.length)return;cIdx=(cIdx+1)%certs.length;showCert(cIdx);};
+document.getElementById('cert-popup').addEventListener('click',e=>{if(e.target===document.getElementById('cert-popup'))document.getElementById('cert-popup').classList.remove('open');});
+
+// MAIN POPUP
+let curCards=[],curIdx=0;
+function openPopup(card,cards){curCards=cards;curIdx=cards.indexOf(card);renderPopup(curIdx);document.getElementById('main-popup').classList.add('open');}
+function renderPopup(i){
+  const c=curCards[i];
+  document.getElementById('popup-title').textContent=c.querySelector('.proj-title')?.textContent||c.dataset.title||'Projeto';
+  document.getElementById('popup-type').textContent=c.dataset.type||'';
+  document.getElementById('popup-desc').textContent=c.dataset.desc||'';
+  const pm=document.getElementById('popup-media');pm.innerHTML='';
+  const vid=c.querySelector('video.proj-thumb');const img=c.querySelector('img.proj-thumb');
+  if(vid){const v=document.createElement('video');v.src=vid.src;v.controls=true;v.autoplay=true;v.style.cssText='width:100%;max-height:56vh;';pm.appendChild(v);}
+  else if(img){const im=document.createElement('img');im.src=img.src;im.style.cssText='width:100%;max-height:56vh;object-fit:contain;';pm.appendChild(im);}
+  else pm.innerHTML='<div style="padding:3rem;color:var(--muted);font-size:.75rem;text-align:center;">Sem mídia.</div>';
+}
+document.getElementById('popup-prev').onclick=()=>{curIdx=(curIdx-1+curCards.length)%curCards.length;renderPopup(curIdx);};
+document.getElementById('popup-next').onclick=()=>{curIdx=(curIdx+1)%curCards.length;renderPopup(curIdx);};
+document.getElementById('main-popup').addEventListener('click',e=>{if(e.target===document.getElementById('main-popup'))document.getElementById('main-popup').classList.remove('open');});
+
+// TOGGLE ABOUT PHOTO SIDE
+function toggleAboutSide(){
+  const sec = document.getElementById('sec-about');
+  const isRight = sec.classList.toggle('photo-right');
+  document.querySelector('.about-side-btn').textContent = isRight ? '⇄ Mover para esquerda' : '⇄ Mover foto de lado';
+}
+
+// SAVE
+function saveSite(){
+  const tog=document.getElementById('ed-tog'),panel=document.getElementById('ep'),pwd=document.getElementById('pwd-modal');
+  tog.style.display='none';panel.style.display='none';pwd.style.display='none';
+  document.body.classList.remove('editing');
+  document.querySelectorAll('[data-e]').forEach(el=>el.contentEditable='false');
+  const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jhulia-portfolio.html';a.click();
+  setTimeout(()=>{tog.style.display='';panel.style.display='';if(pOpen){document.body.classList.add('editing');document.querySelectorAll('[data-e]').forEach(el=>el.contentEditable='true');}},800);
+}
+</script>
+
+
+</body></html>
