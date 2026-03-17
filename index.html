@@ -1315,4 +1315,171 @@ function loadPortfolio(){
 window.addEventListener("load", loadPortfolio);
 
 </script>
+  <!-- PAINEL DE EDIÇÃO OCULTO -->
+
+<div id="editPanel" style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#111;
+color:white;
+padding:20px;
+border-radius:10px;
+display:none;
+z-index:9999;
+font-family:sans-serif;
+width:260px;
+">
+
+<h3>Painel de edição</h3>
+
+<input id="driveLinkInput" placeholder="Link da imagem do Drive"
+style="width:100%;margin-bottom:10px;padding:6px;">
+
+<button onclick="addDriveImageFromPanel()"
+style="width:100%;padding:8px;background:#444;color:white;border:none;">
+Adicionar imagem
+</button>
+
+</div>
+
+<script>
+
+const SECRET_WORD = "serpaedit";
+const EDIT_PASSWORD = "jhulia2025";
+
+let typed = "";
+let editMode = false;
+
+document.addEventListener("keydown", function(e){
+
+typed += e.key.toLowerCase();
+
+if(typed.length > SECRET_WORD.length){
+typed = typed.slice(-SECRET_WORD.length);
+}
+
+if(typed === SECRET_WORD){
+
+const pass = prompt("Senha de edição:");
+
+if(pass === EDIT_PASSWORD){
+
+editMode = true;
+
+document.getElementById("editPanel").style.display="block";
+
+alert("Modo edição ativado");
+
+}
+
+typed="";
+
+}
+
+});
+
+/* converter link do drive */
+
+function driveToDirect(url){
+
+if(url.includes("drive.google.com")){
+
+const match = url.match(/\/d\/(.*?)\//);
+
+if(match){
+return "https://drive.google.com/uc?export=view&id=" + match[1];
+}
+
+}
+
+return url;
+
+}
+
+/* adicionar imagem */
+
+function addDriveImageFromPanel(){
+
+if(!editMode) return;
+
+const link = document.getElementById("driveLinkInput").value;
+
+if(!link) return;
+
+const imgUrl = driveToDirect(link);
+
+const grid =
+document.querySelector(".grid-foto") ||
+document.querySelector("#grid-foto") ||
+document.body;
+
+const card = document.createElement("div");
+
+card.className="proj-card";
+
+const img=document.createElement("img");
+
+img.src=imgUrl;
+
+img.style.width="100%";
+
+card.appendChild(img);
+
+grid.appendChild(card);
+
+savePortfolio();
+
+document.getElementById("driveLinkInput").value="";
+
+}
+
+/* salvar */
+
+function savePortfolio(){
+
+const imgs=[...document.querySelectorAll(".proj-card img")].map(i=>i.src);
+
+localStorage.setItem("portfolioImages",JSON.stringify(imgs));
+
+}
+
+/* carregar */
+
+function loadPortfolio(){
+
+const data=localStorage.getItem("portfolioImages");
+
+if(!data) return;
+
+const imgs=JSON.parse(data);
+
+const grid =
+document.querySelector(".grid-foto") ||
+document.querySelector("#grid-foto") ||
+document.body;
+
+imgs.forEach(src=>{
+
+const card=document.createElement("div");
+
+card.className="proj-card";
+
+const img=document.createElement("img");
+
+img.src=src;
+
+img.style.width="100%";
+
+card.appendChild(img);
+
+grid.appendChild(card);
+
+});
+
+}
+
+window.addEventListener("load",loadPortfolio);
+
+</script>
 </body></html>
