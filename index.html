@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR" style="--dark: #000000; --cream: #e6e6d4; --rose: #ffffff;"><head>
+<html lang="pt-BR">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jhulia Serpa — Filmmaker &amp; Visual Creator</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&amp;family=Poppins:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --cream:#f5ede0; --rose:#e8d5c4; --dark:#120b08; --wine:#1c0f0a;
-  --gold:#c9924a; --gold2:#e8b87a; --blush:#d4a08a; --muted:#8a6a58;
-  --surface:#1e1109; --border:rgba(201,146,74,.15);
-  --fd:'Fraunces',serif; --fb:'Poppins',sans-serif;
+  --cream:#f5ede0;--rose:#e8d5c4;--dark:#120b08;--wine:#1c0f0a;
+  --gold:#c9924a;--gold2:#e8b87a;--blush:#d4a08a;--muted:#8a6a58;
+  --surface:#1e1109;--border:rgba(201,146,74,.15);
+  --fd:'Fraunces',serif;--fb:'Poppins',sans-serif;
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--fb);background:var(--cream);color:var(--wine);overflow-x:hidden;cursor:none;}
@@ -75,6 +76,13 @@ body{font-family:var(--fb);background:var(--cream);color:var(--wine);overflow-x:
 .ep-save{margin:.75rem 1.3rem 1.3rem;flex-shrink:0;background:transparent;border:1px solid rgba(201,146,74,.3);color:var(--gold2);border-radius:.5rem;padding:.62rem;font-size:.55rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;font-family:var(--fb);width:calc(100% - 2.6rem);transition:all .2s;}
 .ep-save:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 
+/* Drive input no painel */
+.drive-row{display:flex;gap:.4rem;}
+.drive-row .epi{flex:1;}
+.drive-btn{background:var(--gold);border:none;border-radius:.42rem;padding:.44rem .7rem;font-size:.58rem;font-weight:700;color:var(--dark);cursor:pointer;font-family:var(--fb);white-space:nowrap;transition:background .2s;}
+.drive-btn:hover{background:var(--gold2);}
+.drive-note{font-size:.48rem;color:rgba(232,184,122,.3);line-height:1.6;margin-top:.3rem;}
+
 body.editing [data-e]{outline:1px dashed rgba(201,146,74,.38);outline-offset:3px;cursor:text;border-radius:3px;}
 body.editing [data-e]:hover{outline-color:var(--gold);}
 body.editing .upz{outline:1px dashed rgba(201,146,74,.38);cursor:pointer;}
@@ -82,7 +90,7 @@ body.editing .upz{outline:1px dashed rgba(201,146,74,.38);cursor:pointer;}
 .upz::after{content:'📷';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(201,146,74,.1);font-size:1.1rem;opacity:0;transition:opacity .2s;border-radius:inherit;pointer-events:none;z-index:3;}
 body.editing .upz:hover::after{opacity:1;}
 
-/* ══════════ NAV ══════════ */
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.8rem 6vw;display:flex;justify-content:space-between;align-items:center;transition:background .4s,box-shadow .4s,padding .4s;}
 nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1);backdrop-filter:blur(14px);padding:1.1rem 6vw;}
 .nav-logo{font-family:var(--fd);font-style:italic;font-size:1.55rem;color:var(--cream);text-decoration:none;letter-spacing:.02em;}
@@ -93,9 +101,8 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 .nav-cta{font-size:.52rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;padding:.52rem 1.5rem;border:1px solid rgba(201,146,74,.38);border-radius:100px;color:var(--gold2);background:transparent;cursor:pointer;font-family:var(--fb);text-decoration:none;transition:all .3s;}
 .nav-cta:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 
-/* ══════════ HERO ══════════ */
+/* HERO */
 .hero{min-height:100vh;background:var(--dark);display:grid;grid-template-columns:55% 45%;position:relative;overflow:hidden;}
-/* grain */
 .hero::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1;opacity:.6;}
 .hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:14vh 4vw 12vh 8vw;position:relative;z-index:2;}
 .hero-tag{font-size:.52rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;display:flex;align-items:center;gap:.8rem;animation:fadeUp .8s .2s both;}
@@ -122,25 +129,20 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 .hero-ph svg{width:36px;opacity:.25;}
 .hero-ph span{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;}
 
-/* ══════════ TICKER ══════════ */
+/* TICKER */
 .ticker{background:var(--wine);padding:.7rem 0;overflow:hidden;border-top:1px solid rgba(201,146,74,.1);border-bottom:1px solid rgba(201,146,74,.1);}
 .ticker-track{display:flex;animation:tick 28s linear infinite;white-space:nowrap;}
 .ti{display:flex;align-items:center;gap:2rem;padding-right:2rem;}
 .ti-txt{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,237,224,.35);}
 .ti-sep{color:var(--gold);opacity:.6;font-size:.7rem;}
 
-/* ══════════ ABOUT ══════════ */
+/* ABOUT */
 .about-sec{background:var(--cream);padding:12vh 8vw;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;overflow:hidden;position:relative;}
-/* Cutout photo — PNG transparente flutua sobre o fundo */
 .about-photo-wrap{position:relative;display:flex;justify-content:center;align-items:flex-end;}
 .about-photo-bg-circle{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:clamp(200px,26vw,360px);height:clamp(200px,26vw,360px);border-radius:50%;background:var(--rose);opacity:.55;z-index:0;}
-.about-photo-cutout{position:relative;z-index:2;width:clamp(220px,28vw,400px);/* PNG com fundo transparente — vai "flutuar" sem moldura */filter:drop-shadow(0 20px 40px rgba(18,11,8,.18));transition:transform .6s ease;}
+.about-photo-cutout{position:relative;z-index:2;width:clamp(220px,28vw,400px);filter:drop-shadow(0 20px 40px rgba(18,11,8,.18));transition:transform .6s ease;}
 .about-photo-cutout:hover{transform:scale(1.02) translateY(-6px);}
 .about-photo-placeholder{width:clamp(220px,28vw,400px);aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1rem;position:relative;z-index:2;}
-.about-photo-placeholder .ph-silhouette{width:70%;opacity:.15;}
-.about-photo-placeholder .ph-hint{font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);opacity:.5;margin-top:.5rem;}
-.about-text-col{}
-/* botão trocar lado */
 .about-side-btn{position:absolute;top:1rem;left:50%;transform:translateX(-50%);z-index:10;background:var(--dark);color:var(--gold2);border:1px solid rgba(201,146,74,.35);border-radius:100px;padding:.45rem 1.1rem;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:var(--fb);white-space:nowrap;display:none;align-items:center;gap:.5rem;transition:background .2s;}
 body.editing .about-side-btn{display:flex;}
 .about-side-btn:hover{background:var(--gold);color:var(--dark);}
@@ -159,7 +161,7 @@ body.editing .about-side-btn{display:flex;}
 .atag{font-size:.5rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .85rem;border:1px solid rgba(201,146,74,.25);color:var(--muted);border-radius:100px;transition:all .25s;}
 .atag:hover{border-color:var(--gold);color:var(--wine);background:rgba(201,146,74,.08);}
 
-/* ══════════ SHOWREEL ══════════ */
+/* SHOWREEL */
 .reel-sec{background:var(--dark);padding:12vh 8vw;display:grid;grid-template-columns:1fr 1fr;gap:6vw;align-items:center;}
 .reel-text-col .eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
 .reel-text-col .eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
@@ -176,19 +178,16 @@ body.editing .about-side-btn{display:flex;}
 .reel-play-circle svg{fill:var(--gold2);width:22px;margin-left:3px;}
 .reel-ph{width:100%;aspect-ratio:16/9;border-radius:1rem;border:1px dashed rgba(201,146,74,.2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;color:rgba(201,146,74,.35);}
 .reel-ph span{font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;}
-.reel-url-note{font-size:.56rem;color:rgba(245,237,224,.25);letter-spacing:.08em;margin-top:.8rem;text-align:center;}
 
-/* ══════════ PHOTO STRIP ══════════ */
+/* PHOTO STRIP */
 .strip-sec{padding:0;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3px;background:var(--wine);}
 .strip-item{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--surface);}
 .strip-item:first-child{aspect-ratio:16/10;}
 .strip-item img,.strip-item video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
 .strip-item:hover img,.strip-item:hover video{transform:scale(1.05);}
 .strip-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;color:rgba(245,237,224,.18);}
-.strip-ph svg{width:20px;opacity:.3;}
-.strip-ph span{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;opacity:.4;}
 
-/* ══════════ SERVIÇOS ══════════ */
+/* SERVIÇOS */
 .services-sec{background:var(--cream);padding:12vh 8vw;}
 .sec-header{margin-bottom:3.5rem;}
 .sec-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;}
@@ -210,21 +209,15 @@ body.editing .srv-del{display:flex;}
 body.editing .add-srv-btn{display:flex;}
 .add-srv-btn:hover{color:var(--wine);}
 
-/* ══════════ EQUIPAMENTOS ══════════ */
+/* EQUIPAMENTOS */
 .equip-sec{background:var(--wine);padding:12vh 8vw;}
-.equip-sec .sec-h2{color:var(--cream);}
-.equip-sec .sec-h2 em{color:var(--gold2);}
 .equip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.8rem;margin-top:3rem;}
 .eq-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,146,74,.12);border-radius:.8rem;overflow:hidden;transition:border-color .3s,transform .3s;position:relative;}
 .eq-card:hover{border-color:rgba(201,146,74,.4);transform:translateY(-4px);}
-/* foto do equipamento */
-.eq-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.04);position:relative;overflow:hidden;cursor:default;}
+.eq-photo{width:100%;aspect-ratio:4/3;background:rgba(255,255,255,.04);position:relative;overflow:hidden;}
 .eq-photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
 .eq-card:hover .eq-photo img{transform:scale(1.05);}
 .eq-photo-ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;color:rgba(201,146,74,.3);}
-.eq-photo-ph svg{width:24px;opacity:.5;}
-.eq-photo-ph span{font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;}
-/* edit overlay on photo */
 body.editing .eq-photo{cursor:pointer;}
 .eq-photo::after{content:'📷 Trocar foto';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(201,146,74,.15);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);opacity:0;transition:opacity .2s;pointer-events:none;}
 body.editing .eq-photo:hover::after{opacity:1;}
@@ -238,7 +231,7 @@ body.editing .eq-del{display:flex;}
 body.editing .add-eq-btn{display:flex;}
 .add-eq-btn:hover{border-color:var(--gold);color:var(--gold2);}
 
-/* ══════════ MARQUEE ══════════ */
+/* MARQUEE */
 .mq-sec{overflow:hidden;padding:2.5rem 0;border-top:1px solid rgba(201,146,74,.1);border-bottom:1px solid rgba(201,146,74,.1);background:var(--cream);}
 .mq-track{display:flex;animation:tick 24s linear infinite;white-space:nowrap;}
 .mq-item{display:inline-flex;align-items:center;gap:2.5rem;padding-right:2.5rem;}
@@ -247,7 +240,7 @@ body.editing .add-eq-btn{display:flex;}
 .mq-w.acc{-webkit-text-stroke:0;color:var(--gold);opacity:.35;font-style:normal;font-weight:600;}
 .mq-sep{color:var(--gold);opacity:.35;font-size:1rem;}
 
-/* ══════════ PORTFOLIO CTA ══════════ */
+/* PORTFOLIO CTA */
 .pcta-sec{background:var(--dark);padding:14vh 8vw;text-align:center;position:relative;overflow:hidden;}
 .pcta-bg-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--fd);font-size:clamp(8rem,22vw,20rem);font-weight:600;color:transparent;-webkit-text-stroke:1px rgba(201,146,74,.05);pointer-events:none;user-select:none;white-space:nowrap;letter-spacing:.05em;}
 .pcta-inner{position:relative;z-index:1;}
@@ -256,18 +249,17 @@ body.editing .add-eq-btn{display:flex;}
 .pcta-h2 em{font-style:italic;color:var(--gold2);}
 .pcta-p{font-size:.7rem;font-weight:300;color:rgba(245,237,224,.4);margin-bottom:3rem;max-width:360px;margin-left:auto;margin-right:auto;line-height:1.85;}
 .pcta-btns{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;}
-.pcta-btn{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 2rem;border-radius:100px;cursor:pointer;font-family:var(--fb);position:relative;overflow:hidden;border:none;display:inline-flex;align-items:center;gap:.5rem;}
+.pcta-btn{font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.75rem 2rem;border-radius:100px;cursor:pointer;font-family:var(--fb);border:none;display:inline-flex;align-items:center;gap:.5rem;}
 .pcta-btn-fill{background:var(--gold);color:var(--dark);}
 .pcta-btn-fill:hover{background:var(--gold2);}
 .pcta-btn-out{background:transparent;color:rgba(245,237,224,.5);border:1px solid rgba(245,237,224,.15);}
 .pcta-btn-out:hover{border-color:var(--gold);color:var(--gold2);}
 
-/* ══════════ CONTACT ══════════ */
+/* CONTACT */
 .contact-sec{background:var(--cream);padding:14vh 8vw;display:grid;grid-template-columns:1.2fr 1fr;gap:8vw;align-items:end;}
 .contact-h2{font-family:var(--fd);font-size:clamp(2.8rem,6.5vw,6rem);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem;}
 .contact-h2 em{font-style:italic;color:var(--gold);}
 .contact-h2 strong{font-weight:600;display:block;}
-.contact-right{}
 .contact-desc{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.9;margin-bottom:1.8rem;}
 .contact-email{display:block;font-family:var(--fd);font-style:italic;font-size:clamp(1rem,2.2vw,1.6rem);color:var(--wine);text-decoration:none;border-bottom:1px solid rgba(18,11,8,.12);padding-bottom:.9rem;margin-bottom:1.6rem;transition:color .3s,border-color .3s;}
 .contact-email:hover{color:var(--gold);border-bottom-color:var(--gold);}
@@ -275,13 +267,13 @@ body.editing .add-eq-btn{display:flex;}
 .social-btn{display:inline-flex;align-items:center;gap:.45rem;text-decoration:none;padding:.5rem 1.1rem;border:1px solid rgba(18,11,8,.12);border-radius:100px;font-size:.54rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:border-color .25s,color .25s;}
 .social-btn:hover{border-color:var(--gold);color:var(--wine);}
 
-/* ══════════ FOOTER ══════════ */
+/* FOOTER */
 footer{background:var(--wine);padding:2rem 8vw;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,146,74,.1);}
 .footer-logo{font-family:var(--fd);font-style:italic;font-size:1.25rem;color:rgba(245,237,224,.5);}
 .footer-logo em{color:var(--gold);}
 .footer-copy{font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,224,.2);}
 
-/* ══════════ PORTFOLIO PAGE ══════════ */
+/* PORTFOLIO PAGE */
 .port-header{background:var(--dark);padding:16vh 8vw 6vh;border-bottom:1px solid rgba(201,146,74,.1);}
 .back-btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.54rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,237,224,.35);background:none;border:none;cursor:pointer;font-family:var(--fb);margin-bottom:2rem;transition:color .2s;padding:0;}
 .back-btn:hover{color:var(--gold2);}
@@ -289,9 +281,8 @@ footer{background:var(--wine);padding:2rem 8vw;display:flex;justify-content:spac
 .port-header h1{font-family:var(--fd);font-size:clamp(2.5rem,7vw,5.5rem);font-weight:300;color:var(--cream);letter-spacing:-.01em;line-height:.95;}
 .port-header h1 em{font-style:italic;color:var(--gold2);}
 .cat-tabs{display:flex;gap:.5rem;padding:1.8rem 8vw;border-bottom:1px solid rgba(201,146,74,.1);background:var(--dark);flex-wrap:wrap;}
-.cat-tab{font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.3rem;border-radius:100px;border:1px solid rgba(201,146,74,.2);background:transparent;color:rgba(245,237,224,.35);cursor:pointer;font-family:var(--fb);transition:all .25s;position:relative;overflow:hidden;}
+.cat-tab{font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.3rem;border-radius:100px;border:1px solid rgba(201,146,74,.2);background:transparent;color:rgba(245,237,224,.35);cursor:pointer;font-family:var(--fb);transition:all .25s;}
 .cat-tab.active,.cat-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
-.cat-tab span{position:relative;z-index:1;}
 .proj-area{padding:3rem 8vw 8rem;background:var(--cream);}
 .cat-sec{display:none;}.cat-sec.active{display:block;}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
@@ -310,7 +301,8 @@ body.editing .add-card{display:flex;}
 .add-card:hover{border-color:var(--gold);background:rgba(201,146,74,.06);}
 .add-card-icon{font-size:1.6rem;opacity:.25;}
 .add-card-label{font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
-/* folders */
+
+/* FOLDERS */
 .folder-grid-view{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
 .folder-card{background:var(--rose);border:1px solid rgba(201,146,74,.2);border-radius:.8rem;padding:1.4rem 1.5rem;cursor:pointer;transition:border-color .3s,transform .25s;position:relative;}
 .folder-card:hover{border-color:var(--gold);transform:translateY(-3px);}
@@ -347,10 +339,6 @@ body.editing .add-folder-btn{display:flex;}
 .popup-x{width:32px;height:32px;border-radius:50%;background:var(--rose);border:1px solid rgba(18,11,8,.1);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.8rem;color:var(--wine);flex-shrink:0;align-self:flex-start;transition:background .2s;}
 .popup-x:hover{background:var(--wine);color:var(--cream);}
 
-/* CERT POPUP */
-#cert-popup .popup-media{background:var(--rose);}
-#cert-popup .popup-media img{object-fit:contain;}
-
 .ss-hidden{display:none!important;}
 .sl-item.dragging{opacity:.35;}
 
@@ -376,15 +364,15 @@ body.editing .add-folder-btn{display:flex;}
 }
 </style>
 </head>
-<body class="">
+<body>
 
-<div id="c1" style="left: 1206px; top: 860px;"></div>
-<div id="c2" style="left: 1202.99px; top: 856.404px;"></div>
+<div id="c1"></div>
+<div id="c2"></div>
 <input type="file" id="fi" accept="image/*,video/*" style="display:none">
-<input type="file" id="fi-cert" accept="image/*,.pdf" multiple="" style="display:none">
+<input type="file" id="fi-cert" accept="image/*,.pdf" multiple style="display:none">
 
 <!-- PASSWORD -->
-<div id="pwd-modal" class="" style="display: none;">
+<div id="pwd-modal">
   <div class="pwd-box">
     <div class="pwd-logo">Jhulia.</div>
     <div class="pwd-hint">Área restrita — edição do site</div>
@@ -397,7 +385,7 @@ body.editing .add-folder-btn{display:flex;}
 <!-- CERT POPUP -->
 <div class="popup-ov" id="cert-popup">
   <div class="popup-box" style="max-width:680px;">
-    <div class="popup-media" id="cert-media" style="min-height:200px;"></div>
+    <div class="popup-media" id="cert-media" style="min-height:200px;background:var(--rose);"></div>
     <div class="popup-body">
       <div class="popup-body-l">
         <div class="popup-title-el" id="cert-title">Certificado</div>
@@ -415,11 +403,11 @@ body.editing .add-folder-btn{display:flex;}
 <!-- MAIN POPUP -->
 <div class="popup-ov" id="main-popup">
   <div class="popup-box">
-    <div class="popup-media" id="popup-media" style="min-height:200px;"><video src="blob:null/f85f12a1-7963-447b-9979-07f70d89b279" controls="" autoplay="" style="width: 100%; max-height: 56vh;"></video></div>
+    <div class="popup-media" id="popup-media" style="min-height:200px;"></div>
     <div class="popup-body">
       <div class="popup-body-l">
-        <div class="popup-title-el" id="popup-title">BYD</div>
-        <div class="popup-type-el" id="popup-type">Vídeo</div>
+        <div class="popup-title-el" id="popup-title">Projeto</div>
+        <div class="popup-type-el" id="popup-type"></div>
         <div class="popup-desc-el" id="popup-desc"></div>
         <div class="popup-nav">
           <button class="popup-nb" id="popup-prev">‹</button>
@@ -432,23 +420,27 @@ body.editing .add-folder-btn{display:flex;}
 </div>
 
 <!-- EDITOR TOGGLE -->
-<button id="ed-tog" onclick="toggleEd()" class="show" style="display: none;"><span style="font-size:.9rem;writing-mode:horizontal-tb">✏️</span>Editar</button>
+<button id="ed-tog" onclick="toggleEd()">
+  <span style="font-size:.9rem;writing-mode:horizontal-tb">✏️</span>Editar
+</button>
 
 <!-- EDITOR PANEL -->
-<div id="ep" class="open" style="display: none;">
+<div id="ep">
   <div class="eph">
     <span class="ep-title">Edição</span>
     <button class="ep-x" onclick="toggleEd()">✕</button>
   </div>
   <div class="ept">
-    <button class="" onclick="etab(this,'t')">Textos</button>
-    <button onclick="etab(this,'v')" class="">Visual</button>
-    <button onclick="etab(this,'l')" class="">Links</button>
-    <button onclick="etab(this,'s')" class="on">Seções</button>
+    <button class="on" onclick="etab(this,'t')">Textos</button>
+    <button onclick="etab(this,'v')">Visual</button>
+    <button onclick="etab(this,'l')">Links</button>
+    <button onclick="etab(this,'s')">Seções</button>
+    <button onclick="etab(this,'d')">Drive</button>
   </div>
   <div class="epb">
 
-    <div class="eps" id="ep-t">
+    <!-- ABA TEXTOS -->
+    <div class="eps on" id="ep-t">
       <div class="epsub">Hero</div>
       <div class="epg"><label class="epl">Nome</label><input class="epi" value="Jhulia Serpa" oninput="se('hn',this.value)"></div>
       <div class="epg"><label class="epl">Subtítulo (itálico)</label><input class="epi" value="Filmmaker" oninput="se('hs',this.value)"></div>
@@ -467,18 +459,19 @@ body.editing .add-folder-btn{display:flex;}
       <div class="epg"><label class="epl">Título linha 1</label><input class="epi" value="Criativa" oninput="se('ah1',this.value)"></div>
       <div class="epg"><label class="epl">Título linha 2 (itálico dourado)</label><input class="epi" value="por natureza." oninput="se('ah2',this.value)"></div>
       <div class="epg"><label class="epl">Parágrafo 1</label><textarea class="epi epta" oninput="se('ap1',this.value)">Sou Jhulia Serpa, apaixonada por contar histórias através da imagem. Atuo em audiovisual, design e marketing com foco em criar conteúdo que comunica de verdade.</textarea></div>
-      <div class="epg"><label class="epl">Parágrafo 2 (cursos)</label><textarea class="epi epta" oninput="se('ap2',this.value)">Cursando Produção Audiovisual na Univali, com formação em Marketing e Design Gráfico pelo Senai.</textarea></div>
+      <div class="epg"><label class="epl">Parágrafo 2</label><textarea class="epi epta" oninput="se('ap2',this.value)">Cursando Produção Audiovisual na Univali, com formação em Marketing e Design Gráfico pelo Senai.</textarea></div>
       <div class="epd"></div>
       <div class="epsub">Contato</div>
-      <div class="epg"><label class="epl">Linha 1</label><input class="epi" value="Bora criar" oninput="se('ch1',this.value)"></div>
-      <div class="epg"><label class="epl">Linha 2 (itálico)</label><input class="epi" value="algo" oninput="se('ch2',this.value)"></div>
-      <div class="epg"><label class="epl">Linha 3 (destaque)</label><input class="epi" value="incrível?" oninput="se('ch3',this.value)"></div>
-      <div class="epg"><label class="epl">Descrição</label><textarea class="epi epta" oninput="se('cd',this.value)">Vamos fazer acontecer juntos? Me chama!</textarea></div>
-      <div class="epg"><label class="epl">E-mail</label><input class="epi" value="seuemail@email.com" oninput="updEmail(this.value)"></div>
+      <div class="epg"><label class="epl">Linha 1</label><input class="epi" value="Vamos fazer" oninput="se('ch1',this.value)"></div>
+      <div class="epg"><label class="epl">Linha 2 (itálico)</label><input class="epi" value="acontecer" oninput="se('ch2',this.value)"></div>
+      <div class="epg"><label class="epl">Linha 3 (destaque)</label><input class="epi" value="juntos?" oninput="se('ch3',this.value)"></div>
+      <div class="epg"><label class="epl">Descrição</label><textarea class="epi epta" oninput="se('cd',this.value)">Me chama!</textarea></div>
+      <div class="epg"><label class="epl">E-mail</label><input class="epi" value="jhuliaserpatj@gmail.com" oninput="updEmail(this.value)"></div>
       <div class="epd"></div>
-      <div class="epg"><label class="epl">Rodapé</label><input class="epi" value="© 2025 — Feito com intenção" oninput="se('fc',this.value)"></div>
+      <div class="epg"><label class="epl">Rodapé</label><input class="epi" value="© 2026 — Feito com intenção" oninput="se('fc',this.value)"></div>
     </div>
 
+    <!-- ABA VISUAL -->
     <div class="eps" id="ep-v">
       <div class="epsub">Cores</div>
       <div class="cr-g">
@@ -491,13 +484,16 @@ body.editing .add-folder-btn{display:flex;}
       </div>
       <div class="epd"></div>
       <div class="epsub">Fonte do corpo</div>
-      <div class="epg"><select class="epsel" onchange="document.documentElement.style.setProperty('--fb',this.value)">
-        <option value="'Poppins',sans-serif">Poppins</option>
-        <option value="'Montserrat',sans-serif">Montserrat</option>
-        <option value="'DM Sans',sans-serif">DM Sans</option>
-      </select></div>
+      <div class="epg">
+        <select class="epsel" onchange="document.documentElement.style.setProperty('--fb',this.value)">
+          <option value="'Poppins',sans-serif">Poppins</option>
+          <option value="'Montserrat',sans-serif">Montserrat</option>
+          <option value="'DM Sans',sans-serif">DM Sans</option>
+        </select>
+      </div>
     </div>
 
+    <!-- ABA LINKS -->
     <div class="eps" id="ep-l">
       <div class="epsub">Redes Sociais</div>
       <div class="epg"><label class="epl">Instagram</label><input class="epi" value="https://www.instagram.com/jhu.lia_s" oninput="document.getElementById('ig-link').href=this.value"></div>
@@ -515,19 +511,52 @@ body.editing .add-folder-btn{display:flex;}
       <div class="epg"><label class="epl">Link 4</label><input class="epi" value="Contato" oninput="snl(3,this.value)"></div>
     </div>
 
-    <div class="eps on" id="ep-s">
+    <!-- ABA SEÇÕES -->
+    <div class="eps" id="ep-s">
       <div class="epsub">Mostrar / ocultar seções</div>
       <p style="font-size:.54rem;color:rgba(232,184,122,.25);line-height:1.6;margin-bottom:.8rem;">Arraste para reordenar.</p>
       <div class="sl-list" id="sl">
         <div class="sl-item" draggable="true" data-t="sec-reel"><span class="sl-drag">⠿</span><span class="sl-name">Showreel</span><button class="sl-tog" onclick="tSec(this,'sec-reel')"></button></div>
         <div class="sl-item" draggable="true" data-t="sec-strip"><span class="sl-drag">⠿</span><span class="sl-name">Faixa de fotos</span><button class="sl-tog on" onclick="tSec(this,'sec-strip')"></button></div>
         <div class="sl-item" draggable="true" data-t="sec-about"><span class="sl-drag">⠿</span><span class="sl-name">Sobre mim</span><button class="sl-tog on" onclick="tSec(this,'sec-about')"></button></div>
-        
-        
-        
-        <div class="sl-item" draggable="true" data-t="sec-mq"><span class="sl-drag">⠿</span><span class="sl-name">Marquee</span><button class="sl-tog on" onclick="tSec(this,'sec-mq')"></button></div><div class="sl-item" draggable="true" data-t="sec-pcta"><span class="sl-drag">⠿</span><span class="sl-name">Chamada portfólio</span><button class="sl-tog on" onclick="tSec(this,'sec-pcta')"></button></div>
-        <div class="sl-item" draggable="true" data-t="sec-srv"><span class="sl-drag">⠿</span><span class="sl-name">Serviços</span><button class="sl-tog on" onclick="tSec(this,'sec-srv')"></button></div><div class="sl-item" draggable="true" data-t="sec-equip"><span class="sl-drag">⠿</span><span class="sl-name">Equipamentos</span><button class="sl-tog on" onclick="tSec(this,'sec-equip')"></button></div><div class="sl-item" draggable="true" data-t="sec-contact"><span class="sl-drag">⠿</span><span class="sl-name">Contato</span><button class="sl-tog on" onclick="tSec(this,'sec-contact')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-mq"><span class="sl-drag">⠿</span><span class="sl-name">Marquee</span><button class="sl-tog on" onclick="tSec(this,'sec-mq')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-pcta"><span class="sl-drag">⠿</span><span class="sl-name">Chamada portfólio</span><button class="sl-tog on" onclick="tSec(this,'sec-pcta')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-srv"><span class="sl-drag">⠿</span><span class="sl-name">Serviços</span><button class="sl-tog on" onclick="tSec(this,'sec-srv')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-equip"><span class="sl-drag">⠿</span><span class="sl-name">Equipamentos</span><button class="sl-tog on" onclick="tSec(this,'sec-equip')"></button></div>
+        <div class="sl-item" draggable="true" data-t="sec-contact"><span class="sl-drag">⠿</span><span class="sl-name">Contato</span><button class="sl-tog on" onclick="tSec(this,'sec-contact')"></button></div>
       </div>
+    </div>
+
+    <!-- ABA DRIVE (NOVA — limpa e integrada) -->
+    <div class="eps" id="ep-d">
+      <div class="epsub">Adicionar imagem do Google Drive</div>
+      <p style="font-size:.54rem;color:rgba(232,184,122,.25);line-height:1.6;margin-bottom:.9rem;">
+        Cole o link de compartilhamento do Google Drive e escolha onde inserir.
+      </p>
+      <div class="epg">
+        <label class="epl">Link do Google Drive</label>
+        <input class="epi" id="drive-link-in" placeholder="https://drive.google.com/file/d/...">
+      </div>
+      <div class="epg">
+        <label class="epl">Onde adicionar?</label>
+        <select class="epsel" id="drive-dest">
+          <option value="video">Portfólio — Vídeo</option>
+          <option value="foto">Portfólio — Foto (pasta atual)</option>
+          <option value="design">Portfólio — Design</option>
+          <option value="strip">Faixa de fotos (hero strip)</option>
+        </select>
+      </div>
+      <button class="drive-btn" style="width:100%;margin-top:.3rem;" onclick="addDriveImg()">＋ Adicionar imagem</button>
+      <p class="drive-note">
+        ⚠️ No Drive, vá em "Compartilhar → Qualquer pessoa com o link pode ver" antes de colar o link aqui. Após salvar o site, a imagem fica incorporada permanentemente.
+      </p>
+      <div class="epd"></div>
+      <div class="epsub">Imagem de fundo do Hero</div>
+      <div class="epg">
+        <label class="epl">Link Drive (foto de capa)</label>
+        <input class="epi" id="drive-hero-in" placeholder="https://drive.google.com/file/d/...">
+      </div>
+      <button class="drive-btn" style="width:100%;margin-top:.3rem;" onclick="addDriveHero()">Definir como capa</button>
     </div>
 
   </div>
@@ -537,7 +566,7 @@ body.editing .add-folder-btn{display:flex;}
 <!-- ══════════ HOME ══════════ -->
 <div class="page active" id="page-home">
 
-  <nav id="main-nav" class="">
+  <nav id="main-nav">
     <a class="nav-logo" href="#"><em>J.</em>Serpa</a>
     <ul class="nav-links">
       <li><a href="#sec-about" data-nl="0">Sobre</a></li>
@@ -563,7 +592,12 @@ body.editing .add-folder-btn{display:flex;}
         <a class="btn-ghost" href="#sec-contact">Contato</a>
       </div>
     </div>
-    <div class="hero-right upz" onclick="upZ(this)"><img src="blob:null/5c0ffce8-aea8-4d5a-a586-6417c1c537eb" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
+    <div class="hero-right upz" id="hero-zone" onclick="upZ(this)">
+      <div class="hero-ph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+        <span>Clique para adicionar foto de capa</span>
+      </div>
+    </div>
     <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-txt">Scroll</span></div>
     <div class="hero-year">2025</div>
   </section>
@@ -587,35 +621,12 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 
   <!-- SHOWREEL -->
-  
-
-  <!-- PHOTO STRIP -->
-  
-
-  <!-- ABOUT -->
-  
-
-  <!-- EQUIPAMENTOS -->
-  
-
-  <!-- SERVIÇOS -->
-  
-
-  <!-- MARQUEE -->
-  
-
-  <!-- PORTFOLIO CTA -->
-  
-
-  <!-- CONTACT -->
-  
-
-  <section class="reel-sec ss reveal vis ss-hidden" id="sec-reel">
+  <section class="reel-sec ss reveal" id="sec-reel">
     <div class="reel-text-col">
       <div class="eyebrow">Em destaque</div>
       <h2 class="reel-h2"><span data-e="rt" contenteditable="false" spellcheck="false">Meu Showreel</span><br><em data-e="ry" contenteditable="false" spellcheck="false">2024 — 2025</em></h2>
       <p class="reel-desc" data-e="rd" contenteditable="false" spellcheck="false">Uma seleção dos meus melhores trabalhos em vídeo.</p>
-      <button class="btn-gold" onclick="openReel()"><span data-e="btn1" contenteditable="false" spellcheck="false">Assistir agora</span></button>
+      <button class="btn-gold" onclick="openReel()">Assistir agora</button>
     </div>
     <div class="reel-visual">
       <div id="reel-frame" class="reel-ph">
@@ -623,26 +634,37 @@ body.editing .add-folder-btn{display:flex;}
         <span>Cole o link do YouTube no painel</span>
       </div>
     </div>
-  </section><div class="strip-sec ss" id="sec-strip">
-    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/d55a5345-a018-40bd-862b-04aac3481899" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
-    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/a78400ab-1551-4aa5-8326-06a9adc0f422" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
-    <div class="strip-item upz" onclick="upZ(this)"><video autoplay="" loop="" playsinline="" src="blob:null/d9fb4379-308e-4561-babc-a3a8ed377220" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video></div>
-  </div><section class="about-sec ss reveal vis" id="sec-about">
-    <button class="about-side-btn" onclick="toggleAboutSide()">⇄ Mover foto de lado</button>
-    <div class="about-photo-wrap rd1 reveal vis">
-      <div class="about-photo-bg-circle"></div>
-      <!-- Zona de upload — quando for PNG com fundo transparente, vai flutuar naturalmente -->
-      <div class="about-photo-placeholder upz" id="about-photo-zone" onclick="upZ(this)" style="background: transparent; border: none;"><img src="blob:null/cda27345-73a3-41cd-a64d-4212030a789c" class="about-photo-cutout" style="max-width: 100%;"></div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="strip-sec ss" id="sec-strip">
+    <div class="strip-item upz" onclick="upZ(this)">
+      <div class="strip-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:20px;opacity:.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Foto 1</span></div>
     </div>
-    <div class="about-text-col reveal rd2 vis">
+    <div class="strip-item upz" onclick="upZ(this)">
+      <div class="strip-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:20px;opacity:.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Foto 2</span></div>
+    </div>
+    <div class="strip-item upz" onclick="upZ(this)">
+      <div class="strip-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:20px;opacity:.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Foto 3</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about-sec ss reveal" id="sec-about">
+    <button class="about-side-btn" onclick="toggleAboutSide()">⇄ Mover foto de lado</button>
+    <div class="about-photo-wrap rd1 reveal">
+      <div class="about-photo-bg-circle"></div>
+      <div class="about-photo-placeholder upz" id="about-photo-zone" onclick="upZ(this)" style="background:transparent;border:none;">
+        <div class="strip-ph" style="width:100%;height:100%;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:32px;opacity:.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;opacity:.3;">Sua foto aqui</span></div>
+      </div>
+    </div>
+    <div class="about-text-col reveal rd2">
       <div class="about-eyebrow">Sobre mim</div>
       <h2 class="about-h2">
         <span data-e="ah1" contenteditable="false" spellcheck="false">Criativa</span><br>
         <em data-e="ah2" contenteditable="false" spellcheck="false">por natureza.</em>
       </h2>
-      <p class="about-p" data-e="ap1" contenteditable="false" spellcheck="false"><p data-start="952" data-end="1046">Sou filmmaker e criador visual focado em transformar ideias em narrativas visuais marcantes.</p>
-<p data-start="1053" data-end="1167">Trabalho com direção, captação e edição de vídeo, criando projetos que unem estética, storytelling e estratégia.</p>
-<p data-start="1174" data-end="1287">Meu objetivo é produzir conteúdos que não apenas mostrem algo, mas que transmitam emoção, identidade e propósito.</p></p>
+      <p class="about-p" data-e="ap1" contenteditable="false" spellcheck="false">Sou Jhulia Serpa, apaixonada por contar histórias através da imagem. Atuo em audiovisual, design e marketing com foco em criar conteúdo que comunica de verdade.</p>
       <p class="about-p" data-e="ap2" contenteditable="false" spellcheck="false">Cursando Produção Audiovisual na Univali, com formação em Marketing e Design Gráfico pelo Senai.</p>
       <button class="cert-btn" onclick="openCerts()">
         <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
@@ -654,7 +676,10 @@ body.editing .add-folder-btn{display:flex;}
         <span class="atag">Univali</span><span class="atag">Senai</span>
       </div>
     </div>
-  </section><div class="mq-sec ss" id="sec-mq">
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mq-sec ss" id="sec-mq">
     <div class="mq-track">
       <div class="mq-item"><span class="mq-w">Cinema</span><span class="mq-sep">✦</span></div>
       <div class="mq-item"><span class="mq-w fill">Frame</span><span class="mq-sep">✦</span></div>
@@ -669,7 +694,10 @@ body.editing .add-folder-btn{display:flex;}
       <div class="mq-item"><span class="mq-w fill">Corte</span><span class="mq-sep">✦</span></div>
       <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
     </div>
-  </div><section class="pcta-sec ss reveal vis" id="sec-pcta">
+  </div>
+
+  <!-- PORTFOLIO CTA -->
+  <section class="pcta-sec ss reveal" id="sec-pcta">
     <div class="pcta-bg-text">WORKS</div>
     <div class="pcta-inner">
       <div class="pcta-eyebrow">Portfólio</div>
@@ -681,47 +709,78 @@ body.editing .add-folder-btn{display:flex;}
         <button class="pcta-btn pcta-btn-out" onclick="goPort('design')"><span data-e="cbd" contenteditable="false" spellcheck="false">✏️ Design</span></button>
       </div>
     </div>
-  </section><section class="services-sec ss reveal vis" id="sec-srv">
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="services-sec ss reveal" id="sec-srv">
     <div class="sec-header">
       <div class="sec-eyebrow">O que eu ofereço</div>
       <h2 class="sec-h2">Serviços <em>para você</em></h2>
     </div>
     <div class="srv-grid" id="srv-grid">
-      <div class="srv-card"><div class="srv-icon">🎬</div><div class="srv-name" data-e="sv1n" contenteditable="false" spellcheck="false">Produção de Vídeo</div><div class="srv-desc" data-e="sv1d" contenteditable="false" spellcheck="false">Vídeos institucionais, reels, eventos e conteúdo para redes sociais. Do roteiro à entrega fina!.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
-      <div class="srv-card"><div class="srv-icon">📷</div><div class="srv-name" data-e="sv2n" contenteditable="false" spellcheck="false">Fotografia</div><div class="srv-desc" data-e="sv2d" contenteditable="false" spellcheck="false">Ensaios, eventos e produtos. Fotos com identidade para marcas e pessoas.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
-      <div class="srv-card"><div class="srv-icon">✏️</div><div class="srv-name" data-e="sv3n" contenteditable="false" spellcheck="false">Design Gráfico</div><div class="srv-desc" data-e="sv3d" contenteditable="false" spellcheck="false">Identidade visual, peças para redes sociais e materiais de comunicação.</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button></div>
-      
+      <div class="srv-card">
+        <div class="srv-icon">🎬</div>
+        <div class="srv-name" data-e="sv1n" contenteditable="false" spellcheck="false">Produção de Vídeo</div>
+        <div class="srv-desc" data-e="sv1d" contenteditable="false" spellcheck="false">Vídeos institucionais, reels, eventos e conteúdo para redes sociais. Do roteiro à entrega final.</div>
+        <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">📷</div>
+        <div class="srv-name" data-e="sv2n" contenteditable="false" spellcheck="false">Fotografia</div>
+        <div class="srv-desc" data-e="sv2d" contenteditable="false" spellcheck="false">Ensaios, eventos e produtos. Fotos com identidade para marcas e pessoas.</div>
+        <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
+      </div>
+      <div class="srv-card">
+        <div class="srv-icon">✏️</div>
+        <div class="srv-name" data-e="sv3n" contenteditable="false" spellcheck="false">Design Gráfico</div>
+        <div class="srv-desc" data-e="sv3d" contenteditable="false" spellcheck="false">Identidade visual, peças para redes sociais e materiais de comunicação.</div>
+        <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
+      </div>
       <button class="add-srv-btn" onclick="addSrv()">＋ Adicionar serviço</button>
     </div>
-  </section><section class="equip-sec ss reveal vis" id="sec-equip">
+  </section>
+
+  <!-- EQUIPAMENTOS -->
+  <section class="equip-sec ss reveal" id="sec-equip">
     <div class="sec-header">
       <div class="sec-eyebrow" style="color:var(--gold);">Ferramentas</div>
       <h2 class="sec-h2" style="color:var(--cream);">Meus <em style="color:var(--gold2);">Equipamentos</em></h2>
     </div>
     <div class="equip-grid" id="equip-grid">
       <div class="eq-card">
-        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/b933896c-f7fe-454c-8818-ef409f961c38" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
-        <div class="eq-body"><div class="eq-name" data-e="eq1n" contenteditable="false" spellcheck="false">Celular</div><div class="eq-desc" data-e="eq1d" contenteditable="false" spellcheck="false">Iphone 13 Pro</div></div>
+        <div class="eq-photo" onclick="upEqPhoto(this)">
+          <div class="eq-photo-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;">Adicionar foto</span></div>
+        </div>
+        <div class="eq-body"><div class="eq-name" data-e="eq1n" contenteditable="false" spellcheck="false">Celular</div><div class="eq-desc" data-e="eq1d" contenteditable="false" spellcheck="false">iPhone 13 Pro</div></div>
         <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
       </div>
       <div class="eq-card">
-        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/617fd528-b82e-414e-86e6-b9a40c0f07dc" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
-        <div class="eq-body"><div class="eq-name" data-e="eq2n" contenteditable="false" spellcheck="false">Microfone</div><div class="eq-desc" data-e="eq2d" contenteditable="false" spellcheck="false">Hollyland lark m2</div></div>
+        <div class="eq-photo" onclick="upEqPhoto(this)">
+          <div class="eq-photo-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;">Adicionar foto</span></div>
+        </div>
+        <div class="eq-body"><div class="eq-name" data-e="eq2n" contenteditable="false" spellcheck="false">Microfone</div><div class="eq-desc" data-e="eq2d" contenteditable="false" spellcheck="false">Hollyland Lark M2</div></div>
         <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
       </div>
       <div class="eq-card">
-        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/54cf77e5-5ccf-4c67-8fa0-c2d034b4e9cf" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
-        <div class="eq-body"><div class="eq-name" data-e="eq3n" contenteditable="false" spellcheck="false">Iluminação</div><div class="eq-desc" data-e="eq3d" contenteditable="false" spellcheck="false">Bastão de led - Ulanzi</div></div>
+        <div class="eq-photo" onclick="upEqPhoto(this)">
+          <div class="eq-photo-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;">Adicionar foto</span></div>
+        </div>
+        <div class="eq-body"><div class="eq-name" data-e="eq3n" contenteditable="false" spellcheck="false">Iluminação</div><div class="eq-desc" data-e="eq3d" contenteditable="false" spellcheck="false">Bastão de LED — Ulanzi</div></div>
         <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
       </div>
       <div class="eq-card">
-        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="blob:null/e1d70b7f-358f-4316-986c-3e468d9e99e9" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
-        <div class="eq-body"><div class="eq-name" data-e="eq4n" contenteditable="false" spellcheck="false">Edição</div><div class="eq-desc" data-e="eq4d" contenteditable="false" spellcheck="false">Capcut Pro, DaVinci Resolve</div></div>
+        <div class="eq-photo" onclick="upEqPhoto(this)">
+          <div class="eq-photo-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span style="font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;">Adicionar foto</span></div>
+        </div>
+        <div class="eq-body"><div class="eq-name" data-e="eq4n" contenteditable="false" spellcheck="false">Edição</div><div class="eq-desc" data-e="eq4d" contenteditable="false" spellcheck="false">CapCut Pro, DaVinci Resolve</div></div>
         <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
       </div>
       <button class="add-eq-btn" onclick="addEq()">＋ Adicionar equipamento</button>
     </div>
-  </section><section class="contact-sec ss reveal vis" id="sec-contact">
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-sec ss reveal" id="sec-contact">
     <div>
       <h2 class="contact-h2">
         <span data-e="ch1" contenteditable="false" spellcheck="false">Vamos fazer</span><br>
@@ -741,11 +800,14 @@ body.editing .add-folder-btn{display:flex;}
         </a>
       </div>
     </div>
-  </section><footer>
+  </section>
+
+  <footer>
     <div class="footer-logo"><em>Jhulia.</em>Serpa</div>
     <div class="footer-copy" data-e="fc" contenteditable="false" spellcheck="false">© 2026 — Feito com intenção</div>
   </footer>
-</div>
+
+</div><!-- fim #page-home -->
 
 <!-- ══════════ PORTFOLIO ══════════ -->
 <div class="page" id="page-port">
@@ -766,7 +828,7 @@ body.editing .add-folder-btn{display:flex;}
   <div class="proj-area">
     <div class="cat-sec active" id="cat-video">
       <div class="proj-grid" id="grid-video">
-        <div class="proj-card" data-title="BYD" data-type="Vídeo" data-desc=""><video src="blob:null/f85f12a1-7963-447b-9979-07f70d89b279" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">BYD</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_1180" data-type="Vídeo" data-desc=""><video src="blob:null/c00d1f1b-7986-41f9-8ae8-49dcebc0e05b" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_1180</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_9033" data-type="Vídeo" data-desc=""><video src="blob:null/00e08e6b-4ec1-4c91-b741-3ee63de86a07" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">DNJ 2025</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_7761" data-type="Vídeo" data-desc=""><video src="blob:null/c23e7ab5-17c8-451f-8692-3f21f717b882" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_7761</div></div><button class="proj-del">✕</button></div><div class="proj-card" data-title="IMG_4716" data-type="Vídeo" data-desc=""><video src="blob:null/61227a68-1ea7-4a83-9976-e0df546b2cc6" autoplay="" loop="" playsinline="" class="proj-thumb"></video><div class="proj-ov"></div><div class="proj-info"><div class="proj-type">Vídeo</div><div class="proj-title" contenteditable="true">IMG_4716</div></div><button class="proj-del">✕</button></div><div class="add-card" onclick="addProj('video')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
+        <div class="add-card" onclick="addProj('video')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
       </div>
     </div>
     <div class="cat-sec" id="cat-foto">
@@ -792,165 +854,346 @@ body.editing .add-folder-btn{display:flex;}
       </div>
     </div>
   </div>
-</div>
+</div><!-- fim #page-port -->
 
 <script>
-// CURSOR
+// ═══════════════════════════════════════════
+//  CURSOR
+// ═══════════════════════════════════════════
 const c1=document.getElementById('c1'),c2=document.getElementById('c2');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px';});
 (function lp(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;c2.style.left=rx+'px';c2.style.top=ry+'px';requestAnimationFrame(lp);})();
 
-// SCROLL NAV
+// ═══════════════════════════════════════════
+//  NAV SCROLL
+// ═══════════════════════════════════════════
 window.addEventListener('scroll',()=>{
   document.getElementById('main-nav')?.classList.toggle('scrolled',window.scrollY>60);
 });
 
-// REVEAL
-const ro=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});},{threshold:.07});
+// ═══════════════════════════════════════════
+//  REVEAL ON SCROLL
+// ═══════════════════════════════════════════
+const ro=new IntersectionObserver(en=>{
+  en.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');ro.unobserve(e.target);}});
+},{threshold:.07});
 document.querySelectorAll('.reveal').forEach(r=>ro.observe(r));
 
-// PASSWORD
-const PASS='jhulia2025';
-let unlocked=false;
-document.addEventListener('keydown',e=>{if(e.ctrlKey&&e.shiftKey&&e.key==='E'){if(!unlocked)document.getElementById('pwd-modal').classList.add('open');else toggleEd();}});
-document.getElementById('pwd-in').addEventListener('keydown',e=>{if(e.key==='Enter')checkPwd();});
+// ═══════════════════════════════════════════
+//  SENHA + EDITOR — único sistema
+// ═══════════════════════════════════════════
+const PASS = 'jhulia2025';
+let unlocked = false;
+let pOpen = false;
+
+// Atalho Ctrl+Shift+E para abrir modal de senha
+document.addEventListener('keydown', e=>{
+  if(e.ctrlKey && e.shiftKey && e.key==='E'){
+    if(!unlocked) document.getElementById('pwd-modal').classList.add('open');
+    else toggleEd();
+  }
+});
+
+document.getElementById('pwd-in').addEventListener('keydown', e=>{
+  if(e.key==='Enter') checkPwd();
+});
+
 function checkPwd(){
-  if(document.getElementById('pwd-in').value===PASS){
-    unlocked=true;
+  if(document.getElementById('pwd-in').value === PASS){
+    unlocked = true;
     document.getElementById('pwd-modal').classList.remove('open');
     document.getElementById('ed-tog').classList.add('show');
-    document.getElementById('pwd-in').value='';
+    document.getElementById('pwd-in').value = '';
+    // abre o painel automaticamente após login
+    pOpen = false;
+    toggleEd();
   } else {
-    const err=document.getElementById('pwd-err');
-    err.style.display='block';document.getElementById('pwd-in').value='';
-    setTimeout(()=>err.style.display='none',2500);
+    const err = document.getElementById('pwd-err');
+    err.style.display = 'block';
+    document.getElementById('pwd-in').value = '';
+    setTimeout(()=>err.style.display='none', 2500);
   }
 }
 
-// EDITOR
-let pOpen=false;
 function toggleEd(){
-  if(!unlocked)return;
-  pOpen=!pOpen;
-  document.getElementById('ep').classList.toggle('open',pOpen);
-  document.body.classList.toggle('editing',pOpen);
-  document.querySelectorAll('[data-e]').forEach(el=>{el.contentEditable=pOpen?'true':'false';if(pOpen)el.spellcheck=false;});
+  if(!unlocked) return;
+  pOpen = !pOpen;
+  document.getElementById('ep').classList.toggle('open', pOpen);
+  document.body.classList.toggle('editing', pOpen);
+  document.querySelectorAll('[data-e]').forEach(el=>{
+    el.contentEditable = pOpen ? 'true' : 'false';
+    if(pOpen) el.spellcheck = false;
+  });
 }
-function etab(btn,id){
+
+// ═══════════════════════════════════════════
+//  ABAS DO PAINEL
+// ═══════════════════════════════════════════
+function etab(btn, id){
   document.querySelectorAll('.ept button').forEach(b=>b.classList.remove('on'));
   document.querySelectorAll('.eps').forEach(s=>s.classList.remove('on'));
   btn.classList.add('on');
   document.getElementById('ep-'+id).classList.add('on');
 }
 
-// SYNC
-function se(k,v){document.querySelectorAll(`[data-e="${k}"]`).forEach(el=>{if(document.activeElement!==el)el.textContent=v;});}
-function updEmail(v){se('em',v);const l=document.getElementById('email-link');if(l)l.href='mailto:'+v;}
-function cv(n,v){document.documentElement.style.setProperty(n,v);}
-function snl(i,v){document.querySelectorAll('[data-nl]')[i]?.childNodes[0] && (document.querySelectorAll('[data-nl]')[i].textContent=v);}
-function tSec(btn,id){const s=document.getElementById(id);if(!s)return;btn.classList.toggle('on');s.classList.toggle('ss-hidden');}
+// ═══════════════════════════════════════════
+//  SYNC TEXTOS
+// ═══════════════════════════════════════════
+function se(k,v){
+  document.querySelectorAll(`[data-e="${k}"]`).forEach(el=>{
+    if(document.activeElement!==el) el.textContent=v;
+  });
+}
+function updEmail(v){
+  se('em',v);
+  const l=document.getElementById('email-link');
+  if(l) l.href='mailto:'+v;
+}
+function cv(n,v){ document.documentElement.style.setProperty(n,v); }
+function snl(i,v){
+  const els=document.querySelectorAll('[data-nl]');
+  if(els[i]) els[i].textContent=v;
+}
+function tSec(btn,id){
+  const s=document.getElementById(id);
+  if(!s) return;
+  btn.classList.toggle('on');
+  s.classList.toggle('ss-hidden');
+}
 
-// DRAG REORDER
-const sll=document.getElementById('sl');let drag=null;
+// ═══════════════════════════════════════════
+//  DRAG REORDER SEÇÕES
+// ═══════════════════════════════════════════
+const sll=document.getElementById('sl');
+let drag=null;
 sll.addEventListener('dragstart',e=>{drag=e.target.closest('.sl-item');drag.classList.add('dragging');});
 sll.addEventListener('dragend',()=>{drag.classList.remove('dragging');drag=null;reorder();});
-sll.addEventListener('dragover',e=>{e.preventDefault();const af=[...sll.querySelectorAll('.sl-item:not(.dragging)')].reduce((c,el)=>{const b=el.getBoundingClientRect(),o=e.clientY-b.top-b.height/2;return o<0&&o>c.offset?{offset:o,el}:c;},{offset:-Infinity}).el;af?sll.insertBefore(drag,af):sll.appendChild(drag);});
-function reorder(){[...sll.querySelectorAll('.sl-item')].forEach(item=>{const s=document.getElementById(item.dataset.t);if(s)document.querySelector('#page-home footer').before(s);});}
+sll.addEventListener('dragover',e=>{
+  e.preventDefault();
+  const af=[...sll.querySelectorAll('.sl-item:not(.dragging)')].reduce((c,el)=>{
+    const b=el.getBoundingClientRect(),o=e.clientY-b.top-b.height/2;
+    return o<0&&o>c.offset?{offset:o,el}:c;
+  },{offset:-Infinity}).el;
+  af?sll.insertBefore(drag,af):sll.appendChild(drag);
+});
+function reorder(){
+  [...sll.querySelectorAll('.sl-item')].forEach(item=>{
+    const s=document.getElementById(item.dataset.t);
+    if(s) document.querySelector('#page-home footer').before(s);
+  });
+}
 
-// PAGES
-function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
-function goHome(){showPage('page-home');}
-function goPort(cat){showPage('page-port');switchTab(cat||'video',null);}
-function switchTab(tab,btn){
+// ═══════════════════════════════════════════
+//  PÁGINAS
+// ═══════════════════════════════════════════
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goHome(){ showPage('page-home'); }
+function goPort(cat){
+  showPage('page-port');
+  switchTab(cat||'video', null);
+}
+function switchTab(tab, btn){
   document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.cat-sec').forEach(s=>s.classList.remove('active'));
-  if(btn)btn.classList.add('active');
-  else{const m={video:0,foto:1,design:2};document.querySelectorAll('.cat-tab')[m[tab]||0]?.classList.add('active');}
+  if(btn) btn.classList.add('active');
+  else {
+    const m={video:0,foto:1,design:2};
+    document.querySelectorAll('.cat-tab')[m[tab]||0]?.classList.add('active');
+  }
   document.getElementById('cat-'+tab)?.classList.add('active');
 }
 
-// REEL
+// ═══════════════════════════════════════════
+//  REEL
+// ═══════════════════════════════════════════
 let reelUrl='';
 function setReelUrl(url){
   reelUrl=url;
   const frame=document.getElementById('reel-frame');
-  if(!url){frame.className='reel-ph';frame.innerHTML='<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,146,74,.4)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Cole o link do YouTube no painel</span>';return;}
+  if(!url){
+    frame.className='reel-ph';
+    frame.innerHTML='<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(201,146,74,.4)" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg><span>Cole o link do YouTube no painel</span>';
+    return;
+  }
   let src='';
   if(url.includes('youtu')){const id=url.match(/(?:v=|youtu\.be\/)([^&\s]+)/)?.[1];if(id)src=`https://www.youtube.com/embed/${id}`;}
   else if(url.includes('vimeo')){const id=url.match(/vimeo\.com\/(\d+)/)?.[1];if(id)src=`https://player.vimeo.com/video/${id}`;}
-  if(src){frame.className='reel-frame';frame.innerHTML=`<iframe src="${src}" allow="autoplay;fullscreen" allowfullscreen></iframe><div class="reel-play-over" onclick="this.style.display='none';this.previousElementSibling.src+='?autoplay=1';"><div class="reel-play-circle"><svg viewBox="0 0 24 24" class="reel-play-circle" style="width:22px;fill:var(--gold2);margin-left:3px;"><polygon points="5 3 19 12 5 21 5 3"/></svg></div></div>`;}
-  else{frame.className='reel-frame';frame.innerHTML=`<div class="reel-ph"><span>Link inválido. Use YouTube ou Vimeo.</span></div>`;}
+  if(src){
+    frame.className='reel-frame';
+    frame.innerHTML=`<iframe src="${src}" allow="autoplay;fullscreen" allowfullscreen></iframe>`;
+  } else {
+    frame.className='reel-ph';
+    frame.innerHTML='<span>Link inválido. Use YouTube ou Vimeo.</span>';
+  }
 }
-function openReel(){if(reelUrl)window.open(reelUrl,'_blank');}
+function openReel(){ if(reelUrl) window.open(reelUrl,'_blank'); }
 
-// UPLOAD
-const fi=document.getElementById('fi');let upCB=null;
-function trig(cb){upCB=cb;fi.value='';fi.click();}
-fi.addEventListener('change',()=>{if(!fi.files[0]||!upCB)return;const f=fi.files[0];upCB(URL.createObjectURL(f),f.type,f.name);upCB=null;});
+// ═══════════════════════════════════════════
+//  UPLOAD LOCAL (arquivo do computador)
+// ═══════════════════════════════════════════
+const fi=document.getElementById('fi');
+let upCB=null;
+function trig(cb){ upCB=cb; fi.value=''; fi.click(); }
+fi.addEventListener('change',()=>{
+  if(!fi.files[0]||!upCB) return;
+  const f=fi.files[0];
+  upCB(URL.createObjectURL(f), f.type, f.name);
+  upCB=null;
+});
+
 function upZ(zone){
-  if(!pOpen)return;
+  if(!pOpen) return;
   trig((url,type)=>{
-    const isAbout=zone.id==='about-photo-zone'||zone.classList.contains('about-photo-placeholder');
+    const isAbout = zone.id==='about-photo-zone' || zone.classList.contains('about-photo-placeholder');
     zone.innerHTML='';
     const el=document.createElement(type.startsWith('video')?'video':'img');
-    if(type.startsWith('video')){el.autoplay=true;el.muted=true;el.loop=true;el.playsInline=true;}
+    if(type.startsWith('video')){ el.autoplay=true; el.muted=true; el.loop=true; el.playsInline=true; }
     el.src=url;
     if(isAbout){
-      // cutout style: no crop, full image with drop-shadow, transparent bg respected
       el.className='about-photo-cutout';
       el.style.cssText='max-width:100%;';
-      zone.style.background='transparent';zone.style.border='none';
-      const wrap=zone.closest('.about-photo-wrap')||zone.parentElement;
-      zone.appendChild(el);
+      zone.style.background='transparent';
+      zone.style.border='none';
     } else {
       el.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
-      zone.appendChild(el);
     }
+    zone.appendChild(el);
   });
 }
 
-// PROJ CARD
-function makeCard(url,type,name,label,gridId){
+// ═══════════════════════════════════════════
+//  GOOGLE DRIVE — integrado no painel
+// ═══════════════════════════════════════════
+function driveToEmbed(url){
+  // Aceita formatos: /file/d/ID/view  ou  /open?id=ID  ou  uc?id=ID
+  let id = null;
+  const m1 = url.match(/\/d\/([\w-]+)/);
+  const m2 = url.match(/[?&]id=([\w-]+)/);
+  if(m1) id = m1[1];
+  else if(m2) id = m2[1];
+  if(!id){ alert('Link do Drive inválido. Use o link de compartilhamento completo.'); return null; }
+  return `https://drive.google.com/uc?export=view&id=${id}`;
+}
+
+function addDriveImg(){
+  if(!pOpen){ alert('Ative o modo de edição primeiro.'); return; }
+  const link = document.getElementById('drive-link-in').value.trim();
+  if(!link){ alert('Cole o link do Google Drive no campo acima.'); return; }
+  const imgUrl = driveToEmbed(link);
+  if(!imgUrl) return;
+  const dest = document.getElementById('drive-dest').value;
+  const gridMap = { video:'grid-video', foto:'grid-foto', design:'grid-design' };
+  if(dest === 'strip'){
+    // adiciona na faixa de fotos — troca o primeiro slot vazio
+    const slots = document.querySelectorAll('#sec-strip .strip-item');
+    let added = false;
+    slots.forEach(slot=>{
+      if(!added && !slot.querySelector('img,video')){
+        slot.innerHTML='';
+        const img=document.createElement('img');
+        img.src=imgUrl; img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+        slot.appendChild(img); added=true;
+      }
+    });
+    if(!added){ alert('Todos os slots da faixa já têm imagem. Remova uma para substituir.'); return; }
+  } else {
+    makeCard(imgUrl, 'image/jpeg', link.split('/').pop()||'Projeto', {video:'Vídeo',foto:'Foto',design:'Design'}[dest], gridMap[dest]);
+  }
+  document.getElementById('drive-link-in').value='';
+  alert('Imagem adicionada! Lembre de baixar o site salvo para preservar.');
+}
+
+function addDriveHero(){
+  if(!pOpen){ alert('Ative o modo de edição primeiro.'); return; }
+  const link = document.getElementById('drive-hero-in').value.trim();
+  if(!link){ alert('Cole o link do Google Drive no campo acima.'); return; }
+  const imgUrl = driveToEmbed(link);
+  if(!imgUrl) return;
+  const zone = document.getElementById('hero-zone');
+  zone.innerHTML='';
+  const img=document.createElement('img');
+  img.src=imgUrl; img.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+  zone.appendChild(img);
+  document.getElementById('drive-hero-in').value='';
+}
+
+// ═══════════════════════════════════════════
+//  PROJ CARD
+// ═══════════════════════════════════════════
+function makeCard(url, type, name, label, gridId){
   const grid=document.getElementById(gridId);
   const add=grid.querySelector('.add-card');
   const card=document.createElement('div');
   card.className='proj-card';
   card.dataset.title=name.replace(/\.[^.]+$/,'')||'Projeto';
-  card.dataset.type=label;card.dataset.desc='';
+  card.dataset.type=label;
+  card.dataset.desc='';
   card.onclick=()=>{
     if(pOpen){
-      const t=card.querySelector('.proj-title');if(t)t.contentEditable='true';
-      const d=prompt('Descrição (aparece no popup):',card.dataset.desc||'');
-      if(d!==null)card.dataset.desc=d;return;
+      const d=prompt('Descrição (aparece no popup):', card.dataset.desc||'');
+      if(d!==null) card.dataset.desc=d;
+      return;
     }
     openPopup(card,[...grid.querySelectorAll('.proj-card')]);
   };
-  if(type.startsWith('video')){const v=document.createElement('video');v.src=url;v.autoplay=true;v.muted=true;v.loop=true;v.playsInline=true;v.className='proj-thumb';card.appendChild(v);}
-  else{const img=document.createElement('img');img.src=url;img.className='proj-thumb';card.appendChild(img);}
-  const ov=document.createElement('div');ov.className='proj-ov';card.appendChild(ov);
-  const info=document.createElement('div');info.className='proj-info';
-  info.innerHTML=`<div class="proj-type">${label}</div><div class="proj-title">${card.dataset.title}</div>`;
+  if(type && type.startsWith('video')){
+    const v=document.createElement('video');
+    v.src=url; v.autoplay=true; v.muted=true; v.loop=true; v.playsInline=true; v.className='proj-thumb';
+    card.appendChild(v);
+  } else {
+    const img=document.createElement('img');
+    img.src=url; img.className='proj-thumb';
+    card.appendChild(img);
+  }
+  const ov=document.createElement('div'); ov.className='proj-ov'; card.appendChild(ov);
+  const info=document.createElement('div'); info.className='proj-info';
+  info.innerHTML=`<div class="proj-type">${label}</div><div class="proj-title" contenteditable="false">${card.dataset.title}</div>`;
   card.appendChild(info);
-  const del=document.createElement('button');del.className='proj-del';del.textContent='✕';
-  del.onclick=e=>{e.stopPropagation();card.remove();};card.appendChild(del);
-  grid.insertBefore(card,add);return card;
+  const del=document.createElement('button'); del.className='proj-del'; del.textContent='✕';
+  del.onclick=e=>{ e.stopPropagation(); card.remove(); };
+  card.appendChild(del);
+  grid.insertBefore(card, add);
+  return card;
 }
-function addProj(cat){const l={video:'Vídeo',foto:'Foto',design:'Design'}[cat]||cat;trig((url,type,name)=>makeCard(url,type,name,l,'grid-'+cat));}
 
-// FOLDERS
-let curF=null;const fData={};
+function addProj(cat){
+  const l={video:'Vídeo',foto:'Foto',design:'Design'}[cat]||cat;
+  trig((url,type,name)=>makeCard(url,type,name,l,'grid-'+cat));
+}
+
+// ═══════════════════════════════════════════
+//  PASTAS DE FOTO
+// ═══════════════════════════════════════════
+let curF=null;
+const fData={};
 function newFolder(){
-  const name=prompt('Nome da pasta:','Ensaio 2024');if(!name)return;
-  const id='f'+Date.now();fData[id]={name,cards:[]};
+  const name=prompt('Nome da pasta:','Ensaio 2024');
+  if(!name) return;
+  const id='f'+Date.now();
+  fData[id]={name,cards:[]};
   const grid=document.getElementById('folder-grid');
   const add=grid.querySelector('.add-folder-btn');
-  const card=document.createElement('div');card.className='folder-card';card.dataset.fid=id;
+  const card=document.createElement('div');
+  card.className='folder-card'; card.dataset.fid=id;
   card.innerHTML=`<div class="folder-icon-el">📁</div><div class="folder-name-el">${name}</div><div class="folder-count-el">0 fotos</div><button class="folder-del" onclick="delFolder(event,'${id}')">✕</button>`;
-  card.addEventListener('click',e=>{if(e.target.classList.contains('folder-del'))return;if(pOpen){const fn=card.querySelector('.folder-name-el');fn.contentEditable='true';fn.focus();return;}openFolder(id,card);});
+  card.addEventListener('click',e=>{
+    if(e.target.classList.contains('folder-del')) return;
+    if(pOpen){ const fn=card.querySelector('.folder-name-el'); fn.contentEditable='true'; fn.focus(); return; }
+    openFolder(id,card);
+  });
   grid.insertBefore(card,add);
 }
-function delFolder(e,id){e.stopPropagation();if(!pOpen)return;document.querySelector(`[data-fid="${id}"]`)?.remove();delete fData[id];}
+function delFolder(e,id){
+  e.stopPropagation();
+  if(!pOpen) return;
+  document.querySelector(`[data-fid="${id}"]`)?.remove();
+  delete fData[id];
+}
 function openFolder(id,cardEl){
   curF={id,cardEl};
   document.getElementById('folder-cur').textContent=cardEl.querySelector('.folder-name-el').textContent;
@@ -964,39 +1207,44 @@ function closeFolder(){
   if(curF){
     const inner=document.getElementById('grid-foto');
     const cards=[...inner.querySelectorAll('.proj-card')];
-    fData[curF.id]=fData[curF.id]||{};fData[curF.id].cards=cards;cards.forEach(c=>c.remove());
+    fData[curF.id]=fData[curF.id]||{};
+    fData[curF.id].cards=cards;
+    cards.forEach(c=>c.remove());
     const cnt=curF.cardEl.querySelector('.folder-count-el');
-    if(cnt)cnt.textContent=cards.length+' foto'+(cards.length!==1?'s':'');
+    if(cnt) cnt.textContent=cards.length+' foto'+(cards.length!==1?'s':'');
   }
   document.getElementById('fv-folders').style.display='';
-  document.getElementById('fv-inner').classList.remove('active');curF=null;
+  document.getElementById('fv-inner').classList.remove('active');
+  curF=null;
 }
-function addToFolder(){trig((url,type,name)=>makeCard(url,type,name,'Foto','grid-foto'));}
+function addToFolder(){
+  trig((url,type,name)=>makeCard(url,type,name,'Foto','grid-foto'));
+}
 
-// EQUIP PHOTO UPLOAD
+// ═══════════════════════════════════════════
+//  EQUIPAMENTOS
+// ═══════════════════════════════════════════
 function upEqPhoto(photoZone){
   if(!pOpen) return;
   trig((url,type)=>{
     photoZone.innerHTML='';
     const el=document.createElement(type.startsWith('video')?'video':'img');
-    if(type.startsWith('video')){el.autoplay=true;el.muted=true;el.loop=true;el.playsInline=true;}
-    el.src=url;el.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
+    if(type.startsWith('video')){ el.autoplay=true; el.muted=true; el.loop=true; el.playsInline=true; }
+    el.src=url; el.style.cssText='width:100%;height:100%;object-fit:cover;display:block;';
     photoZone.appendChild(el);
   });
 }
-
-// EQUIP ADD
 function addEq(){
-  const name=prompt('Nome do equipamento:','');if(name===null)return;
+  const name=prompt('Nome do equipamento:',''); if(name===null) return;
   const desc=prompt('Descrição (modelo, specs):','');
   const grid=document.getElementById('equip-grid');
   const add=grid.querySelector('.add-eq-btn');
-  const card=document.createElement('div');card.className='eq-card';
+  const card=document.createElement('div'); card.className='eq-card';
   card.innerHTML=`
     <div class="eq-photo" onclick="upEqPhoto(this)">
       <div class="eq-photo-ph">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:24px;opacity:.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-        <span>Adicionar foto</span>
+        <span style="font-size:.5rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;opacity:.7;">Adicionar foto</span>
       </div>
     </div>
     <div class="eq-body"><div class="eq-name">${name}</div><div class="eq-desc">${desc||''}</div></div>
@@ -1004,482 +1252,115 @@ function addEq(){
   grid.insertBefore(card,add);
 }
 
-// SERVICES
+// ═══════════════════════════════════════════
+//  SERVIÇOS
+// ═══════════════════════════════════════════
 function addSrv(){
-  const name=prompt('Nome do serviço:','');if(name===null)return;
-  const desc=prompt('Descrição:','');const icon=prompt('Emoji:','✨');
+  const name=prompt('Nome do serviço:',''); if(name===null) return;
+  const desc=prompt('Descrição:','');
+  const icon=prompt('Emoji:','✨');
   const grid=document.getElementById('srv-grid');
   const add=grid.querySelector('.add-srv-btn');
-  const card=document.createElement('div');card.className='srv-card';
+  const card=document.createElement('div'); card.className='srv-card';
   card.innerHTML=`<div class="srv-icon">${icon||'✨'}</div><div class="srv-name">${name}</div><div class="srv-desc">${desc||''}</div><button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>`;
   grid.insertBefore(card,add);
 }
 
-// CERTS
-let certs=[],cIdx=0;
+// ═══════════════════════════════════════════
+//  CERTIFICADOS
+// ═══════════════════════════════════════════
+let certs=[]; let cIdx=0;
 const fcert=document.getElementById('fi-cert');
-fcert.addEventListener('change',()=>{if(!fcert.files.length)return;[...fcert.files].forEach(f=>{certs.push({url:URL.createObjectURL(f),name:f.name.replace(/\.[^.]+$/,''),type:f.type});});cIdx=certs.length-1;showCert(cIdx);document.getElementById('cert-popup').classList.add('open');});
-function openCerts(){if(pOpen){fcert.value='';fcert.click();return;}if(!certs.length){alert('Nenhum certificado adicionado. Ative a edição e clique em "Ver Certificados".');return;}cIdx=0;showCert(0);document.getElementById('cert-popup').classList.add('open');}
-function showCert(i){const c=certs[i];document.getElementById('cert-title').textContent=c.name;const m=document.getElementById('cert-media');m.innerHTML='';if(c.type==='application/pdf'){m.innerHTML=`<iframe src="${c.url}" style="width:100%;height:55vh;border:none;"></iframe>`;}else{const img=document.createElement('img');img.src=c.url;img.style.cssText='max-width:100%;max-height:55vh;object-fit:contain;';m.appendChild(img);}}
-document.getElementById('cert-prev').onclick=()=>{if(!certs.length)return;cIdx=(cIdx-1+certs.length)%certs.length;showCert(cIdx);};
-document.getElementById('cert-next').onclick=()=>{if(!certs.length)return;cIdx=(cIdx+1)%certs.length;showCert(cIdx);};
-document.getElementById('cert-popup').addEventListener('click',e=>{if(e.target===document.getElementById('cert-popup'))document.getElementById('cert-popup').classList.remove('open');});
+fcert.addEventListener('change',()=>{
+  if(!fcert.files.length) return;
+  [...fcert.files].forEach(f=>{
+    certs.push({url:URL.createObjectURL(f), name:f.name.replace(/\.[^.]+$/,''), type:f.type});
+  });
+  cIdx=certs.length-1;
+  showCert(cIdx);
+  document.getElementById('cert-popup').classList.add('open');
+});
+function openCerts(){
+  if(pOpen){ fcert.value=''; fcert.click(); return; }
+  if(!certs.length){ alert('Nenhum certificado adicionado. Ative a edição e clique em "Ver Certificados".'); return; }
+  cIdx=0; showCert(0);
+  document.getElementById('cert-popup').classList.add('open');
+}
+function showCert(i){
+  const c=certs[i];
+  document.getElementById('cert-title').textContent=c.name;
+  const m=document.getElementById('cert-media');
+  m.innerHTML='';
+  if(c.type==='application/pdf'){
+    m.innerHTML=`<iframe src="${c.url}" style="width:100%;height:55vh;border:none;"></iframe>`;
+  } else {
+    const img=document.createElement('img');
+    img.src=c.url; img.style.cssText='max-width:100%;max-height:55vh;object-fit:contain;';
+    m.appendChild(img);
+  }
+}
+document.getElementById('cert-prev').onclick=()=>{ if(!certs.length) return; cIdx=(cIdx-1+certs.length)%certs.length; showCert(cIdx); };
+document.getElementById('cert-next').onclick=()=>{ if(!certs.length) return; cIdx=(cIdx+1)%certs.length; showCert(cIdx); };
+document.getElementById('cert-popup').addEventListener('click',e=>{
+  if(e.target===document.getElementById('cert-popup')) document.getElementById('cert-popup').classList.remove('open');
+});
 
-// MAIN POPUP
-let curCards=[],curIdx=0;
-function openPopup(card,cards){curCards=cards;curIdx=cards.indexOf(card);renderPopup(curIdx);document.getElementById('main-popup').classList.add('open');}
+// ═══════════════════════════════════════════
+//  POPUP PRINCIPAL
+// ═══════════════════════════════════════════
+let curCards=[]; let curIdx=0;
+function openPopup(card,cards){ curCards=cards; curIdx=cards.indexOf(card); renderPopup(curIdx); document.getElementById('main-popup').classList.add('open'); }
 function renderPopup(i){
   const c=curCards[i];
   document.getElementById('popup-title').textContent=c.querySelector('.proj-title')?.textContent||c.dataset.title||'Projeto';
   document.getElementById('popup-type').textContent=c.dataset.type||'';
   document.getElementById('popup-desc').textContent=c.dataset.desc||'';
-  const pm=document.getElementById('popup-media');pm.innerHTML='';
-  const vid=c.querySelector('video.proj-thumb');const img=c.querySelector('img.proj-thumb');
-  if(vid){const v=document.createElement('video');v.src=vid.src;v.controls=true;v.autoplay=true;v.style.cssText='width:100%;max-height:56vh;';pm.appendChild(v);}
-  else if(img){const im=document.createElement('img');im.src=img.src;im.style.cssText='width:100%;max-height:56vh;object-fit:contain;';pm.appendChild(im);}
+  const pm=document.getElementById('popup-media'); pm.innerHTML='';
+  const vid=c.querySelector('video.proj-thumb');
+  const img=c.querySelector('img.proj-thumb');
+  if(vid){ const v=document.createElement('video'); v.src=vid.src; v.controls=true; v.autoplay=true; v.style.cssText='width:100%;max-height:56vh;'; pm.appendChild(v); }
+  else if(img){ const im=document.createElement('img'); im.src=img.src; im.style.cssText='width:100%;max-height:56vh;object-fit:contain;'; pm.appendChild(im); }
   else pm.innerHTML='<div style="padding:3rem;color:var(--muted);font-size:.75rem;text-align:center;">Sem mídia.</div>';
 }
-document.getElementById('popup-prev').onclick=()=>{curIdx=(curIdx-1+curCards.length)%curCards.length;renderPopup(curIdx);};
-document.getElementById('popup-next').onclick=()=>{curIdx=(curIdx+1)%curCards.length;renderPopup(curIdx);};
-document.getElementById('main-popup').addEventListener('click',e=>{if(e.target===document.getElementById('main-popup'))document.getElementById('main-popup').classList.remove('open');});
+document.getElementById('popup-prev').onclick=()=>{ curIdx=(curIdx-1+curCards.length)%curCards.length; renderPopup(curIdx); };
+document.getElementById('popup-next').onclick=()=>{ curIdx=(curIdx+1)%curCards.length; renderPopup(curIdx); };
+document.getElementById('main-popup').addEventListener('click',e=>{
+  if(e.target===document.getElementById('main-popup')) document.getElementById('main-popup').classList.remove('open');
+});
 
-// TOGGLE ABOUT PHOTO SIDE
+// ═══════════════════════════════════════════
+//  FOTO ABOUT — LADO
+// ═══════════════════════════════════════════
 function toggleAboutSide(){
-  const sec = document.getElementById('sec-about');
-  const isRight = sec.classList.toggle('photo-right');
-  document.querySelector('.about-side-btn').textContent = isRight ? '⇄ Mover para esquerda' : '⇄ Mover foto de lado';
+  const sec=document.getElementById('sec-about');
+  const isRight=sec.classList.toggle('photo-right');
+  document.querySelector('.about-side-btn').textContent=isRight?'⇄ Mover para esquerda':'⇄ Mover foto de lado';
 }
 
-// SAVE
+// ═══════════════════════════════════════════
+//  SALVAR SITE
+// ═══════════════════════════════════════════
 function saveSite(){
-  const tog=document.getElementById('ed-tog'),panel=document.getElementById('ep'),pwd=document.getElementById('pwd-modal');
-  tog.style.display='none';panel.style.display='none';pwd.style.display='none';
+  const tog=document.getElementById('ed-tog');
+  const panel=document.getElementById('ep');
+  const pwd=document.getElementById('pwd-modal');
+  // esconde elementos de edição
+  tog.style.display='none'; panel.style.display='none'; pwd.style.display='none';
   document.body.classList.remove('editing');
   document.querySelectorAll('[data-e]').forEach(el=>el.contentEditable='false');
   const html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
   const blob=new Blob([html],{type:'text/html'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jhulia-portfolio.html';a.click();
-  setTimeout(()=>{tog.style.display='';panel.style.display='';if(pOpen){document.body.classList.add('editing');document.querySelectorAll('[data-e]').forEach(el=>el.contentEditable='true');}},800);
-}
-</script>
-
-<script>
-/* ===== GOOGLE DRIVE IMAGE SYSTEM ===== */
-
-const DRIVE_EDIT_PASSWORD = "jhulia2025";
-let DRIVE_EDIT_MODE = false;
-
-/* abrir modo edição com #edit */
-if (window.location.hash === "#edit") {
-  const pass = prompt("Senha de edição:");
-  if (pass === DRIVE_EDIT_PASSWORD) {
-    DRIVE_EDIT_MODE = true;
-    alert("Modo edição ativado");
-  }
-}
-
-/* converter link do Google Drive */
-function driveToDirect(url){
-  if(url.includes("drive.google.com")){
-    const match = url.match(/\/d\/(.*?)\//);
-    if(match){
-      return "https://drive.google.com/uc?export=view&id=" + match[1];
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='jhulia-portfolio.html'; a.click();
+  // restaura após download
+  setTimeout(()=>{
+    tog.style.display='';
+    panel.style.display='';
+    if(pOpen){
+      document.body.classList.add('editing');
+      document.querySelectorAll('[data-e]').forEach(el=>el.contentEditable='true');
     }
-  }
-  return url;
+  }, 800);
 }
-
-/* adicionar imagem do drive */
-function addDriveImage(){
-
-  if(!DRIVE_EDIT_MODE){
-    alert("Abra o modo edição usando #edit");
-    return;
-  }
-
-  const link = prompt("Cole o link da imagem do Google Drive");
-
-  if(!link) return;
-
-  const imgUrl = driveToDirect(link);
-
-  const grid =
-  document.querySelector(".grid-foto") ||
-  document.querySelector("#grid-foto") ||
-  document.body;
-
-  const card = document.createElement("div");
-  card.className="proj-card";
-
-  const img=document.createElement("img");
-  img.src=imgUrl;
-  img.style.width="100%";
-
-  card.appendChild(img);
-  grid.appendChild(card);
-
-  saveDrivePortfolio();
-}
-
-/* salvar imagens */
-function saveDrivePortfolio(){
-
-  const imgs = [...document.querySelectorAll(".proj-card img")]
-  .map(i => i.src);
-
-  localStorage.setItem(
-    "drivePortfolioImages",
-    JSON.stringify(imgs)
-  );
-
-}
-
-/* carregar imagens */
-function loadDrivePortfolio(){
-
-  const data = localStorage.getItem("drivePortfolioImages");
-
-  if(!data) return;
-
-  const imgs = JSON.parse(data);
-
-  const grid =
-  document.querySelector(".grid-foto") ||
-  document.querySelector("#grid-foto") ||
-  document.body;
-
-  imgs.forEach(src => {
-
-    const card = document.createElement("div");
-    card.className="proj-card";
-
-    const img=document.createElement("img");
-    img.src=src;
-    img.style.width="100%";
-
-    card.appendChild(img);
-    grid.appendChild(card);
-
-  });
-
-}
-
-window.addEventListener("load",loadDrivePortfolio);
-
 </script>
-
-  <script>
-
-/* ===== SISTEMA DE ACESSO SECRETO ===== */
-
-const SECRET_WORD = "serpaedit";
-const EDIT_PASSWORD = "jhulia2025";
-
-let typed = "";
-let editMode = false;
-
-document.addEventListener("keydown", function(e){
-
-  typed += e.key.toLowerCase();
-
-  if(typed.length > SECRET_WORD.length){
-    typed = typed.slice(-SECRET_WORD.length);
-  }
-
-  if(typed === SECRET_WORD){
-
-    const pass = prompt("Senha de edição:");
-
-    if(pass === EDIT_PASSWORD){
-
-      editMode = true;
-
-      alert("Modo de edição ativado");
-
-    }else{
-
-      alert("Senha incorreta");
-
-    }
-
-    typed = "";
-
-  }
-
-});
-
-/* ===== FUNÇÃO PARA ADICIONAR IMAGEM DO DRIVE ===== */
-
-function driveToDirect(url){
-
-  if(url.includes("drive.google.com")){
-
-    const match = url.match(/\/d\/(.*?)\//);
-
-    if(match){
-
-      return "https://drive.google.com/uc?export=view&id=" + match[1];
-
-    }
-
-  }
-
-  return url;
-
-}
-
-function addDriveImage(){
-
-  if(!editMode){
-
-    alert("Modo edição não ativado");
-
-    return;
-
-  }
-
-  const link = prompt("Cole o link da imagem do Google Drive:");
-
-  if(!link) return;
-
-  const imgUrl = driveToDirect(link);
-
-  const grid =
-  document.querySelector(".grid-foto") ||
-  document.querySelector("#grid-foto") ||
-  document.body;
-
-  const card = document.createElement("div");
-
-  card.className = "proj-card";
-
-  const img = document.createElement("img");
-
-  img.src = imgUrl;
-
-  img.style.width = "100%";
-
-  card.appendChild(img);
-
-  grid.appendChild(card);
-
-  savePortfolio();
-
-}
-
-/* ===== SALVAR AUTOMATICAMENTE ===== */
-
-function savePortfolio(){
-
-  const imgs = [...document.querySelectorAll(".proj-card img")].map(i => i.src);
-
-  localStorage.setItem("portfolioImages", JSON.stringify(imgs));
-
-}
-
-/* ===== CARREGAR IMAGENS SALVAS ===== */
-
-function loadPortfolio(){
-
-  const data = localStorage.getItem("portfolioImages");
-
-  if(!data) return;
-
-  const imgs = JSON.parse(data);
-
-  const grid =
-  document.querySelector(".grid-foto") ||
-  document.querySelector("#grid-foto") ||
-  document.body;
-
-  imgs.forEach(src => {
-
-    const card = document.createElement("div");
-
-    card.className = "proj-card";
-
-    const img = document.createElement("img");
-
-    img.src = src;
-
-    img.style.width = "100%";
-
-    card.appendChild(img);
-
-    grid.appendChild(card);
-
-  });
-
-}
-
-window.addEventListener("load", loadPortfolio);
-
-</script>
-  <!-- PAINEL DE EDIÇÃO OCULTO -->
-
-<div id="editPanel" style="
-position:fixed;
-bottom:20px;
-right:20px;
-background:#111;
-color:white;
-padding:20px;
-border-radius:10px;
-display:none;
-z-index:9999;
-font-family:sans-serif;
-width:260px;
-">
-
-<h3>Painel de edição</h3>
-
-<input id="driveLinkInput" placeholder="Link da imagem do Drive"
-style="width:100%;margin-bottom:10px;padding:6px;">
-
-<button onclick="addDriveImageFromPanel()"
-style="width:100%;padding:8px;background:#444;color:white;border:none;">
-Adicionar imagem
-</button>
-
-</div>
-
-<script>
-
-const SECRET_WORD = "serpaedit";
-const EDIT_PASSWORD = "jhulia2025";
-
-let typed = "";
-let editMode = false;
-
-document.addEventListener("keydown", function(e){
-
-typed += e.key.toLowerCase();
-
-if(typed.length > SECRET_WORD.length){
-typed = typed.slice(-SECRET_WORD.length);
-}
-
-if(typed === SECRET_WORD){
-
-const pass = prompt("Senha de edição:");
-
-if(pass === EDIT_PASSWORD){
-
-editMode = true;
-
-document.getElementById("editPanel").style.display="block";
-
-alert("Modo edição ativado");
-
-}
-
-typed="";
-
-}
-
-});
-
-/* converter link do drive */
-
-function driveToDirect(url){
-
-if(url.includes("drive.google.com")){
-
-const match = url.match(/\/d\/(.*?)\//);
-
-if(match){
-return "https://drive.google.com/uc?export=view&id=" + match[1];
-}
-
-}
-
-return url;
-
-}
-
-/* adicionar imagem */
-
-function addDriveImageFromPanel(){
-
-if(!editMode) return;
-
-const link = document.getElementById("driveLinkInput").value;
-
-if(!link) return;
-
-const imgUrl = driveToDirect(link);
-
-const grid =
-document.querySelector(".grid-foto") ||
-document.querySelector("#grid-foto") ||
-document.body;
-
-const card = document.createElement("div");
-
-card.className="proj-card";
-
-const img=document.createElement("img");
-
-img.src=imgUrl;
-
-img.style.width="100%";
-
-card.appendChild(img);
-
-grid.appendChild(card);
-
-savePortfolio();
-
-document.getElementById("driveLinkInput").value="";
-
-}
-
-/* salvar */
-
-function savePortfolio(){
-
-const imgs=[...document.querySelectorAll(".proj-card img")].map(i=>i.src);
-
-localStorage.setItem("portfolioImages",JSON.stringify(imgs));
-
-}
-
-/* carregar */
-
-function loadPortfolio(){
-
-const data=localStorage.getItem("portfolioImages");
-
-if(!data) return;
-
-const imgs=JSON.parse(data);
-
-const grid =
-document.querySelector(".grid-foto") ||
-document.querySelector("#grid-foto") ||
-document.body;
-
-imgs.forEach(src=>{
-
-const card=document.createElement("div");
-
-card.className="proj-card";
-
-const img=document.createElement("img");
-
-img.src=src;
-
-img.style.width="100%";
-
-card.appendChild(img);
-
-grid.appendChild(card);
-
-});
-
-}
-
-window.addEventListener("load",loadPortfolio);
-
-</script>
-</body></html>
+</body>
+</html>
