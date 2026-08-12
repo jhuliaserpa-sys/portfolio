@@ -654,6 +654,79 @@ Atuei na captação e operação, com uso de <em>tilt</em> e <em>zoom out</em>, 
     <div class="strip-item upz" onclick="upZ(this)">
       <div class="strip-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="width:20px;opacity:.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Foto 3</span></div>
     </div>
+    <!-- GALERIA DE VÍDEOS -->
+<section class="videos-gallery-sec ss reveal" id="sec-videos">
+
+<div class="sec-header">
+<div class="sec-eyebrow">Mais Trabalhos</div>
+<h2 class="sec-h2">Galeria de <em>Vídeos</em></h2>
+</div>
+
+<div class="videos-grid">
+
+<!-- Video 1 -->
+<div class="video-card">
+<img src="https://img.youtube.com/vi/mbBOHXwVgxw/sddefault.jpg" alt="BYD Metalinguagem">
+<div class="video-overlay">
+<div class="video-content">
+<h3>BYD - METALINGUAGEM</h3>
+<p>Trabalho acadêmico com foco na produção de uma propaganda utilizando metalinguagem. Atuei na edição do vídeo.</p>
+<span class="video-year">2025</span>
+</div>
+</div>
+</div>
+
+<!-- Video 2 -->
+<div class="video-card">
+<img src="https://img.youtube.com/vi/b7hrqN7wbus/sddefault.jpg" alt="Fashion Film">
+<div class="video-overlay">
+<div class="video-content">
+<h3>FASHION FILM</h3>
+<p>Trabalho acadêmico voltado à criação de vídeos em formato vertical. Atuei na direção, atuação e edição.</p>
+<span class="video-year">2025</span>
+</div>
+</div>
+</div>
+
+<!-- Video 3 -->
+<div class="video-card">
+<img src="https://img.youtube.com/vi/yssdOd9E6Ao/sddefault.jpg" alt="Making of">
+<div class="video-overlay">
+<div class="video-content">
+<h3>MAKING OF</h3>
+<p>Trabalho acadêmico de produção baseado na releitura de uma fotografia conhecida. Atuei na captação das imagens de bastidores.</p>
+<span class="video-year">2025</span>
+</div>
+</div>
+</div>
+
+<!-- Video 4 -->
+<div class="video-card">
+<img src="https://img.youtube.com/vi/3Iv2_kA4Vzo/sddefault.jpg" alt="O assassino das rosas brancas">
+<div class="video-overlay">
+<div class="video-content">
+<h3>O ASSASSINO DAS ROSAS BRANCAS</h3>
+<p>Trabalho acadêmico de produção de um curta-metragem para trabalhar com preparação de elenco. Atuei como assistente de som.</p>
+<span class="video-year">2025</span>
+</div>
+</div>
+</div>
+
+<!-- Video 5 -->
+<div class="video-card">
+<img src="https://img.youtube.com/vi/qpreZ_gM4g4/sddefault.jpg" alt="Evento - DNJ">
+<div class="video-overlay">
+<div class="video-content">
+<h3>EVENTO - DNJ</h3>
+<p>Vídeo final do evento DNJ (Dia Nacional da Juventude). Atuei na captação de imagens e fui responsável pela edição.</p>
+<span class="video-year">2025</span>
+</div>
+</div>
+</div>
+
+</div>
+
+</section>
   </div>
 
   <!-- ABOUT -->
@@ -702,7 +775,41 @@ Atuei na captação e operação, com uso de <em>tilt</em> e <em>zoom out</em>, 
       <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
     </div>
   </div>
+/* GALERIA DE VÍDEOS */
 
+.videos-gallery-sec{background:var(--dark);padding:12vh 8vw;}
+
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+
+.video-card{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:1rem;cursor:pointer;}
+
+.video-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+
+.video-overlay{position:absolute;inset:0;background:rgba(18,11,8,.85);opacity:0;transition:opacity .4s ease;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+
+.video-card:hover img{transform:scale(1.05);}
+
+.video-card:hover .video-overlay{opacity:1;}
+
+.video-content{text-align:center;padding:2rem;color:var(--cream);}
+
+.video-content h3{font-family:var(--fd);font-size:1.2rem;font-weight:600;margin-bottom:.8rem;color:var(--gold2);letter-spacing:.1em;}
+
+.video-content p{font-size:.65rem;font-weight:300;line-height:1.6;color:rgba(245,237,224,.8);margin-bottom:1rem;}
+
+.video-year{font-size:.54rem;color:rgba(201,146,74,.6);letter-spacing:.1em;text-transform:uppercase;}
+
+@media(max-width:900px){
+
+.videos-grid{grid-template-columns:repeat(2,1fr);gap:1rem;}
+
+}
+
+@media(max-width:600px){
+
+.videos-grid{grid-template-columns:1fr;}
+
+}
   <!-- PORTFOLIO CTA -->
   <section class="pcta-sec ss reveal" id="sec-pcta">
     <div class="pcta-bg-text">WORKS</div>
