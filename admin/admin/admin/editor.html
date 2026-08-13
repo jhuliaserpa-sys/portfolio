@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor - Portfólio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0b08;
+      color: #f5ede0;
+      padding: 2rem;
+    }
+    
+    .container { max-width: 800px; margin: 0 auto; }
+    
+    header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid rgba(201, 146, 74, 0.2);
+      padding-bottom: 1.5rem;
+    }
+    
+    h1 { font-size: 2rem; color: #c9924a; margin-bottom: 0.5rem; }
+    
+    .token-section {
+      background: rgba(201, 146, 74, 0.1);
+      padding: 1.5rem;
+      border-radius: 0.8rem;
+      margin-bottom: 2rem;
+      border-left: 3px solid #c9924a;
+    }
+    
+    .token-section label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+    
+    .token-section input {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid #c9924a;
+      color: #f5ede0;
+      border-radius: 0.4rem;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section {
+      background: rgba(18, 11, 8, 0.5);
+      padding: 2rem;
+      border-radius: 0.8rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(201, 146, 74, 0.1);
+    }
+    
+    h2 { font-size: 1.5rem; color: #c9924a; margin-bottom: 1.5rem; }
+    
+    .video-card {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 0.6rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(201, 146, 74, 0.1);
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(201, 146, 74, 0.2);
+      color: #f5ede0;
+      border-radius: 0.4rem;
+      font-family: inherit;
+      font-size: 0.9rem;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #c9924a;
+      background: rgba(0, 0, 0, 0.7);
+    }
+    
+    textarea { resize: vertical; min-height: 80px; }
+    
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    button {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #c9924a;
+      color: #0f0b08;
+    }
+    
+    .btn-primary:hover { background: #d4a860; }
+    
+    .btn-secondary {
+      background: rgba(201, 146, 74, 0.2);
+      color: #f5ede0;
+      border: 1px solid #c9924a;
+    }
+    
+    .btn-secondary:hover { background: rgba(201, 146, 74, 0.3); }
+    
+    .btn-danger {
+      background: #8b5a5a;
+      color: #f5ede0;
+      margin-left: auto;
+    }
+    
+    .btn-danger:hover { background: #a66868; }
+    
+    .message {
+      padding: 1rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    
+    .message.success {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4caf50;
+      border: 1px solid #4caf50;
+      display: block;
+    }
+    
+    .message.error {
+      background: rgba(244, 67, 54, 0.2);
+      color: #f44336;
+      border: 1px solid #f44336;
+      display: block;
+    }
+    
+    .videos-list { max-height: 400px; overflow-y: auto; }
+    
+    .video-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1rem;
+      margin-bottom: 0.8rem;
+      border-radius: 0.4rem;
+      border: 1px solid rgba(201, 146, 74, 0.1);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .video-item:hover { background: rgba(201, 146, 74, 0.1); }
+    
+    .video-item h4 { color: #c9924a; margin-bottom: 0.3rem; }
+    
+    .video-item p { font-size: 0.8rem; color: rgba(245, 237, 224, 0.7); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📹 Editor do Portfólio</h1>
+      <p style="color: rgba(245, 237, 224, 0.7);">Adicione e edite seus vídeos</p>
+    </header>
+    
+    <div class="token-section">
+      <label for="token">Token do GitHub:</label>
+      <input type="password" id="token" placeholder="Cole seu token aqui (será salvo localmente)">
+      <button class="btn-primary" onclick="saveToken()">Salvar Token</button>
+      <p style="font-size: 0.8rem; margin-top: 0.5rem; color: rgba(245, 237, 224, 0.6);">⚠️ O token é salvo apenas no seu navegador, não é enviado a servidores</p>
+    </div>
+    
+    <div id="message" class="message"></div>
+    
+    <div class="section">
+      <h2>Adicionar Novo Vídeo</h2>
+      <div class="video-card">
+        <div class="form-group">
+          <label for="titulo">Título</label>
+          <input type="text" id="titulo" placeholder="Ex: BYD - Metalinguagem">
+        </div>
+        
+        <div class="form-group">
+          <label for="youtubeId">ID do YouTube</label>
+          <input type="text" id="youtubeId" placeholder="Ex: mbBOHXwVgxw">
+          <p style="font-size: 0.8rem; color: rgba(245, 237, 224, 0.6); margin-top: 0.3rem;">Copie só o ID da URL: youtube.com/watch?v=<strong>AQUI_O_ID</strong></p>
+        </div>
+        
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" placeholder="Descreva seu trabalho..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="ano">Ano</label>
+          <input type="number" id="ano" placeholder="2025" min="2000" max="2100">
+        </div>
+        
+        <div class="button-group">
+          <button class="btn-primary" onclick="addVideo()">Adicionar Vídeo</button>
+          <button class="btn-secondary" onclick="clearForm()">Limpar</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h2>Vídeos Salvos</h2>
+      <div class="videos-list" id="videosList">
+        <p style="color: rgba(245, 237, 224, 0.5);">Carregando vídeos...</p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    const REPO = 'jhuliaserpa-sys/portfolio';
+    const BRANCH = 'main';
+    const FILE_PATH = '_data/videos.json';
+    
+    function saveToken() {
+      const token = document.getElementById('token').value;
+      if (!token) {
+        showMessage('Digite um token', 'error');
+        return;
+      }
+      localStorage.setItem('gh_token', token);
+      showMessage('Token salvo! Agora você pode adicionar vídeos', 'success');
+    }
+    
+    function getToken() {
+      return localStorage.getItem('gh_token');
+    }
+    
+    async function loadVideos() {
+      try {
+        const token = getToken();
+        if (!token) {
+          document.getElementById('videosList').innerHTML = '<p style="color: #f44336;">⚠️ Digite seu token primeiro</p>';
+          return;
+        }
+        
+        const response = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+          headers: { 'Authorization': `token ${token}` }
+        });
+        
+        if (!response.ok) {
+          document.getElementById('videosList').innerHTML = '<p style="color: rgba(245, 237, 224, 0.7);">Nenhum vídeo ainda. Adicione um!</p>';
+          return;
+        }
+        
+        const data = await response.json();
+        const content = JSON.parse(atob(data.content));
+        
+        displayVideos(content, data.sha);
+      } catch (e) {
+        console.error(e);
+        document.getElementById('videosList').innerHTML = '<p style="color: #f44336;">Erro ao carregar vídeos</p>';
+      }
+    }
+    
+    function displayVideos(videos, sha) {
+      const html = videos.map((v, i) => `
+        <div class="video-item" onclick="editVideo(${i})">
+          <h4>${v.titulo}</h4>
+          <p><strong>ID:</strong> ${v.youtubeId}</p>
+          <p>${v.descricao.substring(0, 50)}...</p>
+          <p style="color: rgba(245, 237, 224, 0.5);">${v.ano}</p>
+        </div>
+      `).join('');
+      
+      document.getElementById('videosList').innerHTML = html || '<p>Nenhum vídeo</p>';
+    }
+    
+    async function addVideo() {
+      const token = getToken();
+      if (!token) {
+        showMessage('Salve seu token primeiro', 'error');
+        return;
+      }
+      
+      const titulo = document.getElementById('titulo').value;
+      const youtubeId = document.getElementById('youtubeId').value;
+      const descricao = document.getElementById('descricao').value;
+      const ano = document.getElementById('ano').value;
+      
+      if (!titulo || !youtubeId || !descricao || !ano) {
+        showMessage('Preencha todos os campos', 'error');
+        return;
+      }
+      
+      try {
+        let videos = [];
+        let sha = null;
+        
+        // Tenta carregar vídeos existentes
+        try {
+          const response = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+            headers: { 'Authorization': `token ${token}` }
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            videos = JSON.parse(atob(data.content));
+            sha = data.sha;
+          }
+        } catch (e) {}
+        
+        // Adiciona novo vídeo
+        videos.push({ titulo, youtubeId, descricao, ano: parseInt(ano) });
+        
+        // Salva no GitHub
+        const updateResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `token ${token}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `Adicionar vídeo: ${titulo}`,
+            content: btoa(JSON.stringify(videos, null, 2)),
+            branch: BRANCH,
+            sha: sha
+          })
+        });
+        
+        if (updateResponse.ok) {
+          showMessage('✅ Vídeo adicionado com sucesso!', 'success');
+          clearForm();
+          loadVideos();
+        } else {
+          showMessage('Erro ao salvar. Verifique seu token.', 'error');
+        }
+      } catch (e) {
+        console.error(e);
+        showMessage('Erro: ' + e.message, 'error');
+      }
+    }
+    
+    function clearForm() {
+      document.getElementById('titulo').value = '';
+      document.getElementById('youtubeId').value = '';
+      document.getElementById('descricao').value = '';
+      document.getElementById('ano').value = '';
+    }
+    
+    function showMessage(msg, type) {
+      const el = document.getElementById('message');
+      el.textContent = msg;
+      el.className = `message ${type}`;
+      setTimeout(() => el.className = 'message', 4000);
+    }
+    
+    // Carrega vídeos ao abrir a página
+    window.addEventListener('load', loadVideos);
+  </script>
+</body>
+</html>
