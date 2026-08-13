@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: jhuliaserpa-sys/portfolio
+  branch: main
+  auth_endpoint: api/auth
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: "videos"
+    label: "Vídeos"
+    folder: "_data"
+    create: false
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Link YouTube", name: "youtube_id", widget: "string", hint: "Copie só o ID do vídeo (ex: Oh3NihCssYU)" }
+      - { label: "Descrição", name: "description", widget: "text" }
+      - { label: "Ano", name: "year", widget: "number" }
+
+  - name: "about"
+    label: "Sobre Mim"
+    files:
+      - name: "main"
+        label: "Texto Principal"
+        file: "_data/about.json"
+        fields:
+          - { label: "Bio", name: "bio", widget: "text" }
+          - { label: "Foto de Perfil", name: "profile_image", widget: "image" }
