@@ -295,6 +295,14 @@ footer{background:var(--wine);padding:2rem 8vw;display:flex;justify-content:spac
 .cat-tab{font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:.5rem 1.3rem;border-radius:100px;border:1px solid rgba(201,146,74,.2);background:transparent;color:rgba(245,237,224,.35);cursor:pointer;font-family:var(--fb);transition:all .25s;}
 .cat-tab.active,.cat-tab:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);}
 .proj-area{padding:3rem 8vw 8rem;background:var(--cream);}
+.port-landing{min-height:32vh;display:none;align-items:center;justify-content:center;text-align:center;}
+.port-landing.active{display:flex;}
+.port-landing-inner{max-width:520px;}
+.port-landing .sec-eyebrow{justify-content:center;}
+.port-landing-title{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--wine);margin:.8rem 0 .7rem;}
+.port-landing-title em{font-style:italic;color:var(--gold);}
+.port-landing-copy{font-size:.7rem;font-weight:300;color:var(--muted);line-height:1.8;}
+
 .cat-sec{display:none;}.cat-sec.active{display:block;}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
 .proj-card{border-radius:.8rem;overflow:hidden;position:relative;aspect-ratio:4/3;background:var(--rose);cursor:pointer;}
@@ -722,9 +730,7 @@ body.editing .add-folder-btn{display:flex;}
       <h2 class="pcta-h2">Meus <em>Trabalhos</em></h2>
       <p class="pcta-p">Vídeo, foto e design — escolha uma categoria e explore.</p>
       <div class="pcta-btns">
-        <button class="pcta-btn pcta-btn-fill" onclick="goPort('video')"><span data-e="cbv" contenteditable="false" spellcheck="false">🎬 Vídeo</span></button>
-        <button class="pcta-btn pcta-btn-out" onclick="goPort('foto')"><span data-e="cbf" contenteditable="false" spellcheck="false">📷 Foto</span></button>
-        <button class="pcta-btn pcta-btn-out" onclick="goPort('design')"><span data-e="cbd" contenteditable="false" spellcheck="false">✏️ Design</span></button>
+        <button class="pcta-btn pcta-btn-fill" onclick="goPort()">Abrir portfólio</button>
       </div>
     </div>
   </section>
@@ -839,12 +845,19 @@ body.editing .add-folder-btn{display:flex;}
     <h1>Meu <em>Portfólio</em></h1>
   </div>
   <div class="cat-tabs">
-    <button class="cat-tab active" onclick="switchTab('video',this)"><span data-e="cbv" contenteditable="false" spellcheck="false">🎬 Vídeo</span></button>
+    <button class="cat-tab" onclick="switchTab('video',this)"><span data-e="cbv" contenteditable="false" spellcheck="false">🎬 Vídeo</span></button>
     <button class="cat-tab" onclick="switchTab('foto',this)"><span data-e="cbf" contenteditable="false" spellcheck="false">📷 Foto</span></button>
     <button class="cat-tab" onclick="switchTab('design',this)"><span data-e="cbd" contenteditable="false" spellcheck="false">✏️ Design</span></button>
   </div>
   <div class="proj-area">
-    <div class="cat-sec active" id="cat-video">
+    <div class="port-landing active" id="port-landing">
+      <div class="port-landing-inner">
+        <div class="sec-eyebrow">Escolha uma categoria</div>
+        <h2 class="port-landing-title">Explore meus <em>trabalhos</em></h2>
+        <p class="port-landing-copy">Selecione Vídeo, Foto ou Design para abrir a página correspondente do meu portfólio.</p>
+      </div>
+    </div>
+    <div class="cat-sec" id="cat-video">
       <div class="proj-grid" id="grid-video">
         <div class="video-proj-card" data-video-id="mbBOHXwVgxw" data-title="BYD - Metalinguagem" data-role="Edição" data-year="2025">
   <img src="https://img.youtube.com/vi/mbBOHXwVgxw/maxresdefault.jpg" alt="BYD Metalinguagem">
@@ -1065,11 +1078,18 @@ function showPage(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function goHome(){ showPage('page-home'); }
+function showPortfolioLanding(){
+  document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.cat-sec').forEach(s=>s.classList.remove('active'));
+  document.getElementById('port-landing')?.classList.add('active');
+}
 function goPort(cat){
   showPage('page-port');
-  switchTab(cat||'video', null);
+  if(cat) switchTab(cat, null);
+  else showPortfolioLanding();
 }
 function switchTab(tab, btn){
+  document.getElementById('port-landing')?.classList.remove('active');
   document.querySelectorAll('.cat-tab').forEach(t=>t.classList.remove('active'));
   document.querySelectorAll('.cat-sec').forEach(s=>s.classList.remove('active'));
   if(btn) btn.classList.add('active');
