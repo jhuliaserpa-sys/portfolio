@@ -130,30 +130,6 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 .hero-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;color:rgba(245,237,224,.2);}
 .hero-ph svg{width:36px;opacity:.25;}
 .hero-ph span{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;}
-  <section class="showreel-hero ss reveal" id="sec-showreel-main">
-  <div class="showreel-hero-content">
-    <div class="showreel-hero-text">
-      <div class="eyebrow" style="color:var(--gold);">Em Destaque</div>
-      <h2 class="showreel-hero-h2" data-e="srh-title" contenteditable="false" spellcheck="false">Meu Showreel</h2>
-      <p class="showreel-hero-desc" data-e="srh-desc" contenteditable="false" spellcheck="false">Uma seleção dos meus melhores trabalhos em vídeo. Confira o que venho criando.</p>
-      <button class="btn-gold" onclick="document.querySelector('#sec-showreel-main .showreel-iframe').focus(); document.querySelector('#sec-showreel-main .showreel-iframe').click();">Assistir Agora</button>
-    </div>
-    <div class="showreel-hero-video">
-      <iframe 
-        class="showreel-iframe"
-        width="100%" 
-        height="100%" 
-        src="https://www.youtube.com/embed/7fuf7hrKFfU" 
-        title="Showreel Jhulia Serpa" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</section>
-  
 /* TICKER */
 .ticker{background:var(--wine);padding:.7rem 0;overflow:hidden;border-top:1px solid rgba(201,146,74,.1);border-bottom:1px solid rgba(201,146,74,.1);}
 .ticker-track{display:flex;animation:tick 28s linear infinite;white-space:nowrap;}
@@ -579,7 +555,7 @@ body.editing .add-folder-btn{display:flex;}
       <div class="epg"><label class="epl">Título</label><input class="epi" value="Meu Showreel" oninput="se('rt',this.value)"></div>
       <div class="epg"><label class="epl">Ano</label><input class="epi" value="2024 — 2025" oninput="se('ry',this.value)"></div>
       <div class="epg"><label class="epl">Descrição</label><textarea class="epi epta" oninput="se('rd',this.value)">Uma seleção dos meus melhores trabalhos em vídeo.</textarea></div>
-      <div class="epg"><label class="epl">Link YouTube / Vimeo</label><input class="epi" id="reel-url-in" placeholder="https://youtu.be/..." oninput="setReelUrl(this.value)"></div>
+      <div class="epg"><label class="epl">Link YouTube / Vimeo</label><input class="epi" id="reel-url-in" value="https://www.youtube.com/watch?v=7fuf7hrKFfU" placeholder="https://youtu.be/..." oninput="setReelUrl(this.value)"></div>
       <div class="epd"></div>
       <div class="epsub">Sobre mim</div>
       <div class="epg"><label class="epl">Título linha 1</label><input class="epi" value="Criativa" oninput="se('ah1',this.value)"></div>
@@ -762,7 +738,7 @@ body.editing .add-folder-btn{display:flex;}
       <button class="btn-gold" onclick="openReel()">Assistir agora</button>
     </div>
    <div id="reel-frame" class="reel-frame">
-<iframe width="100%" height="100%" src="https://www.youtube.com/embed/Oh3NihCssYU?si=wMDQAI1aQXiK9nmC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="100%" height="100%" src="https://www.youtube.com/embed/7fuf7hrKFfU" title="Showreel Jhulia Serpa — vídeo em destaque" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 <div style="margin-top:2rem; padding:1.5rem; background:rgba(201,146,74,.08); border-radius:0.8rem; border-left:3px solid var(--gold);">
