@@ -138,8 +138,9 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 .ti-sep{color:var(--gold);opacity:.6;font-size:.7rem;}
 
 /* ABOUT */
-.about-sec{background:var(--cream);padding:12vh 8vw;display:grid;grid-template-columns:1fr;gap:6vw;align-items:center;overflow:hidden;position:relative;}
-
+.about-sec{background:var(--cream);padding:12vh 8vw;display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,1fr);gap:6vw;align-items:center;overflow:hidden;position:relative;}
+.about-photo-col{position:relative;min-width:0;}
+.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:2px;}
 
 .about-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
 .about-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
@@ -764,7 +765,9 @@ body.editing .add-folder-btn{display:flex;}
 
   <!-- ABOUT -->
   <section class="about-sec ss reveal" id="sec-about">
-    
+    <div class="about-photo-col reveal">
+      <img class="about-photo" src="https://drive.google.com/thumbnail?id=1OWue53vcpDr1algTdTgp7JYmWJqdVm8I&sz=w1200" alt="Foto de Jhulia Serpa">
+    </div>
     <div class="about-text-col reveal rd2">
       <div class="about-eyebrow">Sobre mim</div>
       <h2 class="about-h2">
