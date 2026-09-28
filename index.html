@@ -140,7 +140,8 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 /* ABOUT */
 .about-sec{background:var(--cream);padding:12vh 8vw;display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,1fr);gap:6vw;align-items:center;overflow:hidden;position:relative;}
 .about-photo-col{position:relative;min-width:0;}
-.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:2px;}
+.about-photo{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;border-radius:.8rem;border:1px solid rgba(201,146,74,.12);transition:border-color .3s,transform .3s,box-shadow .3s;}
+.about-photo:hover{border-color:rgba(201,146,74,.4);transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.16);}
 
 .about-eyebrow{font-size:.52rem;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.7rem;}
 .about-eyebrow::before{content:'';width:20px;height:1px;background:var(--gold);}
@@ -418,7 +419,8 @@ body.editing .add-folder-btn{display:flex;}
   .services-sec,.equip-sec{padding:5rem 6vw;}
   .sec-header{margin-bottom:2.4rem;}
   .sec-h2{font-size:clamp(2.2rem,11vw,3.5rem);}
-  .srv-grid,.equip-grid{grid-template-columns:1fr;gap:1px;}
+  .srv-grid{grid-template-columns:1fr;gap:1px;}
+  .equip-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.65rem;}
   .srv-card{padding:1.6rem 1.25rem;}
   .srv-name{font-size:1.25rem;}
   .equip-grid{margin-top:2rem;}
@@ -706,7 +708,7 @@ body.editing .add-folder-btn{display:flex;}
       <img src="https://drive.google.com/thumbnail?id=1sB6X3Q-H2SlH-yoM9bywHQHqG5Z6K96Z&sz=w1600" alt="Foto de capa" style="width:100%;height:100%;object-fit:cover;display:block;">
     </div>
     <div class="hero-scroll"><div class="scroll-line"></div><span class="scroll-txt">Scroll</span></div>
-    <div class="hero-year">2025</div>
+    <div class="hero-year">2026</div>
   </section>
 
   <!-- TICKER -->
@@ -715,13 +717,11 @@ body.editing .add-folder-btn{display:flex;}
       <div class="ti"><span class="ti-txt">Audiovisual</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Videomaker</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Design Gráfico</span><span class="ti-sep">✦</span></div>
-      <div class="ti"><span class="ti-txt">Marketing</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Fotografia</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Edição</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Audiovisual</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Videomaker</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Design Gráfico</span><span class="ti-sep">✦</span></div>
-      <div class="ti"><span class="ti-txt">Marketing</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Fotografia</span><span class="ti-sep">✦</span></div>
       <div class="ti"><span class="ti-txt">Edição</span><span class="ti-sep">✦</span></div>
     </div>
@@ -731,7 +731,7 @@ body.editing .add-folder-btn{display:flex;}
   <section class="reel-sec ss reveal" id="sec-reel">
     <div class="reel-text-col">
       <div class="eyebrow">Em destaque</div>
-      <h2 class="reel-h2"><span data-e="rt" contenteditable="false" spellcheck="false">Meu Showreel</span><br><em data-e="ry" contenteditable="false" spellcheck="false">2024 — 2025</em></h2>
+      <h2 class="reel-h2"><span data-e="rt" contenteditable="false" spellcheck="false">Meu Showreel</span><br><em data-e="ry" contenteditable="false" spellcheck="false">2026</em></h2>
       <p class="reel-desc" data-e="rd" contenteditable="false" spellcheck="false">Uma seleção dos meus melhores trabalhos em vídeo.</p>
       <button class="btn-gold" onclick="openReel()">Assistir agora</button>
     </div>
