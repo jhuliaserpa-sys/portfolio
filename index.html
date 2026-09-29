@@ -427,8 +427,9 @@ body.editing .add-folder-btn{display:flex;}
   .mobile-nav-menu a:hover,.mobile-nav-menu button:hover{color:var(--gold2);}
   .hero{grid-template-columns:1fr;min-height:100svh;position:relative;background:var(--dark);}
   .hero-left{padding:8rem 6vw 5.5rem;min-height:100svh;justify-content:center;position:relative;z-index:3;}
-  .hero-right{display:block;position:absolute;inset:0;min-height:0;z-index:1;overflow:hidden;background-image:linear-gradient(to bottom,rgba(18,11,8,.28) 0%,rgba(18,11,8,.48) 55%,rgba(18,11,8,.94) 100%),url("https://drive.google.com/thumbnail?id=1-YgIB4yOD_hg7GEEJfsl4QiZZ0Kf6eVJ&sz=w1600");background-size:cover;background-position:center;background-repeat:no-repeat;}
+  .hero-right{display:block;position:absolute;inset:0;min-height:0;z-index:1;overflow:hidden;background-image:linear-gradient(to bottom,rgba(18,11,8,.28) 0%,rgba(18,11,8,.48) 55%,rgba(18,11,8,.94) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;}
   .hero-right img,.hero-right video{display:none;}
+  .hero-right::before{content:'';position:absolute;inset:0;background-image:url("https://drive.google.com/thumbnail?id=1-YgIB4yOD_hg7GEEJfsl4QiZZ0Kf6eVJ&sz=w1600");background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.32;}
   .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,11,8,.38) 0%,rgba(18,11,8,.12) 50%,rgba(18,11,8,.38) 100%);pointer-events:none;}
   .hero-right-overlay{display:none;}
   .hero-scroll{display:none;}
@@ -743,6 +744,24 @@ body.editing .add-folder-btn{display:flex;}
     <div class="hero-year">2026</div>
   </section>
 
+  <!-- MARQUEE -->
+  <div class="mq-sec ss" id="sec-mq">
+    <div class="mq-track">
+      <div class="mq-item"><span class="mq-w">Audiovisual</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Videomaker</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Design Gráfico</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Marketing</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Univali</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Senai</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Audiovisual</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Videomaker</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Design Gráfico</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w">Marketing</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w fill">Univali</span><span class="mq-sep">✦</span></div>
+      <div class="mq-item"><span class="mq-w acc">Senai</span><span class="mq-sep">✦</span></div>
+    </div>
+  </div>
+
   <!-- SHOWREEL -->
   <section class="reel-sec ss reveal" id="sec-reel">
     <div class="reel-text-col">
@@ -795,24 +814,6 @@ body.editing .add-folder-btn{display:flex;}
       </div>
     </div>
   </section>
-
-  <!-- MARQUEE -->
-  <div class="mq-sec ss" id="sec-mq">
-    <div class="mq-track">
-      <div class="mq-item"><span class="mq-w">Cinema</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w fill">Frame</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w acc">Luz</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w">Cena</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w fill">Corte</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w">Cinema</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w fill">Frame</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w acc">Luz</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w">Cena</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w fill">Corte</span><span class="mq-sep">✦</span></div>
-      <div class="mq-item"><span class="mq-w acc">Action</span><span class="mq-sep">✦</span></div>
-    </div>
-  </div>
 
   <!-- PORTFOLIO CTA -->
   <section class="pcta-sec ss reveal" id="sec-pcta">
