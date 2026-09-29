@@ -398,15 +398,17 @@ body.editing .add-folder-btn{display:flex;}
   .mobile-nav-menu a,.mobile-nav-menu button{display:block;width:100%;padding:.85rem .2rem;text-align:left;text-decoration:none;color:rgba(245,237,224,.7);font-size:.62rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:none;border:none;border-bottom:1px solid rgba(201,146,74,.1);font-family:var(--fb);}
   .mobile-nav-menu a:last-child,.mobile-nav-menu button:last-child{border-bottom:none;}
   .mobile-nav-menu a:hover,.mobile-nav-menu button:hover{color:var(--gold2);}
-  .hero{grid-template-columns:1fr;min-height:auto;}
-  .hero-left{padding:8rem 6vw 4.5rem;min-height:68svh;justify-content:center;}
-  .hero-right{display:block;min-height:38svh;}
-  .hero-right-overlay{background:linear-gradient(to bottom,rgba(18,11,8,.15),var(--dark) 92%);}
+  .hero{grid-template-columns:1fr;min-height:100svh;position:relative;background:var(--dark);}
+  .hero-left{padding:8rem 6vw 5.5rem;min-height:100svh;justify-content:center;position:relative;z-index:3;}
+  .hero-right{display:block;position:absolute;inset:0;min-height:0;z-index:1;overflow:hidden;background-image:linear-gradient(to bottom,rgba(18,11,8,.28) 0%,rgba(18,11,8,.48) 55%,rgba(18,11,8,.94) 100%),url("https://drive.google.com/thumbnail?id=1-YgIB4yOD_hg7GEEJfsl4QiZZ0Kf6eVJ&sz=w1600");background-size:cover;background-position:center;background-repeat:no-repeat;}
+  .hero-right img,.hero-right video{display:none;}
+  .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,11,8,.38) 0%,rgba(18,11,8,.12) 50%,rgba(18,11,8,.38) 100%);pointer-events:none;}
+  .hero-right-overlay{display:none;}
   .hero-scroll{display:none;}
   .hero-tag{font-size:.48rem;letter-spacing:.18em;margin-bottom:1.7rem;}
-  .hero-h1 .line1{font-size:clamp(2.7rem,13vw,4.5rem);}
-  .hero-h1 .line2{font-size:clamp(3.1rem,15vw,5.1rem);margin-left:1rem;}
-  .hero-h1 .line3{font-size:clamp(2.25rem,11vw,4rem);}
+  .hero-h1 .line1{font-size:clamp(2.5rem,11.5vw,4.2rem);}
+  .hero-h1 .line2{font-size:clamp(2.9rem,13.5vw,4.8rem);margin-left:.7rem;}
+  .hero-h1 .line3{font-size:clamp(2.05rem,10vw,3.7rem);}
   .hero-desc{font-size:.68rem;max-width:30rem;margin-top:1.5rem;}
   .hero-cta-row{flex-direction:column;align-items:stretch;gap:.7rem;margin-top:2rem;max-width:18rem;}
   .btn-gold,.btn-ghost{width:100%;padding:.85rem 1rem;text-align:center;}
