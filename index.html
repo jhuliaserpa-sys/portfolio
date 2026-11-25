@@ -195,6 +195,36 @@ nav.scrolled{background:rgba(18,11,8,.96);box-shadow:0 1px 0 rgba(201,146,74,.1)
 .srv-icon{font-size:1.6rem;margin-bottom:1.2rem;}
 .srv-name{font-family:var(--fd);font-size:1.4rem;font-weight:500;margin-bottom:.6rem;letter-spacing:.01em;}
 .srv-desc{font-size:.64rem;font-weight:300;color:var(--muted);line-height:1.75;}
+.srv-coming-soon::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:2;
+  background:rgba(245,237,224,.42);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  pointer-events:none;
+}
+.srv-coming-badge{
+  position:absolute;
+  z-index:3;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  padding:.55rem 1rem;
+  border:1px solid rgba(201,146,74,.55);
+  border-radius:100px;
+  background:rgba(28,15,10,.88);
+  color:var(--gold2);
+  font-size:.52rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  box-shadow:0 8px 20px rgba(18,11,8,.16);
+}
+body.editing .srv-coming-soon::after{display:none;}
+body.editing .srv-coming-badge{display:none;}
 .srv-del{position:absolute;top:.7rem;right:.7rem;width:22px;height:22px;border-radius:50%;background:rgba(18,11,8,.07);border:none;color:var(--muted);font-size:.6rem;display:none;align-items:center;justify-content:center;cursor:pointer;}
 body.editing .srv-del{display:flex;}
 .srv-del:hover{background:rgba(180,40,40,.15);color:#c0392b;}
@@ -233,6 +263,12 @@ body.editing .add-eq-btn{display:flex;}
 .mq-w.acc{-webkit-text-stroke:0;color:var(--gold);opacity:.35;font-style:normal;font-weight:600;}
 .mq-sep{color:var(--gold);opacity:.35;font-size:1rem;}
 
+  .video-category-nav{display:flex;gap:.55rem;flex-wrap:wrap;margin:0 0 1.2rem;}
+  .video-filter-btn{font-size:.54rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;padding:.62rem 1.1rem;border:1px solid rgba(201,146,74,.25);border-radius:100px;background:transparent;color:var(--muted);cursor:pointer;font-family:var(--fb);transition:all .25s;}
+  .video-filter-btn:hover,.video-filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--dark);}
+  .video-category-intro{min-height:92px;margin:0 0 1.2rem;padding:1.1rem 1.3rem;border-left:2px solid var(--gold);background:rgba(201,146,74,.07);}
+  .video-category-intro h2{font-family:var(--fd);font-size:1.35rem;font-weight:500;color:var(--wine);margin-bottom:.3rem;}
+  .video-category-intro p{font-size:.66rem;font-weight:300;line-height:1.7;color:var(--muted);}
   .video-proj-card{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:.8rem;cursor:pointer;border:1px solid rgba(201,146,74,.15);transition:all .3s ease;}
 @keyframes videoCardReveal{from{opacity:0;transform:translateX(-32px);}to{opacity:1;transform:translateX(0);}}
 .video-proj-card.video-enter{animation:videoCardReveal .7s cubic-bezier(.22,.61,.36,1) both;}
@@ -361,6 +397,25 @@ body.editing .add-card{display:flex;}
 .add-card-icon{font-size:1.6rem;opacity:.25;}
 .add-card-label{font-size:.52rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
 
+/* MENSAGEM DE CATEGORIAS EM CONSTRUÇÃO */
+.portfolio-coming-soon{
+  min-height:32vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  border:1px dashed rgba(201,146,74,.22);
+  border-radius:1rem;
+  background:rgba(201,146,74,.035);
+  padding:3rem 1.5rem;
+  margin-bottom:1rem;
+}
+.portfolio-coming-soon-inner{max-width:520px;}
+.portfolio-coming-soon-icon{font-size:1.5rem;color:var(--gold);margin-bottom:.8rem;}
+.portfolio-coming-soon h2{font-family:var(--fd);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--wine);margin-bottom:.7rem;}
+.portfolio-coming-soon h2 em{font-style:italic;color:var(--gold);}
+.portfolio-coming-soon p{font-size:.7rem;font-weight:300;line-height:1.8;color:var(--muted);}
+
 /* FOLDERS */
 .folder-grid-view{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
 .folder-card{background:var(--rose);border:1px solid rgba(201,146,74,.2);border-radius:.8rem;padding:1.4rem 1.5rem;cursor:pointer;transition:border-color .3s,transform .25s;position:relative;}
@@ -428,8 +483,9 @@ body.editing .add-folder-btn{display:flex;}
   .hero{grid-template-columns:1fr;min-height:100svh;position:relative;background:var(--dark);}
   .hero-left{padding:8rem 6vw 5.5rem;min-height:100svh;justify-content:center;position:relative;z-index:3;}
   .hero-right{display:block;position:absolute;inset:0;min-height:0;z-index:1;overflow:hidden;background-image:linear-gradient(to bottom,rgba(18,11,8,.28) 0%,rgba(18,11,8,.48) 55%,rgba(18,11,8,.94) 100%);background-size:cover;background-position:center;background-repeat:no-repeat;}
-  .hero-right img,.hero-right video{display:none;}
-  .hero-right::before{content:'';position:absolute;inset:0;background-image:url("https://drive.google.com/thumbnail?id=1-YgIB4yOD_hg7GEEJfsl4QiZZ0Kf6eVJ&sz=w1600");background-size:cover;background-position:center;background-repeat:no-repeat;opacity:.32;}
+  /* Usa a mesma imagem do desktop no mobile; não há uma segunda foto específica para celular. */
+  .hero-right img,.hero-right video{display:block;}
+  .hero-right::before{display:none;}
   .hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,11,8,.38) 0%,rgba(18,11,8,.12) 50%,rgba(18,11,8,.38) 100%);pointer-events:none;}
   .hero-right-overlay{display:none;}
   .hero-scroll{display:none;}
@@ -841,16 +897,18 @@ body.editing .add-folder-btn{display:flex;}
         <div class="srv-desc" data-e="sv1d" contenteditable="false" spellcheck="false">Vídeos institucionais, reels, eventos e conteúdo para redes sociais. Do roteiro à entrega final.</div>
         <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
       </div>
-      <div class="srv-card">
+      <div class="srv-card srv-coming-soon">
         <div class="srv-icon">📷</div>
         <div class="srv-name" data-e="sv2n" contenteditable="false" spellcheck="false">Fotografia</div>
         <div class="srv-desc" data-e="sv2d" contenteditable="false" spellcheck="false">Ensaios, eventos e produtos. Fotos com identidade para marcas e pessoas.</div>
+        <div class="srv-coming-badge">Em breve</div>
         <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
       </div>
-      <div class="srv-card">
+      <div class="srv-card srv-coming-soon">
         <div class="srv-icon">✏️</div>
         <div class="srv-name" data-e="sv3n" contenteditable="false" spellcheck="false">Design Gráfico</div>
         <div class="srv-desc" data-e="sv3d" contenteditable="false" spellcheck="false">Identidade visual, peças para redes sociais e materiais de comunicação.</div>
+        <div class="srv-coming-badge">Em breve</div>
         <button class="srv-del" onclick="this.closest('.srv-card').remove()">✕</button>
       </div>
       <button class="add-srv-btn" onclick="addSrv()">＋ Adicionar serviço</button>
@@ -882,6 +940,11 @@ body.editing .add-folder-btn{display:flex;}
       <div class="eq-card">
         <div class="eq-photo" onclick="upEqPhoto(this)"><img src="https://drive.google.com/thumbnail?id=1LS8y369tlWOqwI-MnxvGAQpxBcGUc2c3&sz=w1000" alt="Imagem do equipamento" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div class="eq-body"><div class="eq-name" data-e="eq4n" contenteditable="false" spellcheck="false">Edição</div><div class="eq-desc" data-e="eq4d" contenteditable="false" spellcheck="false">CapCut Pro, DaVinci Resolve</div></div>
+        <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
+      </div>
+      <div class="eq-card">
+        <div class="eq-photo" onclick="upEqPhoto(this)"><img src="https://drive.google.com/thumbnail?id=1RMrBX-yuzqdtOR4FrtmhISJj_MJC9w1q&sz=w1000" alt="Imagem do equipamento de design" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="eq-body"><div class="eq-name" data-e="eq5n" contenteditable="false" spellcheck="false">Design</div><div class="eq-desc" data-e="eq5d" contenteditable="false" spellcheck="false">Canva, Adobe Photoshop, Figma</div></div>
         <button class="eq-del" onclick="this.closest('.eq-card').remove()">✕</button>
       </div>
       <button class="add-eq-btn" onclick="addEq()">＋ Adicionar equipamento</button>
@@ -985,8 +1048,17 @@ body.editing .add-folder-btn{display:flex;}
       </div>
     </div>
     <div class="cat-sec" id="cat-video">
+      <div class="video-category-nav" aria-label="Categorias de vídeos">
+        <button class="video-filter-btn active" type="button" data-video-filter="academico" onclick="filterVideoCategory('academico',this)">Trabalhos acadêmicos</button>
+        <button class="video-filter-btn" type="button" data-video-filter="eventos" onclick="filterVideoCategory('eventos',this)">Eventos</button>
+        <button class="video-filter-btn" type="button" data-video-filter="vertical" onclick="filterVideoCategory('vertical',this)">Vídeos verticais</button>
+      </div>
+      <div class="video-category-intro" id="video-category-intro">
+        <h2>Trabalhos acadêmicos</h2>
+        <p>Projetos desenvolvidos durante minha formação em Produção Audiovisual, explorando diferentes linguagens, funções e etapas de produção.</p>
+      </div>
       <div class="proj-grid" id="grid-video">
-        <div class="video-proj-card" data-video-id="lkdiMGaL9P0" data-title="Delivery" data-role="Direção de Fotografia" data-year="2026" data-desc="Produção acadêmica de 2026. Trabalho mais recente do portfólio, com atuação na direção de fotografia.">
+        <div class="video-proj-card" data-video-category="academico" data-video-id="lkdiMGaL9P0" data-title="Delivery" data-role="Direção de Fotografia" data-year="2026" data-desc="Produção acadêmica de 2026. Trabalho mais recente do portfólio, com atuação na direção de fotografia.">
   <img src="https://img.youtube.com/vi/lkdiMGaL9P0/maxresdefault.jpg" alt="Delivery — produção acadêmica de 2026">
   <div class="video-overlay">
     <div class="video-info">
@@ -997,7 +1069,7 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 </div>
 
-        <div class="video-proj-card" data-video-id="mbBOHXwVgxw" data-title="BYD - Metalinguagem" data-role="Edição" data-year="2025">
+        <div class="video-proj-card" data-video-category="academico" data-video-id="mbBOHXwVgxw" data-title="BYD - Metalinguagem" data-role="Edição" data-year="2025">
   <img src="https://img.youtube.com/vi/mbBOHXwVgxw/maxresdefault.jpg" alt="BYD Metalinguagem">
   <div class="video-overlay">
     <div class="video-info">
@@ -1008,7 +1080,7 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 </div>
 
-<div class="video-proj-card" data-video-id="b7hrqN7wbus" data-title="Fashion Film" data-role="Direção, Atuação e Edição" data-year="2025">
+<div class="video-proj-card" data-video-category="academico" data-video-id="b7hrqN7wbus" data-title="Fashion Film" data-role="Direção, Atuação e Edição" data-year="2025">
   <img src="https://img.youtube.com/vi/b7hrqN7wbus/maxresdefault.jpg" alt="Fashion Film">
   <div class="video-overlay">
     <div class="video-info">
@@ -1019,7 +1091,7 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 </div>
 
-<div class="video-proj-card" data-video-id="yssdOd9E6Ao" data-title="Making Of" data-role="Captação de Bastidores" data-year="2025">
+<div class="video-proj-card" data-video-category="academico" data-video-id="yssdOd9E6Ao" data-title="Making Of" data-role="Captação de Bastidores" data-year="2025">
   <img src="https://img.youtube.com/vi/yssdOd9E6Ao/maxresdefault.jpg" alt="Making Of">
   <div class="video-overlay">
     <div class="video-info">
@@ -1030,7 +1102,7 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 </div>
 
-<div class="video-proj-card" data-video-id="3Iv2_kA4Vzo" data-title="O Assassino das Rosas Brancas" data-role="Assistente de Som" data-year="2025">
+<div class="video-proj-card" data-video-category="academico" data-video-id="3Iv2_kA4Vzo" data-title="O Assassino das Rosas Brancas" data-role="Assistente de Som" data-year="2025">
   <img src="https://img.youtube.com/vi/3Iv2_kA4Vzo/maxresdefault.jpg" alt="O Assassino das Rosas Brancas">
   <div class="video-overlay">
     <div class="video-info">
@@ -1041,7 +1113,7 @@ body.editing .add-folder-btn{display:flex;}
   </div>
 </div>
 
-<div class="video-proj-card" data-video-id="qpreZ_gM4g4" data-title="Evento - DNJ" data-role="Captação e Edição" data-year="2025">
+<div class="video-proj-card" data-video-category="academico" data-video-id="qpreZ_gM4g4" data-title="Evento - DNJ" data-role="Captação e Edição" data-year="2025">
   <img src="https://img.youtube.com/vi/qpreZ_gM4g4/maxresdefault.jpg" alt="Evento DNJ">
   <div class="video-overlay">
     <div class="video-info">
@@ -1051,7 +1123,7 @@ body.editing .add-folder-btn{display:flex;}
     </div>
   </div>
 </div>
-        <div class="video-proj-card" data-video-id="Oh3NihCssYU" data-title="Composição e produção de cenas" data-role="Captação e Edição" data-year="2026" data-desc="Trabalho acadêmico realizado na disciplina de Portfólio, desenvolvido como parte da minha formação em Produção Audiovisual.">
+        <div class="video-proj-card" data-video-category="academico" data-video-id="Oh3NihCssYU" data-title="Composição e produção de cenas" data-role="Captação e Edição" data-year="2026" data-desc="Trabalho acadêmico realizado na disciplina de Portfólio, desenvolvido como parte da minha formação em Produção Audiovisual.">
   <img src="https://img.youtube.com/vi/Oh3NihCssYU/maxresdefault.jpg" alt="Composição e produção de cenas">
   <div class="video-overlay">
     <div class="video-info">
@@ -1061,10 +1133,73 @@ body.editing .add-folder-btn{display:flex;}
     </div>
   </div>
 </div>
+        <div class="video-proj-card" data-video-category="eventos" data-video-id="UUPegFkiyCQ" data-title="Corpus Christi" data-role="Captação e edição, colorização" data-year="2026" data-desc="Registro audiovisual de Corpus Christi, com captação, edição e colorização para valorizar a atmosfera e os detalhes do evento.">
+  <img src="https://img.youtube.com/vi/UUPegFkiyCQ/maxresdefault.jpg" alt="Corpus Christi — evento de 2026">
+  <div class="video-overlay">
+    <div class="video-info">
+      <h3>Corpus Christi</h3>
+      <p>Registro audiovisual de Corpus Christi, com captação, edição e colorização para valorizar a atmosfera e os detalhes do evento.</p>
+      <div class="video-meta"><strong>Minha função:</strong> Captação e edição, colorização<br><strong>Ano:</strong> 2026</div>
+    </div>
+  </div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="x5BbG1hRRDc" data-title="TREND — Será?" data-role="Captação e edição" data-year="2026" data-desc="Vídeo vertical criado para acompanhar uma trend de forma rápida, criativa e envolvente.">
+  <img src="https://img.youtube.com/vi/x5BbG1hRRDc/maxresdefault.jpg" alt="TREND — Será?">
+  <div class="video-overlay">
+    <div class="video-info">
+      <h3>TREND — Será?</h3>
+      <p>Vídeo vertical criado para acompanhar uma trend de forma rápida, criativa e envolvente.</p>
+      <div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div>
+    </div>
+  </div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="LhsC1Ok-cLo" data-title="Convite Evento" data-role="Captação e edição" data-year="2026" data-desc="Convite audiovisual vertical, criativo e chamativo para divulgar um evento.">
+  <img src="https://img.youtube.com/vi/LhsC1Ok-cLo/maxresdefault.jpg" alt="Convite Evento">
+  <div class="video-overlay"><div class="video-info"><h3>Convite Evento</h3><p>Convite audiovisual vertical, criativo e chamativo para divulgar um evento.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="ydfLEvyx_ZE" data-title="Convite Evento" data-role="Captação e edição" data-year="2026" data-desc="Convite audiovisual vertical, criativo e chamativo para divulgar um evento.">
+  <img src="https://img.youtube.com/vi/ydfLEvyx_ZE/maxresdefault.jpg" alt="Convite Evento">
+  <div class="video-overlay"><div class="video-info"><h3>Convite Evento</h3><p>Convite audiovisual vertical, criativo e chamativo para divulgar um evento.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="Pp0GZzIWI2s" data-title="Convite Evento" data-role="Captação e edição" data-year="2026" data-desc="Convite audiovisual vertical, criativo e chamativo para divulgar um evento.">
+  <img src="https://img.youtube.com/vi/Pp0GZzIWI2s/maxresdefault.jpg" alt="Convite Evento">
+  <div class="video-overlay"><div class="video-info"><h3>Convite Evento</h3><p>Convite audiovisual vertical, criativo e chamativo para divulgar um evento.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="qIUqlly6S_8" data-title="Igreja em Cena" data-role="Captação, edição e colorização" data-year="2026" data-desc="Vídeo vertical apresentando a atmosfera e os detalhes de uma igreja, com captação, edição e colorização.">
+  <img src="https://img.youtube.com/vi/qIUqlly6S_8/maxresdefault.jpg" alt="Igreja em Cena">
+  <div class="video-overlay"><div class="video-info"><h3>Igreja em Cena</h3><p>Vídeo vertical apresentando a atmosfera e os detalhes de uma igreja, com captação, edição e colorização.</p><div class="video-meta"><strong>Minha função:</strong> Captação, edição e colorização<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="CkurwcoSzpc" data-title="Convite Evento" data-role="Captação e edição" data-year="2026" data-desc="Convite audiovisual vertical, criativo e chamativo para divulgar um evento.">
+  <img src="https://img.youtube.com/vi/CkurwcoSzpc/maxresdefault.jpg" alt="Convite Evento">
+  <div class="video-overlay"><div class="video-info"><h3>Convite Evento</h3><p>Convite audiovisual vertical, criativo e chamativo para divulgar um evento.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="7mdBnFengCE" data-title="Convite Evento" data-role="Captação e edição" data-year="2026" data-desc="Convite audiovisual vertical, criativo e chamativo para divulgar um evento.">
+  <img src="https://img.youtube.com/vi/7mdBnFengCE/maxresdefault.jpg" alt="Convite Evento">
+  <div class="video-overlay"><div class="video-info"><h3>Convite Evento</h3><p>Convite audiovisual vertical, criativo e chamativo para divulgar um evento.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
+
+        <div class="video-proj-card" data-video-category="vertical" data-video-id="IDEyls8mZEE" data-title="Trend Passando de Baixo do Texto" data-role="Captação e edição" data-year="2026" data-desc="Vídeo vertical inspirado em trend, com uma composição visual dinâmica para prender a atenção.">
+  <img src="https://img.youtube.com/vi/IDEyls8mZEE/maxresdefault.jpg" alt="Trend Passando de Baixo do Texto">
+  <div class="video-overlay"><div class="video-info"><h3>Trend Passando de Baixo do Texto</h3><p>Vídeo vertical inspirado em trend, com uma composição visual dinâmica para prender a atenção.</p><div class="video-meta"><strong>Minha função:</strong> Captação e edição<br><strong>Ano:</strong> 2026</div></div></div>
+</div>
         <div class="add-card" onclick="addProj('video')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
       </div>
     </div>
     <div class="cat-sec" id="cat-foto">
+      <div class="portfolio-coming-soon">
+        <div class="portfolio-coming-soon-inner">
+          <div class="portfolio-coming-soon-icon">✦</div>
+          <h2>Fotos <em>em breve</em></h2>
+          <p>Estou preparando esta parte do portfólio. Em breve, você poderá conhecer meus trabalhos de fotografia por aqui.</p>
+        </div>
+      </div>
       <div id="fv-folders">
         <div class="folder-grid-view" id="folder-grid">
           <button class="add-folder-btn" onclick="newFolder()">＋ Nova pasta</button>
@@ -1082,6 +1217,13 @@ body.editing .add-folder-btn{display:flex;}
       </div>
     </div>
     <div class="cat-sec" id="cat-design">
+      <div class="portfolio-coming-soon">
+        <div class="portfolio-coming-soon-inner">
+          <div class="portfolio-coming-soon-icon">✦</div>
+          <h2>Design <em>em breve</em></h2>
+          <p>Estou preparando esta parte do portfólio. Em breve, você poderá conhecer meus trabalhos de design por aqui.</p>
+        </div>
+      </div>
       <div class="proj-grid" id="grid-design">
         <div class="add-card" onclick="addProj('design')"><div class="add-card-icon">＋</div><div class="add-card-label">Adicionar projeto</div></div>
       </div>
@@ -1299,7 +1441,25 @@ function switchTab(tab, btn){
       card.style.animationDelay = `${i * 0.12}s`;
       card.classList.add('video-enter');
     });
+    filterVideoCategory('academico', document.querySelector('.video-filter-btn[data-video-filter="academico"]'));
   }
+}
+
+// ═══════════════════════════════════════════
+//  FILTROS DE VÍDEO
+// ═══════════════════════════════════════════
+function filterVideoCategory(category, btn){
+  const labels={
+    academico:{title:'Trabalhos acadêmicos',desc:'Projetos desenvolvidos durante minha formação em Produção Audiovisual, explorando diferentes linguagens, funções e etapas de produção.'},
+    eventos:{title:'Eventos',desc:'Vídeos para eventos, celebrações e momentos especiais, com registros que comunicam a atmosfera de cada ocasião.'},
+    vertical:{title:'Vídeos verticais',desc:'Vídeos virais, convites criativos e conteúdos chamativos que prendem a atenção.'}
+  };
+  document.querySelectorAll('.video-filter-btn').forEach(b=>b.classList.toggle('active',b===btn || b.dataset.videoFilter===category));
+  const intro=document.getElementById('video-category-intro');
+  if(intro && labels[category]) intro.innerHTML=`<h2>${labels[category].title}</h2><p>${labels[category].desc}</p>`;
+  document.querySelectorAll('#grid-video .video-proj-card').forEach(card=>{
+    card.style.display=card.dataset.videoCategory===category?'':'none';
+  });
 }
 
 // ═══════════════════════════════════════════
